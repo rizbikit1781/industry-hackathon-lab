@@ -354,7 +354,9 @@ def sweep(tickets: pd.DataFrame, crews: list[Crew], day_index: int = 0,
     d_top = set(base.loc[base["high_risk"], "service_request_id"])
     for name, w in R.PRESETS.items():
         e = R.exposure(feat, w)
-        top = set(base.loc[e >= e.quantile(0.75), "service_request_id"])
+        top = set()
+        for _, g in base.assign(e=e).groupby("skill"):          # same per-skill quartile as default
+            top |= set(g.loc[g["e"] >= g["e"].quantile(0.75), "service_request_id"])
         presets.append({"preset": name, "jaccard_with_default_top25": round(
             len(top & d_top) / max(len(top | d_top), 1), 3)})
     return {"day": day.strftime("%Y-%m-%d"), "lambda_curve": curve, "presets": presets}

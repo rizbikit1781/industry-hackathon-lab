@@ -52,17 +52,16 @@
     "path": "data/layers/communities.geojson"
   },
   "childcare": {
-    "status": "ok",
-    "path": "data/layers/childcare.csv",
-    "rows": 1179,
-    "programs": 1415,
-    "geocoded": 1179
+    "status": "existing",
+    "path": "data/layers/childcare.csv"
   },
   "intersections": {
     "status": "existing",
     "path": "data/intersections.csv"
   },
   "seniors_residences": {
-    "status": "MISSING (feature weight -> 0)"
+    "status": "hand-listed",
+    "rows": 17,
+    "with_latlon": 12
   }
 }

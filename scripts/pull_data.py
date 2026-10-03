@@ -89,12 +89,32 @@ def _intersections(p):
 
 step("intersections", I.DATA / "intersections.csv", _intersections)
 
-# Seniors' residences: no open layer. Copy the researched hand-list if present.
+# Seniors' residences: no open layer. Copy the researched hand-list (name, address, source_url)
+# and fill missing lat/lon from the City's Parcel Address layer (exact address match).
 src = I.ROOT.parent / "research" / "seniors_residences.csv"
 dst = I.DATA / "seniors_residences.csv"
-if src.exists() and not dst.exists():
-    shutil.copy(src, dst)
-report["seniors_residences"] = {"status": "hand-listed" if dst.exists() else "MISSING (feature weight -> 0)"}
+if src.exists():
+    sr = pd.read_csv(src)
+    for c in ("lat", "lon"):
+        if c not in sr:
+            sr[c] = float("nan")
+    miss = sr["lat"].isna()
+    if miss.any():
+        geo = I.geocode_addresses(sr.loc[miss, "address"])
+        sr.loc[miss, "lat"] = geo["lat"].to_numpy()
+        sr.loc[miss, "lon"] = geo["lon"].to_numpy()
+        sr.loc[miss & sr["lat"].notna(), "geocode_source"] = "City Parcel Address 9zvu-p8uz"
+    sr.to_csv(dst, index=False)
+    report["seniors_residences"] = {"status": "hand-listed", "rows": int(len(sr)),
+                                    "with_latlon": int(sr["lat"].notna().sum())}
+else:
+    report["seniors_residences"] = {"status": "MISSING (feature weight -> 0)"}
+print("[ok]   seniors_residences:", report["seniors_residences"])
+
+# Precompute the city-wide feature grid (data/features_by_cell.parquet) from the layers above.
+from civicsignal import features  # noqa: E402
+grid, comm = features.save_grid()
+print(f"[ok]   feature grid: {len(grid)} cells, {len(comm)} communities")
 
 (I.DATA / "ingest_report.json").write_text(json.dumps(report, indent=2))
 print(json.dumps(report, indent=2))

@@ -187,14 +187,14 @@ def _merge(a: Plan, b: Plan) -> Plan:
 def plan_day(jobs: pd.DataFrame, crews: list[Crew], prev_assignment: dict | None = None,
              time_limit_s: float = 10, pen_scale: float = PEN_SCALE,
              stability_m: float = STABILITY_M, max_candidates_factor: float = 2.0,
-             initial_routes: dict | None = None) -> Plan:
+             initial_routes: dict | None = None, skills=("bylaw", "roads")) -> Plan:
     """Solve one day. `jobs` needs job_id, lat, lon, skill, n_tickets, service_min, value.
 
     To keep the VRP small, each skill only considers its highest-value jobs up to
     `max_candidates_factor` x the skill's ticket capacity (plus any previously assigned job).
     """
     plan = Plan()
-    for skill in ("bylaw", "roads"):
+    for skill in skills:
         cs = [c for c in crews if c.skill == skill]
         js = jobs[jobs["skill"] == skill].sort_values("value", ascending=False)
         cap = sum(c.capacity for c in cs)
@@ -246,9 +246,20 @@ def insert_job(plan: Plan, job: dict, jobs: pd.DataFrame, crews: list[Crew],
     prev = plan.assignment()
     planned = jobs2[jobs2["job_id"].isin(list(prev) + [job["job_id"]])]
     t0 = time.time()
-    new = plan_day(planned, crews, prev_assignment=prev, time_limit_s=time_limit_s,
-                   stability_m=stability_m, max_candidates_factor=10, initial_routes=init)
+    part = plan_day(planned, crews, prev_assignment=prev, time_limit_s=time_limit_s,
+                    stability_m=stability_m, max_candidates_factor=10, initial_routes=init,
+                    skills=(job["skill"],))
     solve_s = time.time() - t0
+    # other skills' routes are untouched
+    other = Plan()
+    other_crews = {c.id for c in crews if c.skill != job["skill"]}
+    other.routes = {k: v for k, v in plan.routes.items() if k in other_crews}
+    other.crew_minutes = {k: v for k, v in plan.crew_minutes.items() if k in other_crews}
+    other.crew_km = {k: v for k, v in plan.crew_km.items() if k in other_crews}
+    other.km = sum(other.crew_km.values())
+    other.eta_min = {j: m for j, m in plan.eta_min.items() if plan.assignment().get(j) in other_crews}
+    other.dropped = [j for j in plan.dropped if j in set(jobs2.loc[jobs2["skill"] != job["skill"], "job_id"])]
+    new = _merge(other, part)
     crew_id = new.assignment().get(job["job_id"])
     if crew_id is None:
         return {"inserted": False, "crew_id": None, "position": None, "inserted_after": None,
