@@ -17,7 +17,7 @@ from itertools import count
 
 import numpy as np
 import pandas as pd
-from fastapi import FastAPI, HTTPException
+from fastapi import Depends, FastAPI, Header, HTTPException
 from fastapi.responses import PlainTextResponse
 from pydantic import BaseModel, Field
 from sklearn.neighbors import BallTree
@@ -51,6 +51,7 @@ class TicketIn(BaseModel):
     intersection: str | None = Field(None, description="e.g. '17 AV SW & 37 ST SW'")
     address: str | None = Field(None, description="Calgary street address, e.g. '2915 26 AV SE'")
     description: str | None = None
+    hazard_notes: str | None = None
     source: str = "voice"
 
 
@@ -155,6 +156,13 @@ class State:
         return r, float((pr <= pr[job_id]).mean())
 
 
+def check_key(x_civicsignal_key: str | None = Header(None)):
+    """Shared-secret header for webhook callers; enforced only when CIVICSIGNAL_KEY is set."""
+    want = os.environ.get("CIVICSIGNAL_KEY")
+    if want and x_civicsignal_key != want:
+        raise HTTPException(401, "bad or missing X-CivicSignal-Key")
+
+
 STATE: State | None = None
 app = FastAPI(title="CivicSignal decision engine", version="0.1")
 
@@ -179,7 +187,7 @@ def health():
             "jobs": int(len(s.jobs)), "crews": len(s.crews)}
 
 
-@app.post("/tickets")
+@app.post("/tickets", dependencies=[Depends(check_key)])
 def create_ticket(body: TicketIn):
     t_start = time.time()
     s = S()
@@ -256,7 +264,7 @@ def create_ticket(body: TicketIn):
     return out
 
 
-@app.post("/disruption")
+@app.post("/disruption", dependencies=[Depends(check_key)])
 def disruption(body: DisruptionIn):
     s = S()
     with s.lock:
