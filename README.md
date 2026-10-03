@@ -1,7 +1,5 @@
 # IEEE YP Industry Hackathon: Autonomous Intelligence for Industrial Innovation
 
-link to slides: https://canva.link/f4u4rlrgfjq2fky
-
 [![Repo traffic](https://raw.githubusercontent.com/nagusubra/traffic/main/doc/metric/industry-hackathon-lab/badge.svg)](https://nagusubra.github.io/traffic/doc/metric/industry-hackathon-lab/)
 
 **Hosted by:** IEEE Southern Alberta Section Young Professionals (IEEE SAS YP)
@@ -9,6 +7,7 @@ link to slides: https://canva.link/f4u4rlrgfjq2fky
 **Duration:** 48-hour hackathon (48 hours)
 **Location:** Collision Space, Hunter Hub, University of Calgary
 **Website:** [southern-alberta.ieeecanada.org](https://southern-alberta.ieeecanada.org/)
+**Kickoff Slides:** [Industry Hackathon – Kickoff Deck](https://canva.link/f4u4rlrgfjq2fky)
 
 ---
 
