@@ -72,3 +72,17 @@ flowchart LR
 4. Change the AQHI cutoff and run it again.
 
 Data notes: [`data/README.md`](data/README.md). **Python 3.10+** (3.11 is best).
+
+## Web app
+
+The Next.js + Supabase app lives in [`web/`](web/README.md), independently of the
+Python starter. Use Node.js 22.13+:
+
+```powershell
+cd web
+npm install
+npm run dev
+```
+
+Add your Supabase project URL and publishable key to `web/.env.local`, then
+restart the server. Full setup and validation instructions: [`web/README.md`](web/README.md).
