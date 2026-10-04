@@ -12,6 +12,12 @@ const HAIL_COLOR: Record<NeighbourhoodFlag["hail_track"], string> = {
   low: "#059669",
 };
 
+const HAIL_LABEL: Record<NeighbourhoodFlag["hail_track"], string> = {
+  high: "⛈️ High",
+  medium: "🌦️ Medium",
+  low: "🌤️ Low",
+};
+
 interface FlagMapProps {
   rows: NeighbourhoodFlag[];
   /** Which computed flag decides whether a marker is highlighted as "flagged". */
@@ -48,9 +54,9 @@ export default function FlagMap({ rows, activeFlag }: FlagMapProps) {
               <div className="text-sm">
                 <p className="font-semibold">{row.community_name}</p>
                 <p>Sector: {row.sector}</p>
-                <p>Hail track: {row.hail_track}</p>
+                <p>Hail track: {HAIL_LABEL[row.hail_track]}</p>
                 <p className="mt-1 font-medium">
-                  {flagged ? "Flagged" : "Not flagged"}
+                  {flagged ? "🚩 Flagged" : "Not flagged"}
                 </p>
               </div>
             </Popup>

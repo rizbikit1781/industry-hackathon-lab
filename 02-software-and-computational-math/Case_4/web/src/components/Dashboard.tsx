@@ -13,6 +13,12 @@ const FlagMap = dynamic(() => import("./FlagMap"), {
   ),
 });
 
+const HAIL_ICON: Record<"high" | "medium" | "low", string> = {
+  high: "⛈️",
+  medium: "🌦️",
+  low: "🌤️",
+};
+
 interface DashboardProps {
   initial: FlagResult;
 }
@@ -50,11 +56,28 @@ export default function Dashboard({ initial }: DashboardProps) {
         </div>
 
         <div className="rounded-lg border border-zinc-200 bg-white p-4 text-sm">
-          <h3 className="text-sm font-semibold text-zinc-700">Summary</h3>
-          <dl className="mt-3 space-y-1.5 text-zinc-600">
-            <Row label="High hail track" value={initial.summary.highCount} />
-            <Row label="Medium hail track" value={initial.summary.mediumCount} />
-            <Row label="Low hail track" value={initial.summary.lowCount} />
+          <h3 className="text-sm font-semibold text-zinc-700">Storm outlook</h3>
+          <div className="mt-3 grid grid-cols-3 gap-2 text-center">
+            <StatTile
+              icon={HAIL_ICON.high}
+              label="High"
+              value={initial.summary.highCount}
+              tone="text-red-600"
+            />
+            <StatTile
+              icon={HAIL_ICON.medium}
+              label="Medium"
+              value={initial.summary.mediumCount}
+              tone="text-amber-600"
+            />
+            <StatTile
+              icon={HAIL_ICON.low}
+              label="Low"
+              value={initial.summary.lowCount}
+              tone="text-emerald-600"
+            />
+          </div>
+          <dl className="mt-4 space-y-1.5 text-zinc-600">
             <Row label="Downtown-only baseline" value={initial.summary.baselineDowntownCount} />
             <Row label='"Flag everyone" baseline' value={initial.summary.baselineAllCount} />
             <Row label="v1 flagged" value={initial.summary.flagV1Count} />
@@ -71,7 +94,9 @@ export default function Dashboard({ initial }: DashboardProps) {
             {flaggedRows.map((r) => (
               <li key={r.community_name} className="flex justify-between gap-2">
                 <span>{r.community_name}</span>
-                <span className="text-zinc-400">{r.hail_track}</span>
+                <span className="text-zinc-400">
+                  {HAIL_ICON[r.hail_track]} {r.hail_track}
+                </span>
               </li>
             ))}
             {flaggedRows.length === 0 && (
@@ -84,6 +109,28 @@ export default function Dashboard({ initial }: DashboardProps) {
       <div className="h-[600px] overflow-hidden rounded-lg border border-zinc-200 lg:h-full">
         <FlagMap rows={initial.rows} activeFlag={activeFlag} />
       </div>
+    </div>
+  );
+}
+
+function StatTile({
+  icon,
+  label,
+  value,
+  tone,
+}: {
+  icon: string;
+  label: string;
+  value: number;
+  tone: string;
+}) {
+  return (
+    <div className="rounded-md bg-zinc-50 py-3">
+      <div className="text-xl" aria-hidden>
+        {icon}
+      </div>
+      <div className={`mt-1 text-lg font-semibold ${tone}`}>{value}</div>
+      <div className="text-[11px] text-zinc-500">{label}</div>
     </div>
   );
 }
