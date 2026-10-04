@@ -74,7 +74,9 @@ def priority(expo, report_count, days_open, dyn_weights: dict | None = None, exp
 # keyword rule on the English hazard_notes the agent writes; each category found closes
 # CALLER_BOOST of the remaining gap to max priority, capped at 2 categories.
 CALLER_HAZARDS = {
-    "mobility aid user": ("walker", "wheelchair", "stroller", "cane", "mobility scooter", "crutch"),
+    "mobility aid user": ("walker", "wheelchair", "stroller", "cane", "mobility scooter", "crutch",
+                          "handicap", "handicapped", "accessible entrance", "wheelchair ramp",
+                          "disabled", "disability"),
     "near school": ("school",),
     "near hospital/clinic": ("hospital", "clinic"),
     "near seniors' residence": ("senior", "elderly", "care home", "nursing home"),
