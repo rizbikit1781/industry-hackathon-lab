@@ -169,7 +169,7 @@ restarts.** Each time, point the agents' webhooks at the new URL:
   .venv/bin/python scripts/setup_voice.py https://<random>.trycloudflare.com
   ```
 
-The script prints a talk-to link for each agent. The web console's voice widget uses the intake
+The script prints a talk-to link for each agent. The web console's voice panel ("Talk to SnowTech 311") uses the intake
 agent ID from `voice/agents.json`.
 
 ### 7. Demo checklist
@@ -216,7 +216,7 @@ same-day reports, default 2). Voice agent prompts and tool JSON are in `voice/ag
 
 A Next.js console in `web/` replaces the Streamlit dashboard for the demo: a live ops map
 (`/`) that polls the API and shows voice tickets arriving within seconds, disruption buttons, and the
-ElevenLabs intake widget; a storm-week replay (`/replay`) comparing the three policies; and a plain-words
+ElevenLabs voice panel (`@elevenlabs/react` over WebRTC, with a real mic mute); a storm-week replay (`/replay`) comparing the three policies; and a plain-words
 "How it works" page (`/about`).
 
 Run steps are in "Setup for teammates" above (step 5).
