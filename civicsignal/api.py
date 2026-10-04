@@ -24,6 +24,7 @@ from sklearn.neighbors import BallTree
 
 from . import features as F
 from . import ingest as I
+from . import landmarks as L
 from . import risk as R
 from . import roads
 from . import sim
@@ -51,13 +52,15 @@ class TicketIn(BaseModel):
     lon: float | None = None
     intersection: str | None = Field(None, description="e.g. '17 AV SW & 37 ST SW'")
     address: str | None = Field(None, description="Calgary street address, e.g. '2915 26 AV SE'")
+    landmark: str | None = Field(None, description="Named place as the caller said it, e.g. "
+                                 "'bus loop at the University of Calgary', 'Foothills hospital'")
     description: str | None = None
     hazard_notes: str | None = None
     source: str = "voice"
 
     # The ElevenLabs LLM fills every schema field and sends "" for ones it doesn't know
     # (seen live: lat="" lon="" next to a valid intersection -> 422). Blank means "not given".
-    @field_validator("lat", "lon", "intersection", "address", "description", "hazard_notes",
+    @field_validator("lat", "lon", "intersection", "address", "landmark", "description", "hazard_notes",
                      mode="before")
     @classmethod
     def blank_is_none(cls, v):
@@ -200,6 +203,7 @@ def S() -> State:
 def _startup():
     S()
     threading.Thread(target=lambda: S().parcel(), daemon=True).start()   # warm address index
+    threading.Thread(target=L.load_index, daemon=True).start()           # warm landmark index
 
 
 @app.get("/health")
@@ -216,7 +220,7 @@ def create_ticket(body: TicketIn):
     svc = SERVICE_ALIASES.get(body.service_name.strip().lower(), body.service_name)
     if svc not in SKILL_OF:
         raise HTTPException(422, f"unknown service_name; use one of {sorted(SERVICE_ALIASES)}")
-    lat, lon, matched = body.lat, body.lon, None
+    lat, lon, matched, place = body.lat, body.lon, None, None
     if lat is None or lon is None:
         if body.intersection:
             g = s.geocode_intersection(body.intersection)
@@ -227,8 +231,20 @@ def create_ticket(body: TicketIn):
             hit = s.parcel().get(key)
             if hit:
                 lat, lon, matched = hit[0], hit[1], key
+        if (lat is None) and body.landmark:
+            res = L.resolve(body.landmark)          # local name index, then Nominatim
+            if res["status"] == "ambiguous":
+                names = [c["name"] for c in res["candidates"]]
+                raise HTTPException(422, {
+                    "error": "ambiguous_landmark", "candidates": names,
+                    "message": "Several places match '" + body.landmark + "'. Ask the caller: Did you mean "
+                               + ", ".join(names[:-1]) + " or " + names[-1] + "?"})
+            if res["status"] == "match":
+                place = res["match"]
+                lat, lon, matched = place["lat"], place["lon"], place["name"]
     if lat is None or lon is None:
-        raise HTTPException(422, "location required: lat/lon, a known intersection, or an address")
+        raise HTTPException(422, "location required: lat/lon, a known intersection, an address, "
+                                 "or a named landmark (school, hospital, LRT station, mall, park)")
     if not (50.8 < lat < 51.25 and -114.35 < lon < -113.85):
         raise HTTPException(422, "location is outside Calgary")
     skill = SKILL_OF[svc]
@@ -284,7 +300,10 @@ def create_ticket(body: TicketIn):
     out.update({"lat": round(lat, 6), "lon": round(lon, 6), "comm_code": f["comm_code"],
                 "pole_distance_m": round(pole_d, 1), "exposure": round(expo, 3),
                 "nearest_intersection": near_ix, "matched_location": matched,
-                "read_back": f"{svc.split(' - ')[1]} near {near_ix.title()} in {str(community).title()}",
+                "landmark_match": ({k: place.get(k) for k in ("type", "source", "score")}
+                                   if place else None),
+                "read_back": f"{svc.split(' - ')[1]} near {place['name'] if place else near_ix.title()} "
+                             f"in {L.pretty(str(community).upper())}",
                 "elapsed_s": round(time.time() - t_start, 2)})
     s.log.append({"t": time.time(), **{k: out[k] for k in ("job_id", "duplicate_of", "crew_id", "delta_min")}})
     return out

@@ -61,3 +61,33 @@ def test_disruption_and_briefing(client):
     assert "jobs_moved" in r and r["crews_active"] == 14
     crew = client.get("/plan").json()["crews"][0]["id"]
     assert client.get(f"/briefing/{crew}").text.startswith(f"Unit {crew}")
+
+
+def test_landmark_ticket(client, monkeypatch):
+    from civicsignal import landmarks as L
+    monkeypatch.setattr(L.requests, "get", lambda *a, **k: (_ for _ in ()).throw(AssertionError("network")))
+    t0 = time.time()
+    r = client.post("/tickets", json={"service_name": "sidewalk", "landmark": "bus loop at the University of Calgary",
+                                      "description": "heavy snowpack", "intersection": "", "address": "",
+                                      "lat": "", "lon": "", "source": "voice"})
+    assert r.status_code == 200, r.text
+    assert time.time() - t0 < 5
+    j = r.json()
+    assert j["matched_location"].startswith("University of Calgary")
+    assert "near University of Calgary" in j["read_back"]
+    assert j["landmark_match"]["source"] == "local"
+
+
+def test_ambiguous_landmark_lists_candidates(client):
+    r = client.post("/tickets", json={"service_name": "sidewalk", "landmark": "Mount Royal"})
+    assert r.status_code == 422
+    d = r.json()["detail"]
+    assert d["error"] == "ambiguous_landmark" and "Mount Royal University" in d["candidates"]
+    assert "Did you mean" in d["message"]
+
+
+def test_unknown_landmark_is_422(client, monkeypatch):
+    from civicsignal import landmarks as L
+    monkeypatch.setattr(L, "nominatim", lambda q: None)
+    r = client.post("/tickets", json={"service_name": "sidewalk", "landmark": "flurble wimbo"})
+    assert r.status_code == 422

@@ -187,7 +187,7 @@ agent ID from `voice/agents.json`.
 |---|---|
 | `CERTIFICATE_VERIFY_FAILED` | Run the Python certificate script (step 1). |
 | Web console says "API not reachable" | Terminal 1 isn't running, or it's not on port 8000. |
-| Voice agent says it couldn't find the location | Use a numbered intersection with its quadrant, e.g. "17 Ave SW & 37 St SW". |
+| Voice agent says it couldn't find the location | Give a numbered intersection with its quadrant ("17 Ave SW & 37 St SW"), an address, or a named place ("bus loop at the University of Calgary", "Foothills hospital", "Brentwood station"). Places are matched against local schools, community services, CTrain/MAX stations and seniors' residences, then OpenStreetMap Nominatim (needs internet). If two places match ("Mount Royal"), the agent asks which one. |
 | Voice calls stopped creating tickets | The tunnel restarted with a new URL. Rerun `setup_voice.py` (step 6). |
 | `401 bad or missing X-CivicSignal-Key` | `.env` wasn't loaded in Terminal 1, or the key doesn't match the agents' secret. |
 | Web pages return 404 chunks after `npm run build` | Building breaks a running dev server. Restart `npm run dev`. |
@@ -211,6 +211,12 @@ API environment variables: `CIVICSIGNAL_DAY` (replay morning, default `2025-11-2
 `CIVICSIGNAL_KEY` (if set, POSTs need header `X-CivicSignal-Key`), `CIVICSIGNAL_SOLVE_S` (default 2),
 `CIVICSIGNAL_INSERT_S` (default 1.5), `CIVICSIGNAL_RESERVE` (tickets per crew held back for
 same-day reports, default 2). Voice agent prompts and tool JSON are in `voice/agent.md`.
+
+`POST /tickets` takes one location, tried in this order: `lat`/`lon`, `intersection`, `address`,
+`landmark` (a named place such as `"bus loop at the University of Calgary"`; see
+`civicsignal/landmarks.py`). A landmark is matched by a fuzzy name search over the local layers
+first, then Nominatim (bounded to Calgary, 2.5 s timeout, cached). An ambiguous landmark returns
+422 with `detail.candidates`, and the agent asks "Did you mean A or B?".
 
 ## Frontend
 
