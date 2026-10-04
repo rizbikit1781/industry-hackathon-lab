@@ -76,6 +76,19 @@ END_CALL = {
     "params": {"system_tool_type": "end_call"},
 }
 
+# Lets the agent stay silent when the caller asks for a moment. Without it the 7 s turn
+# timeout forced a re-prompt every ~10 s ("I'm still here...") while the caller waited.
+SKIP_TURN = {
+    "type": "system",
+    "name": "skip_turn",
+    "description": "Stay silent and wait when the caller asks for a moment (\"give me a second\", "
+                   "\"hold on\", \"let me check\"). Resume only when they speak.",
+    "params": {"system_tool_type": "skip_turn"},
+}
+
+# Seconds of caller silence before the agent speaks again (was the 7 s default).
+TURN_TIMEOUT_S = 20
+
 
 def agent_body(name, prompt, first, tool_ids):
     return {
@@ -85,8 +98,9 @@ def agent_body(name, prompt, first, tool_ids):
                 "first_message": first,
                 "language": "en",
                 "prompt": {"prompt": prompt, "tool_ids": tool_ids,
-                           "built_in_tools": {"end_call": END_CALL}},
-            }
+                           "built_in_tools": {"end_call": END_CALL, "skip_turn": SKIP_TURN}},
+            },
+            "turn": {"turn_timeout": TURN_TIMEOUT_S},
         },
     }
 
