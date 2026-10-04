@@ -87,6 +87,9 @@ SKIP_TURN = {
     "params": {"system_tool_type": "skip_turn"},
 }
 
+# ElevenLabs "Sarah - Mature, Reassuring": calm, comforting voice for callers.
+VOICE_ID = "EXAVITQu4vr4xnSDxMaL"
+
 # -1 = never re-prompt on silence; the agent speaks only after the caller does (the 7 s
 # default nagged callers who asked for a moment). Safety net: hang up after 3 minutes of
 # total silence so an abandoned call doesn't burn the plan's call minutes.
@@ -104,6 +107,7 @@ def agent_body(name, prompt, first, tool_ids):
                 "prompt": {"prompt": prompt, "tool_ids": tool_ids,
                            "built_in_tools": {"end_call": END_CALL, "skip_turn": SKIP_TURN}},
             },
+            "tts": {"voice_id": VOICE_ID},
             "turn": {"turn_timeout": TURN_TIMEOUT_S,
                      "silence_end_call_timeout": SILENCE_END_CALL_S},
         },
