@@ -1,32 +1,57 @@
-# SnowTech demo video: QuickTime shot list (~90 s)
+# SnowTech demo video: recording script (~90 s)
 
-## Before you record
+## Setup
 
-1. Restart the API so the board is clean (README, step 5). Wait 20 seconds before the first call.
-2. Check the tunnel is up and the agents point at it (README, step 6).
-3. Open Chrome at http://127.0.0.1:3000/replay, full screen (Ctrl+Cmd+F). Close other tabs and turn off notifications (Focus mode).
-4. Use headphones with a mic, so the agent's voice doesn't echo back into it.
-5. QuickTime → File → New Screen Recording → Options:
-   - **Microphone:** your headset mic.
-   - Record the **entire screen**.
-6. QuickTime records your mic, not the computer's audio. The agent's voice must reach the recording somehow:
-   - **Simplest:** play the agent through the laptop speakers at low volume, and speak close to the mic.
-   - **Cleaner:** install the free BlackHole audio driver and combine it with your mic in Audio MIDI Setup. Skip this if time is short.
+1. Chrome at http://127.0.0.1:3000/replay, full screen (Ctrl+Cmd+F).
+2. Press **Cmd+Shift+5** → **Record Entire Screen**.
+3. **Options** → turn on the microphone **and** system audio.
+4. Click **Record**. Stop with ■ in the menu bar (or Cmd+Ctrl+Esc).
 
-## Shots
+## Scene 1: the problem (0–10 s)
 
-| # | Time | Screen | Say / do |
-|---|---|---|---|
-| 1 | 0–10 s | Storm-week replay | "Every winter, Calgary's icy-sidewalk complaints take five to eleven days to close. This is the real storm week of November 25, 2025." |
-| 2 | 10–25 s | Click **FIFO**, then **SnowTech** | "Same crews, same tickets. Oldest-first gets to 13 percent of high-risk sidewalks within 48 hours. SnowTech gets to 43 percent, and drives two-thirds fewer kilometres." |
-| 3 | 25–30 s | Click **Live ops** | "Here's today's live plan on Calgary's real road network." |
-| 4 | 30–65 s | Click **Talk to SnowTech 311** | Say: "There's heavy snowpack on the sidewalk by the bus loop at the University of Calgary. A man in a wheelchair can't get through." Answer its questions and confirm the read-back. Let the map fly to the new ticket. |
-| 5 | 65–70 s | Still in the call | Say "That's all, thanks." Let the agent hang up by itself. |
-| 6 | 70–85 s | Click **3 crews out** | "Three officers call in sick. SnowTech re-plans every route in about four seconds and keeps the high-risk tickets covered." |
-| 7 | 85–90 s | Click **Restore crews**, then **How it works** | "A language model listens, a solver decides, and every decision comes with its reasons. That's SnowTech." |
+**Screen:** Storm-week replay.
+
+**Say:** "Every winter, Calgary's icy-sidewalk complaints take five to eleven days to close. This is the real storm week of November 25, 2025."
+
+## Scene 2: the result (10–25 s)
+
+**Do:** Click **FIFO (oldest first)**, then **SnowTech**.
+
+**Say:** "Same crews, same tickets. Oldest-first reaches 13 percent of high-risk sidewalks within 48 hours. SnowTech reaches 43 percent, and drives two-thirds fewer kilometres."
+
+## Scene 3: live ops (25–30 s)
+
+**Do:** Click **Live ops**.
+
+**Say:** "This is today's live plan on Calgary's real road network."
+
+## Scene 4: the voice call (30–65 s)
+
+**Do:** Click **Talk to SnowTech 311**.
+
+**Say to the agent:** "There's heavy snowpack on the sidewalk by the bus loop at the University of Calgary. A man in a wheelchair can't get through."
+
+Answer its questions. Say **yes** to the read-back. Wait for the map to fly to the new ticket.
+
+## Scene 5: hang-up (65–70 s)
+
+**Say to the agent:** "That's all, thanks."
+
+Let it say goodbye and hang up by itself.
+
+## Scene 6: disruption (70–85 s)
+
+**Do:** Click **3 crews out**.
+
+**Say:** "Three officers call in sick. SnowTech re-plans every route in about four seconds and keeps the high-risk tickets covered."
+
+## Scene 7: close (85–90 s)
+
+**Do:** Click **Restore crews**, then **How it works**.
+
+**Say:** "A language model listens, a solver decides, and every decision comes with its reasons. That's SnowTech."
 
 ## After
 
-- Trim the start and end in QuickTime (Edit → Trim) and save.
-- Upload to YouTube as **Unlisted**, and paste the link into the submission issue.
-- Restart the API again before judging, to clear the demo tickets.
+1. Upload to YouTube as **Unlisted**, and paste the link in the submission.
+2. Restart the API before judging, so the demo tickets are cleared.
