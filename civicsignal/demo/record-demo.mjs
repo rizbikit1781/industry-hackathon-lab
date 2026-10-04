@@ -19,21 +19,25 @@ const ctx = await browser.newContext({
 const p = await ctx.newPage();
 const wait = (ms) => p.waitForTimeout(ms);
 
-// 1. Storm-week replay: oldest-first vs SnowTech, then step through the week.
-await p.goto("http://127.0.0.1:3000/replay", { waitUntil: "load" });
-await wait(5000);
-await p.locator("label", { hasText: "FIFO (oldest first)" }).click();
-await wait(3500);
-await p.locator("label", { hasText: /^SnowTech$/ }).click();
-await wait(3500);
-for (let i = 0; i < 3; i++) {
-  await p.getByRole("button", { name: "Next day" }).click();
-  await wait(2200);
-}
+// Timeline matched to the ElevenLabs narration in narration/ (a 0.5 s, b 11 s, c 26 s, d 42.8 s, e 53 s).
+const t0 = Date.now();
+const at = async (sec) => { const ms = t0 + sec * 1000 - Date.now(); if (ms > 0) await wait(ms); };
 
-// 2. Live ops: a resident reports by landmark; the ticket lands on the map.
+// 1. Storm-week replay (narration a + b).
+await p.goto("http://127.0.0.1:3000/replay", { waitUntil: "load" });
+await at(12.5);
+await p.locator("label", { hasText: "FIFO (oldest first)" }).click();
+await at(17.5);
+await p.locator("label", { hasText: /^SnowTech$/ }).click();
+await at(20.5);
+await p.getByRole("button", { name: "Next day" }).click();
+await at(22.5);
+await p.getByRole("button", { name: "Next day" }).click();
+
+// 2. Live ops + voice ticket by landmark (narration c).
+await at(25.3);
 await p.goto("http://127.0.0.1:3000/", { waitUntil: "load" });
-await wait(6000);
+await at(30.5);
 const res = await fetch("http://127.0.0.1:8000/tickets", {
   method: "POST",
   headers: { "Content-Type": "application/json", "X-CivicSignal-Key": env.CIVICSIGNAL_KEY },
@@ -45,23 +49,23 @@ const res = await fetch("http://127.0.0.1:8000/tickets", {
     source: "voice",
   }),
 });
-console.log("voice ticket:", res.status, JSON.stringify(await res.json()).slice(0, 200));
-await wait(9000);
+console.log("voice ticket:", res.status, JSON.stringify(await res.json()).slice(0, 120));
 
-// 3. Disruption: three crews call in sick, the plan re-solves; then restore.
+// 3. Disruption (narration d).
+await at(42.8);
 await p.getByRole("button", { name: /3 crews out/ }).click();
-await wait(9000);
+await at(51);
 await p.getByRole("button", { name: /Restore crews/ }).click();
-await wait(7000);
 
-// 4. How it works, scrolled slowly.
+// 4. How it works (narration e).
+await at(52.8);
 await p.goto("http://127.0.0.1:3000/about", { waitUntil: "load" });
-await wait(3000);
+await at(55);
 for (let y = 0; y < 6; y++) {
   await p.mouse.wheel(0, 300);
   await wait(900);
 }
-await wait(2000);
+await at(64);
 
 const video = p.video();
 await ctx.close();
