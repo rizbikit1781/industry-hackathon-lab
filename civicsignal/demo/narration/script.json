@@ -1,7 +1,10 @@
 {
- "a": "Every winter, Calgary's icy-sidewalk complaints take five to eleven days to close. This is the real storm week of November twenty-fifth, 2025.",
- "b": "Same crews, same tickets. Oldest-first reaches thirteen percent of high-risk sidewalks within forty-eight hours. SnowTech reaches forty-three percent, and drives two-thirds fewer kilometres.",
- "c": "Here's the live plan, on Calgary's real road network. A resident tells our voice agent about snowpack by the bus loop at the University of Calgary. It lands in a crew's route in two seconds, ranked first, because they mentioned a wheelchair user and a bus stop.",
- "d": "Three officers call in sick. SnowTech re-plans every route in about four seconds, and moves only the jobs it has to.",
- "e": "A language model listens. A solver decides. And every decision comes with its reasons. That's SnowTech."
+ "voice": "Liam",
+ "segments": {
+  "a": "Every winter, Calgary's icy sidewalks wait five to eleven days for help. This is the real storm week of November 2025.",
+  "b": "Same crews. Same tickets. Oldest-first reaches just thirteen percent of high-risk sidewalks in two days. SnowTech? Forty-three percent. And driving drops from 8,652 kilometres to just 2,848.",
+  "c": "This is the live plan, on Calgary's real roads. A resident calls our voice agent about snowpack at the University of Calgary bus loop. Two seconds later, it's in a crew's route, ranked number one, because a wheelchair user is stuck.",
+  "d": "Three officers call in sick? SnowTech re-plans every route in four seconds flat.",
+  "e": "A language model listens. A solver decides. Every decision, explained. This is SnowTech."
+ }
 }
