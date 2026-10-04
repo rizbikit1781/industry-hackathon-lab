@@ -26,15 +26,18 @@ sibling module, which bundlers cannot resolve).
 
 ## Data flow
 
-- `/api/*` is a Next.js rewrite to `http://127.0.0.1:8000/*` (override with `CIVICSIGNAL_API`), so the
+- `/api/*` is a Next.js rewrite to `http://127.0.0.1:8000/*` (override with `SNOWTECH_API_URL`; the old
+  `CIVICSIGNAL_API` still works), so the
   Python API needs no CORS changes. `POST /tickets` and `POST /disruption` are excluded from the
   proxy: tickets only come from the ElevenLabs webhook.
 - `POST /api-internal/disruption` is a server route that forwards `{crews_out}` or `{surge:true}` to
-  the API with the `X-CivicSignal-Key` header. The key is read server-side from `../.env`
-  (`CIVICSIGNAL_KEY`) and never reaches the browser.
+  the API with the `X-CivicSignal-Key` header. The key (`CIVICSIGNAL_KEY`) is read server-side
+  from `process.env`, else `../.env`, and never reaches the browser.
 - `/api-internal/replay/summary` and `/api-internal/replay?policy=&day=` read `../data/results.json`
   at request time (re-read when the file changes), so a rerun of `scripts/run_sim.py` shows up without
-  a rebuild.
+  a rebuild. When the parent file is absent (Vercel deploys only `web/`) they read `web/data/results.json`,
+  which `predev`/`prebuild` refresh from `../data/results.json` (committed so a fresh clone deploys).
+- The ElevenLabs intake agent id comes from `SNOWTECH_INTAKE_AGENT_ID`, else `../voice/agents.json`.
 - Crew routes use the `geometry` field (road network, `[lon, lat]` list) when the engine provides
   it, else straight lines between stops.
 
@@ -43,3 +46,22 @@ sibling module, which bundlers cannot resolve).
 No data is fabricated. If the API is down the console says so ("API not reachable. Start uvicorn")
 and keeps the last plan it received; if `data/results.json` is missing the replay page says how to
 generate it.
+
+## Deploy (Vercel)
+
+`web/` is linked to the Vercel project `snowtech` (team `caelanxs-projects`); production URL
+https://snowtech-phi.vercel.app. Production env vars (all server-side, none `NEXT_PUBLIC_`):
+
+| Var | Purpose |
+|---|---|
+| `SNOWTECH_API_URL` | FastAPI engine base URL (rewrites + `/api-internal/disruption`). Baked into the rewrites at build time, so a change needs a redeploy. |
+| `CIVICSIGNAL_KEY` | Shared secret sent as `X-CivicSignal-Key` on disruptions. |
+| `SNOWTECH_INTAKE_AGENT_ID` | ElevenLabs intake agent id for the widget. |
+
+Point the console at a new backend and redeploy (from `web/`):
+
+```bash
+vercel env update SNOWTECH_API_URL production --value https://NEW-API-HOST --yes && vercel deploy --prod --yes
+```
+
+Locally none of these are needed: defaults are `http://127.0.0.1:8000`, `../.env` and `../voice/agents.json`.
