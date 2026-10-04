@@ -1,0 +1,500 @@
+{
+ "event": "2024-08-05",
+ "source": {
+  "name": "Northern Hail Project - NHP_August2024_DamageContours",
+  "url": "https://services.arcgis.com/rGKxabTU9mcXMw7k/ArcGIS/rest/services/NHP_August2024_DamageContours/FeatureServer",
+  "query": "https://services.arcgis.com/rGKxabTU9mcXMw7k/ArcGIS/rest/services/NHP_August2024_DamageContours/FeatureServer/0/query?where=1%3D1&outFields=*&f=geojson&outSR=4326",
+  "citation": "Northern Hail Project (Western University), 'NHP_August2024_DamageContours' ground damage survey of the 5 Aug 2024 Calgary hailstorm, NHP Open Data (nhp-open-data-site-westernu.hub.arcgis.com), licensed CC BY-NC 4.0. Used for independent validation only."
+ },
+ "licence": "CC BY-NC 4.0",
+ "cache": "data/raw/nhp/NHP_August2024_DamageContours.geojson",
+ "notes": [
+  "Grade = most severe NHP damage contour containing the site point (contours nest).",
+  "dist_km = distance from the site to the nearest contour of any grade (0 = inside).",
+  "warned = nowcast ARM/TRIGGER at any issue (first_arm not null); mesh_hit = observed MRMS MESH >= 30 mm at the site pixel in the window.",
+  "NHP contours are a post-event ground survey and coarser than site scale; validation only.",
+  "Coverage caveat: the contours are residential siding/window surveys. The NW swath ends at ~114.036 W and the NE swath starts at ~113.97 W with straight edges; the airport / Deerfoot industrial corridor between them (where the 7 MESH-hit sites sit) appears unsurveyed, so 'none' there means 'not surveyed', not 'no damage'."
+ ],
+ "assets": [
+  {
+   "asset_id": "A001",
+   "name": "Country Hills Toyota",
+   "category": "dealer",
+   "nhp_grade": "none",
+   "dist_km": 2.06,
+   "dist_km_by_grade": {
+    "Threshold": 4.05,
+    "Minor": 2.06,
+    "Moderate": 2.67,
+    "Severe": 2.79
+   },
+   "warned": true,
+   "first_arm": "2024-08-06T01:30:00Z",
+   "lead_min": 40.0,
+   "max_mesh_mm": 44.20000076293945,
+   "mesh_hit": true
+  },
+  {
+   "asset_id": "A002",
+   "name": "Mercedes-Benz Country Hills",
+   "category": "dealer",
+   "nhp_grade": "none",
+   "dist_km": 2.35,
+   "dist_km_by_grade": {
+    "Threshold": 4.43,
+    "Minor": 2.36,
+    "Moderate": 2.35,
+    "Severe": 2.36
+   },
+   "warned": true,
+   "first_arm": "2024-08-06T01:30:00Z",
+   "lead_min": 40.0,
+   "max_mesh_mm": 43.900001525878906,
+   "mesh_hit": true
+  },
+  {
+   "asset_id": "A003",
+   "name": "Universal Ford Lincoln",
+   "category": "dealer",
+   "nhp_grade": "none",
+   "dist_km": 5.12,
+   "dist_km_by_grade": {
+    "Threshold": 5.12,
+    "Minor": 5.28,
+    "Moderate": 6.01,
+    "Severe": 9.3
+   },
+   "warned": true,
+   "first_arm": "2024-08-06T01:48:00Z",
+   "lead_min": null,
+   "max_mesh_mm": 4.0,
+   "mesh_hit": false
+  },
+  {
+   "asset_id": "A004",
+   "name": "Calgary Hyundai",
+   "category": "dealer",
+   "nhp_grade": "none",
+   "dist_km": 6.09,
+   "dist_km_by_grade": {
+    "Threshold": 6.09,
+    "Minor": 6.24,
+    "Moderate": 6.94,
+    "Severe": 10.27
+   },
+   "warned": true,
+   "first_arm": "2024-08-06T02:06:00Z",
+   "lead_min": null,
+   "max_mesh_mm": 3.0999999046325684,
+   "mesh_hit": false
+  },
+  {
+   "asset_id": "A005",
+   "name": "T & T Honda",
+   "category": "dealer",
+   "nhp_grade": "none",
+   "dist_km": 6.93,
+   "dist_km_by_grade": {
+    "Threshold": 6.93,
+    "Minor": 7.13,
+    "Moderate": 7.67,
+    "Severe": 11.23
+   },
+   "warned": false,
+   "first_arm": null,
+   "lead_min": null,
+   "max_mesh_mm": 1.7999999523162842,
+   "mesh_hit": false
+  },
+  {
+   "asset_id": "A006",
+   "name": "Advantage Ford",
+   "category": "dealer",
+   "nhp_grade": "none",
+   "dist_km": 20.78,
+   "dist_km_by_grade": {
+    "Threshold": 20.78,
+    "Minor": 21.44,
+    "Moderate": 21.9,
+    "Severe": 25.41
+   },
+   "warned": false,
+   "first_arm": null,
+   "lead_min": null,
+   "max_mesh_mm": 0.0,
+   "mesh_hit": false
+  },
+  {
+   "asset_id": "A007",
+   "name": "Calgary Honda",
+   "category": "dealer",
+   "nhp_grade": "none",
+   "dist_km": 19.54,
+   "dist_km_by_grade": {
+    "Threshold": 19.54,
+    "Minor": 20.28,
+    "Moderate": 20.79,
+    "Severe": 24.16
+   },
+   "warned": false,
+   "first_arm": null,
+   "lead_min": null,
+   "max_mesh_mm": 0.0,
+   "mesh_hit": false
+  },
+  {
+   "asset_id": "A008",
+   "name": "Maclin Ford",
+   "category": "dealer",
+   "nhp_grade": "none",
+   "dist_km": 14.93,
+   "dist_km_by_grade": {
+    "Threshold": 14.93,
+    "Minor": 15.13,
+    "Moderate": 15.57,
+    "Severe": 19.21
+   },
+   "warned": false,
+   "first_arm": null,
+   "lead_min": null,
+   "max_mesh_mm": 2.299999952316284,
+   "mesh_hit": false
+  },
+  {
+   "asset_id": "A009",
+   "name": "Porsche Centre Calgary",
+   "category": "dealer",
+   "nhp_grade": "none",
+   "dist_km": 16.12,
+   "dist_km_by_grade": {
+    "Threshold": 16.12,
+    "Minor": 16.55,
+    "Moderate": 17.05,
+    "Severe": 20.58
+   },
+   "warned": false,
+   "first_arm": null,
+   "lead_min": null,
+   "max_mesh_mm": 1.2999999523162842,
+   "mesh_hit": false
+  },
+  {
+   "asset_id": "A010",
+   "name": "Charlesglen Toyota",
+   "category": "dealer",
+   "nhp_grade": "Threshold",
+   "dist_km": 0.0,
+   "dist_km_by_grade": {
+    "Threshold": 0.0,
+    "Minor": 2.33,
+    "Moderate": 3.16,
+    "Severe": 5.61
+   },
+   "warned": true,
+   "first_arm": "2024-08-06T01:12:00Z",
+   "lead_min": null,
+   "max_mesh_mm": 22.799999237060547,
+   "mesh_hit": false
+  },
+  {
+   "asset_id": "A011",
+   "name": "North Star Ford",
+   "category": "dealer",
+   "nhp_grade": "none",
+   "dist_km": 2.26,
+   "dist_km_by_grade": {
+    "Threshold": 2.26,
+    "Minor": 4.95,
+    "Moderate": 5.62,
+    "Severe": 8.31
+   },
+   "warned": false,
+   "first_arm": null,
+   "lead_min": null,
+   "max_mesh_mm": 3.5999999046325684,
+   "mesh_hit": false
+  },
+  {
+   "asset_id": "A012",
+   "name": "Wolfe Chevrolet GMC Buick",
+   "category": "dealer",
+   "nhp_grade": "none",
+   "dist_km": 9.05,
+   "dist_km_by_grade": {
+    "Threshold": 9.05,
+    "Minor": 11.43,
+    "Moderate": 12.09,
+    "Severe": 14.61
+   },
+   "warned": false,
+   "first_arm": null,
+   "lead_min": null,
+   "max_mesh_mm": 3.0,
+   "mesh_hit": false
+  },
+  {
+   "asset_id": "A013",
+   "name": "Hertz Canada (off-airport base) (outdoor fleet size unconfirmed)",
+   "category": "rental_lot",
+   "nhp_grade": "none",
+   "dist_km": 1.87,
+   "dist_km_by_grade": {
+    "Threshold": 3.51,
+    "Minor": 1.87,
+    "Moderate": 1.87,
+    "Severe": 2.24
+   },
+   "warned": true,
+   "first_arm": "2024-08-06T01:30:00Z",
+   "lead_min": 40.0,
+   "max_mesh_mm": 37.0,
+   "mesh_hit": true
+  },
+  {
+   "asset_id": "A014",
+   "name": "YYC Economy Lot (Calgary Airport Authority, surface)",
+   "category": "airport_parking",
+   "nhp_grade": "none",
+   "dist_km": 2.64,
+   "dist_km_by_grade": {
+    "Threshold": 3.12,
+    "Minor": 2.64,
+    "Moderate": 2.77,
+    "Severe": 3.88
+   },
+   "warned": true,
+   "first_arm": "2024-08-06T01:42:00Z",
+   "lead_min": 28.0,
+   "max_mesh_mm": 42.5,
+   "mesh_hit": true
+  },
+  {
+   "asset_id": "A015",
+   "name": "Park & Jet Calgary (fenced surface lot)",
+   "category": "airport_parking",
+   "nhp_grade": "none",
+   "dist_km": 2.63,
+   "dist_km_by_grade": {
+    "Threshold": 3.2,
+    "Minor": 2.65,
+    "Moderate": 2.63,
+    "Severe": 3.58
+   },
+   "warned": true,
+   "first_arm": "2024-08-06T01:42:00Z",
+   "lead_min": 28.0,
+   "max_mesh_mm": 42.5,
+   "mesh_hit": true
+  },
+  {
+   "asset_id": "A016",
+   "name": "U-Haul Moving & Storage at Deerfoot",
+   "category": "fleet_lot",
+   "nhp_grade": "none",
+   "dist_km": 5.93,
+   "dist_km_by_grade": {
+    "Threshold": 5.93,
+    "Minor": 6.37,
+    "Moderate": 7.21,
+    "Severe": 10.05
+   },
+   "warned": false,
+   "first_arm": null,
+   "lead_min": null,
+   "max_mesh_mm": 4.0,
+   "mesh_hit": false
+  },
+  {
+   "asset_id": "A017",
+   "name": "Great West Truck Lease & Rentals / PacLease",
+   "category": "fleet_lot",
+   "nhp_grade": "none",
+   "dist_km": 13.91,
+   "dist_km_by_grade": {
+    "Threshold": 13.91,
+    "Minor": 14.6,
+    "Moderate": 15.22,
+    "Severe": 18.56
+   },
+   "warned": false,
+   "first_arm": null,
+   "lead_min": null,
+   "max_mesh_mm": 0.0,
+   "mesh_hit": false
+  },
+  {
+   "asset_id": "A018",
+   "name": "Country Hills RV Storage",
+   "category": "rv_storage",
+   "nhp_grade": "none",
+   "dist_km": 1.18,
+   "dist_km_by_grade": {
+    "Threshold": 3.69,
+    "Minor": 1.18,
+    "Moderate": 1.92,
+    "Severe": 2.1
+   },
+   "warned": true,
+   "first_arm": "2024-08-06T01:30:00Z",
+   "lead_min": 40.0,
+   "max_mesh_mm": 48.0,
+   "mesh_hit": true
+  },
+  {
+   "asset_id": "A019",
+   "name": "Cornerstone Storage and RV Parking",
+   "category": "rv_storage",
+   "nhp_grade": "none",
+   "dist_km": 17.89,
+   "dist_km_by_grade": {
+    "Threshold": 17.89,
+    "Minor": 17.93,
+    "Moderate": 18.5,
+    "Severe": 23.35
+   },
+   "warned": false,
+   "first_arm": null,
+   "lead_min": null,
+   "max_mesh_mm": 0.0,
+   "mesh_hit": false
+  },
+  {
+   "asset_id": "A020",
+   "name": "Oliver Bowen LRT Maintenance Facility (outdoor LRV storage tracks)",
+   "category": "transit",
+   "nhp_grade": "none",
+   "dist_km": 1.77,
+   "dist_km_by_grade": {
+    "Threshold": 1.77,
+    "Minor": 1.93,
+    "Moderate": 2.65,
+    "Severe": 6.08
+   },
+   "warned": true,
+   "first_arm": "2024-08-06T01:48:00Z",
+   "lead_min": null,
+   "max_mesh_mm": 12.800000190734863,
+   "mesh_hit": false
+  },
+  {
+   "asset_id": "A021",
+   "name": "Haysboro LRV Storage (outdoor LRT storage yard)",
+   "category": "transit",
+   "nhp_grade": "none",
+   "dist_km": 16.56,
+   "dist_km_by_grade": {
+    "Threshold": 16.56,
+    "Minor": 17.57,
+    "Moderate": 18.38,
+    "Severe": 21.19
+   },
+   "warned": false,
+   "first_arm": null,
+   "lead_min": null,
+   "max_mesh_mm": 1.2999999523162842,
+   "mesh_hit": false
+  },
+  {
+   "asset_id": "A022",
+   "name": "Blue Grass Nursery Sod & Garden Centre (Balzac)",
+   "category": "nursery_greenhouse",
+   "nhp_grade": "none",
+   "dist_km": 2.92,
+   "dist_km_by_grade": {
+    "Threshold": 7.85,
+    "Minor": 3.47,
+    "Moderate": 3.23,
+    "Severe": 2.92
+   },
+   "warned": true,
+   "first_arm": "2024-08-06T01:30:00Z",
+   "lead_min": 40.0,
+   "max_mesh_mm": 47.29999923706055,
+   "mesh_hit": true
+  },
+  {
+   "asset_id": "A023",
+   "name": "Deerfoot Solar Park (37 MW)",
+   "category": "solar",
+   "nhp_grade": "none",
+   "dist_km": 18.71,
+   "dist_km_by_grade": {
+    "Threshold": 18.71,
+    "Minor": 18.77,
+    "Moderate": 19.23,
+    "Severe": 23.75
+   },
+   "warned": false,
+   "first_arm": null,
+   "lead_min": null,
+   "max_mesh_mm": 0.0,
+   "mesh_hit": false
+  }
+ ],
+ "summary": {
+  "n_assets": 23,
+  "n_polygons": 11,
+  "grade_counts": {
+   "Severe": 0,
+   "Moderate": 0,
+   "Minor": 0,
+   "Threshold": 1,
+   "none": 22
+  },
+  "xtab_grade_vs_warned": {
+   "Threshold": {
+    "warned": 1
+   },
+   "none": {
+    "warned": 10,
+    "not_warned": 12
+   }
+  },
+  "xtab_grade_vs_mesh_hit": {
+   "Threshold": {
+    "no_mesh_hit": 1
+   },
+   "none": {
+    "mesh_hit": 7,
+    "no_mesh_hit": 15
+   }
+  },
+  "nhp_truth": {
+   "damaged_sites": 1,
+   "warned_and_damaged": 1,
+   "warned_not_damaged": 10,
+   "damaged_not_warned": 0,
+   "mesh_hit_and_damaged": 0,
+   "mesh_hit_not_damaged": 7,
+   "damaged_not_mesh_hit": 1
+  },
+  "mesh_false_alarms": [
+   {
+    "asset_id": "A003",
+    "name": "Universal Ford Lincoln",
+    "nhp_grade": "none",
+    "dist_km": 5.12
+   },
+   {
+    "asset_id": "A004",
+    "name": "Calgary Hyundai",
+    "nhp_grade": "none",
+    "dist_km": 6.09
+   },
+   {
+    "asset_id": "A010",
+    "name": "Charlesglen Toyota",
+    "nhp_grade": "Threshold",
+    "dist_km": 0.0
+   },
+   {
+    "asset_id": "A020",
+    "name": "Oliver Bowen LRT Maintenance Facility (outdoor LRV storage tracks)",
+    "nhp_grade": "none",
+    "dist_km": 1.77
+   }
+  ],
+  "mesh_false_alarms_inside_contours": 1,
+  "verdict": "1 of 4 MESH-truth false alarms lie inside an NHP damage contour - MESH-at-pixel truth undercounted damage there. Caveat: 'none' near 114.04-113.97 W (airport/industrial gap between the NW and NE survey swaths) likely means not surveyed. Nearest-contour distances: A003 5.12 km, A004 6.09 km, A010 0.0 km, A020 1.77 km."
+ }
+}

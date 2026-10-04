@@ -1,0 +1,66 @@
+{
+  "attrs": {
+    "n_days": 797,
+    "n_cells": 22100,
+    "value_at_risk": 8000000.0,
+    "protect_cost": 250.0,
+    "size_mm": 30,
+    "avoided_fraction": 0.5
+  },
+  "rows": [
+    {
+      "policy": "never",
+      "total_cost": 41016000000.0,
+      "protections": 0,
+      "hits": 5127,
+      "hits_protected": 0,
+      "value_vs_never": 0.0,
+      "share_of_perfect_value": 0.0
+    },
+    {
+      "policy": "always",
+      "total_cost": 24911425000.0,
+      "protections": 17613700,
+      "hits": 5127,
+      "hits_protected": 5127,
+      "value_vs_never": 16104575000.0,
+      "share_of_perfect_value": 0.7853316558830665
+    },
+    {
+      "policy": "climatology",
+      "total_cost": 31287771750.0,
+      "protections": 9663087,
+      "hits": 5127,
+      "hits_protected": 3036,
+      "value_vs_never": 9728228250.0,
+      "share_of_perfect_value": 0.47439225191480844
+    },
+    {
+      "policy": "single_index",
+      "total_cost": 30046711250.0,
+      "protections": 9594845,
+      "hits": 5127,
+      "hits_protected": 3342,
+      "value_vs_never": 10969288750.0,
+      "share_of_perfect_value": 0.5349119550125969
+    },
+    {
+      "policy": "hailday",
+      "total_cost": 30415418750.0,
+      "protections": 9101675,
+      "hits": 5127,
+      "hits_protected": 3219,
+      "value_vs_never": 10600581250.0,
+      "share_of_perfect_value": 0.5169321156494653
+    },
+    {
+      "policy": "oracle_day",
+      "total_cost": 25682070250.0,
+      "protections": 1896281,
+      "hits": 5127,
+      "hits_protected": 3952,
+      "value_vs_never": 15333929750.0,
+      "share_of_perfect_value": 0.7477515204072207
+    }
+  ]
+}

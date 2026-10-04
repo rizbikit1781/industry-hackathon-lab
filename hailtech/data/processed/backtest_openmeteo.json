@@ -1,0 +1,202 @@
+{
+  "climatology": {
+    "auc": 0.7349037539388957,
+    "brier": 0.05702620192605822,
+    "base_rate": 0.06459054209919261,
+    "cutoff": 0.16733870967741934,
+    "hits": 59,
+    "misses": 109,
+    "false_alarms": 344,
+    "pod": 0.35119047619047616,
+    "far": 0.8535980148883374,
+    "csi": 0.115234375,
+    "reliability": [
+      {
+        "bin_mid": 0.05,
+        "n": 2074,
+        "forecast": 0.038090646094503376,
+        "observed": 0.038090646094503376
+      },
+      {
+        "bin_mid": 0.15000000000000002,
+        "n": 527,
+        "forecast": 0.16888045540796964,
+        "observed": 0.16888045540796964
+      }
+    ]
+  },
+  "single_index": {
+    "auc": 0.8020839449631065,
+    "brier": 0.054817419168366924,
+    "base_rate": 0.06459054209919261,
+    "cutoff": 0.17427385892116182,
+    "hits": 82,
+    "misses": 86,
+    "false_alarms": 292,
+    "pod": 0.4880952380952381,
+    "far": 0.7807486631016043,
+    "csi": 0.1782608695652174,
+    "reliability": [
+      {
+        "bin_mid": 0.05,
+        "n": 2011,
+        "forecast": 0.026950280684131776,
+        "observed": 0.028841372451516658
+      },
+      {
+        "bin_mid": 0.15000000000000002,
+        "n": 331,
+        "forecast": 0.1547162159657596,
+        "observed": 0.13595166163141995
+      },
+      {
+        "bin_mid": 0.25,
+        "n": 259,
+        "forecast": 0.24649203300986813,
+        "observed": 0.25096525096525096
+      }
+    ]
+  },
+  "hailday": {
+    "auc": 0.8536773628481398,
+    "brier": 0.0512957558889755,
+    "base_rate": 0.06459054209919261,
+    "cutoff": 0.22727272727272727,
+    "hits": 74,
+    "misses": 94,
+    "false_alarms": 152,
+    "pod": 0.44047619047619047,
+    "far": 0.672566371681416,
+    "csi": 0.23125,
+    "reliability": [
+      {
+        "bin_mid": 0.05,
+        "n": 2120,
+        "forecast": 0.027328115696105396,
+        "observed": 0.027358490566037737
+      },
+      {
+        "bin_mid": 0.15000000000000002,
+        "n": 221,
+        "forecast": 0.14032513865534338,
+        "observed": 0.12217194570135746
+      },
+      {
+        "bin_mid": 0.25,
+        "n": 131,
+        "forecast": 0.25389940788641513,
+        "observed": 0.2595419847328244
+      },
+      {
+        "bin_mid": 0.35000000000000003,
+        "n": 89,
+        "forecast": 0.33622722488184387,
+        "observed": 0.3146067415730337
+      },
+      {
+        "bin_mid": 0.45,
+        "n": 10,
+        "forecast": 0.4541939733862083,
+        "observed": 0.4
+      },
+      {
+        "bin_mid": 0.55,
+        "n": 20,
+        "forecast": 0.518905115694518,
+        "observed": 0.65
+      },
+      {
+        "bin_mid": 0.6500000000000001,
+        "n": 4,
+        "forecast": 0.6492869875222816,
+        "observed": 0.25
+      },
+      {
+        "bin_mid": 0.75,
+        "n": 3,
+        "forecast": 0.7261904761904763,
+        "observed": 0.0
+      },
+      {
+        "bin_mid": 0.8500000000000001,
+        "n": 1,
+        "forecast": 0.8157535894293731,
+        "observed": 1.0
+      },
+      {
+        "bin_mid": 0.95,
+        "n": 2,
+        "forecast": 1.0,
+        "observed": 1.0
+      }
+    ]
+  },
+  "_meta": {
+    "source": "openmeteo",
+    "years": [
+      2006,
+      2007,
+      2008,
+      2009,
+      2010,
+      2011,
+      2012,
+      2013,
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022
+    ],
+    "n_days": 2601,
+    "n_severe": 168,
+    "features": [
+      "temperature_2m_mean_06",
+      "temperature_2m_max_06",
+      "dew_point_2m_mean_06",
+      "dew_point_2m_max_06",
+      "surface_pressure_mean_06",
+      "surface_pressure_max_06",
+      "u_10m_mean_06",
+      "u_10m_max_06",
+      "v_10m_mean_06",
+      "v_10m_max_06",
+      "u_100m_mean_06",
+      "u_100m_max_06",
+      "v_100m_mean_06",
+      "v_100m_max_06",
+      "boundary_layer_height_mean_06",
+      "boundary_layer_height_max_06",
+      "temperature_2m_mean_12",
+      "temperature_2m_max_12",
+      "dew_point_2m_mean_12",
+      "dew_point_2m_max_12",
+      "surface_pressure_mean_12",
+      "surface_pressure_max_12",
+      "u_10m_mean_12",
+      "u_10m_max_12",
+      "v_10m_mean_12",
+      "v_10m_max_12",
+      "u_100m_mean_12",
+      "u_100m_max_12",
+      "v_100m_mean_12",
+      "v_100m_max_12",
+      "boundary_layer_height_mean_12",
+      "boundary_layer_height_max_12",
+      "dewpoint_depression_12",
+      "pressure_tendency_06_12",
+      "shear_proxy_12",
+      "prev_tmax",
+      "prev_precip",
+      "precip_3d",
+      "prev_sw",
+      "overnight_min_td",
+      "doy_sin",
+      "doy_cos"
+    ]
+  }
+}
