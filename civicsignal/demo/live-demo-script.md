@@ -18,23 +18,21 @@
 
 **Do:** Click **Live ops**, then **Talk to SnowTech 311**.
 
-**Agent:** "Hi, this is SnowTech… where is it? An intersection or a landmark works."
+**Agent:** "Hi, SnowTech 311. What are you reporting?"
 
 **You:** "Hi, there's an icy sidewalk by the bus loop at the University of Calgary. A man in a wheelchair can't get through."
 
-**Agent** reads it back.
+**Agent:** "Okay, icy sidewalk by the bus loop at the University of Calgary… That right?"
 
 **You:** "Yes."
 
-**Agent:** "Your report is in… among the higher-priority locations because…", then reads the ticket number.
+**Agent:** "Got it, it's on a crew's list today. It's high on the list since it's near a university and affects wheelchair access. Your ticket's V-zero-zero-one. Anything else?"
 
 **Point at the map:** the new ticket pulses near U of C. "It knows the university is near a school, and the wheelchair moves it up. It's in a crew's route within two seconds."
 
-**Agent:** "Anything else?"
-
 **You:** "No, thanks."
 
-**Agent:** says goodbye and hangs up by itself.
+**Agent:** "Thanks, take care." It hangs up by itself.
 
 ## Beat 3: something breaks (25 s)
 
@@ -52,7 +50,7 @@
 
 | Problem | What to do |
 |---|---|
-| Agent asks sidewalk, road or pathway | Say "Sidewalk." |
+| Agent guesses wrong (road vs sidewalk) | Say "No, the sidewalk." It reads back again. |
 | Agent can't find the location | Say "17 Avenue and 37 Street South-West." |
 | Agent asks "Did you mean A or B?" | Pick the one you meant. |
 | You need a moment | Say "Give me a second." It waits silently. |
