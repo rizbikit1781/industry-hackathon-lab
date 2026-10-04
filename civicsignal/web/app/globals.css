@@ -1,0 +1,149 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+  --bg: #0b0c0e;
+  --surface: #111214;
+  --surface-2: #17181b;
+  --line: #24262b;
+  --ink: #f4f4f5;
+  --ink-2: #c4c4cc;
+  --ink-3: #8b8b94;
+  --accent: #3987e5;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-accent: var(--accent);
+  --font-sans: var(--font-geist-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--ink);
+}
+
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* thin scrollbars in panels */
+.cs-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #2a2c31 transparent;
+}
+
+/* MapLibre popup, dark */
+.cs-popup .maplibregl-popup-content {
+  background: #17181b;
+  border: 1px solid #2a2c31;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 0.5);
+}
+.cs-popup .maplibregl-popup-tip {
+  border-top-color: #17181b !important;
+  border-bottom-color: #17181b !important;
+}
+.maplibregl-ctrl-attrib {
+  background: rgb(11 12 14 / 0.7) !important;
+  color: #8b8b94;
+}
+.maplibregl-ctrl-attrib a {
+  color: #a1a1aa !important;
+}
+.maplibregl-ctrl-group {
+  background: #17181b !important;
+  border: 1px solid #2a2c31;
+}
+.maplibregl-ctrl-group button + button {
+  border-top-color: #2a2c31 !important;
+}
+.maplibregl-ctrl-group button .maplibregl-ctrl-icon {
+  filter: invert(1);
+}
+
+/* Voice-originated ticket marker */
+.cs-voice {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+.cs-voice-dot {
+  position: absolute;
+  inset: 3px;
+  border-radius: 9999px;
+  background: #7dd3fc;
+  box-shadow: 0 0 0 2px #0b0c0e;
+}
+.cs-voice::before,
+.cs-voice::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  border: 2px solid #7dd3fc;
+  animation: cs-pulse 1.8s ease-out infinite;
+}
+.cs-voice::after {
+  animation-delay: 0.9s;
+}
+.cs-voice-label {
+  position: absolute;
+  left: 22px;
+  top: 50%;
+  transform: translateY(-50%);
+  font: 600 12px/1 var(--font-mono);
+  color: #e0f2fe;
+  background: rgb(11 12 14 / 0.85);
+  border: 1px solid rgb(125 211 252 / 0.4);
+  padding: 3px 5px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+@keyframes cs-pulse {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(2.8);
+    opacity: 0;
+  }
+}
+.cs-live-dot {
+  animation: cs-blink 2s ease-in-out infinite;
+}
+@keyframes cs-blink {
+  50% {
+    opacity: 0.35;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cs-voice::before,
+  .cs-voice::after,
+  .cs-live-dot {
+    animation: none;
+  }
+}
+
+/* range slider */
+input[type="range"].cs-range {
+  accent-color: var(--accent);
+}

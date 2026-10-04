@@ -1,0 +1,67 @@
+{
+  "tickets_storm_week": {
+    "status": "existing",
+    "path": "data/tickets_storm_week.csv"
+  },
+  "tickets_validation": {
+    "status": "existing",
+    "path": "data/tickets_winter_sidewalk.csv"
+  },
+  "poles": {
+    "status": "existing",
+    "path": "data/poles.csv"
+  },
+  "census": {
+    "status": "existing",
+    "path": "data/layers/census_2019.csv"
+  },
+  "equity": {
+    "status": "existing",
+    "path": "data/layers/equity.csv"
+  },
+  "schools": {
+    "status": "existing",
+    "path": "data/layers/schools.csv"
+  },
+  "community_services": {
+    "status": "existing",
+    "path": "data/layers/community_services.csv"
+  },
+  "transit_stops": {
+    "status": "existing",
+    "path": "data/layers/transit_stops.csv"
+  },
+  "crosswalks": {
+    "status": "existing",
+    "path": "data/layers/crosswalks.csv"
+  },
+  "ped_locations": {
+    "status": "existing",
+    "path": "data/layers/ped_locations.csv"
+  },
+  "ped_counts": {
+    "status": "existing",
+    "path": "data/layers/ped_counts.csv"
+  },
+  "traffic": {
+    "status": "existing",
+    "path": "data/layers/traffic_2024.geojson"
+  },
+  "boundaries": {
+    "status": "existing",
+    "path": "data/layers/communities.geojson"
+  },
+  "childcare": {
+    "status": "existing",
+    "path": "data/layers/childcare.csv"
+  },
+  "intersections": {
+    "status": "existing",
+    "path": "data/intersections.csv"
+  },
+  "seniors_residences": {
+    "status": "hand-listed",
+    "rows": 17,
+    "with_latlon": 12
+  }
+}

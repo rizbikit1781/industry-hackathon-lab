@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store
+data/raw/
+data/layers/
+data/poles.csv
+data/*.parquet
+data/tickets_winter_sidewalk.csv
+.env
+data/roads/
+web/node_modules/
+web/.next/
