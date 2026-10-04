@@ -9,6 +9,8 @@ exposure (who is likely to be on that ice); it does not predict falls.
 """
 from __future__ import annotations
 
+import re
+
 import numpy as np
 import pandas as pd
 
@@ -65,6 +67,34 @@ def priority(expo, report_count, days_open, dyn_weights: dict | None = None, exp
     d = dynamic_terms(report_count, days_open)
     num = expo_weight * np.asarray(expo) + sum(dw[k] * d[k].to_numpy() for k in dw)
     return num / (expo_weight + sum(dw.values()))
+
+
+# Caller-reported hazards (voice line only). Public 311 data has no free text and only a
+# community centrepoint, so this is information the City feed cannot carry. Transparent
+# keyword rule on the English hazard_notes the agent writes; each category found closes
+# CALLER_BOOST of the remaining gap to max priority, capped at 2 categories.
+CALLER_HAZARDS = {
+    "mobility aid user": ("walker", "wheelchair", "stroller", "cane", "mobility scooter", "crutch"),
+    "near school": ("school",),
+    "near hospital/clinic": ("hospital", "clinic"),
+    "near seniors' residence": ("senior", "elderly", "care home", "nursing home"),
+    "bus stop/transit": ("bus stop", "bus", "transit", "lrt", "c-train", "ctrain", "train station"),
+    "slope": ("hill", "slope", "steep", "stairs", "ramp"),
+    "recent fall": ("fell", "fall", "fallen", "slipped"),
+}
+CALLER_BOOST = 0.25
+
+
+def caller_hazards(notes: str | None) -> list[str]:
+    """Whole-word match (optional plural s), so 'snowfall' is not a fall and 'business' not a bus."""
+    text = (notes or "").lower()
+    hit = lambda w: re.search(rf"\b{re.escape(w)}s?\b", text) is not None
+    return [label for label, words in CALLER_HAZARDS.items() if any(hit(w) for w in words)]
+
+
+def with_caller_hazards(priority_value: float, hazards: list[str]) -> float:
+    k = min(len(hazards), 2)
+    return float(priority_value + (1.0 - priority_value) * CALLER_BOOST * k)
 
 
 def reasons(feat: pd.DataFrame, weights: dict | None = None, top: int = 3,

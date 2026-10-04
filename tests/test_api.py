@@ -26,6 +26,21 @@ def test_ticket_insertion_under_5s(client):
     assert r2.json()["duplicate_of"] == j["job_id"]
 
 
+def test_caller_hazards_raise_rank(client):
+    loc = {"service_name": "sidewalk", "lat": 51.0378, "lon": -114.1412}
+    plain = client.post("/tickets", json=loc).json()
+    flagged = client.post("/tickets", json={**loc, "lat": 51.0400,
+                                            "hazard_notes": "walker user, next to a bus stop"}).json()
+    assert flagged["risk_rank"] < plain["risk_rank"]
+    assert flagged["reason"].startswith("caller reports mobility aid user, bus stop/transit")
+
+
+def test_caller_hazard_words_are_whole_words():
+    from civicsignal import risk as R
+    assert R.caller_hazards("after the snowfall, outside a business") == []
+    assert R.caller_hazards("my mom fell near the seniors home") == ["near seniors' residence", "recent fall"]
+
+
 def test_rejects_missing_location(client):
     assert client.post("/tickets", json={"service_name": "sidewalk"}).status_code == 422
 

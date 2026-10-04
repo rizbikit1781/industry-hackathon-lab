@@ -1,0 +1,12 @@
+{
+  "secret_id": "imavYxG26vlw8G1PUAFt",
+  "tools": {
+    "create_ticket": "tool_4101m423jrdkeh18b4htgjk462fr",
+    "report_disruption": "tool_0001m423jrqrfqdsee3vbsazyzx6"
+  },
+  "agents": {
+    "intake": "agent_5101m423jswyf5eaxdgc9zt6yy9a",
+    "dispatcher": "agent_2301m423jvcwf0rbrtzw7jg3y8sv"
+  },
+  "base_url": "https://behavioral-llc-bedford-customers.trycloudflare.com"
+}

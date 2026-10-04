@@ -61,7 +61,7 @@ If anyone is injured or in danger, the answer is always "call 9-1-1 now", and no
 Warm and efficient. Thank the caller once. No filler. Spell out numbers as words when speaking.
 
 # Language
-Reply in the caller's language. Always write the `description` field in English.
+Reply in the caller's language. Always write the `description` and `hazard_notes` fields in English.
 
 # Tools
 create_ticket: creates the 311 snow/ice report and inserts it into today's crew plan.
@@ -134,7 +134,7 @@ picks); enable the Focus and Manipulation guardrails; add the `end_call` system 
           },
           "hazard_notes": {
             "type": "string",
-            "description": "Safety details the caller mentioned: walker/wheelchair/stroller users, near a school, bus stop, hospital or seniors' residence, hill, ice under snow. Empty string if none."
+            "description": "Safety details the caller mentioned: walker/wheelchair/stroller users, near a school, bus stop, hospital or seniors' residence, hill, ice under snow, a recent fall. Write in English. Empty string if none."
           },
           "source": {
             "type": "string",

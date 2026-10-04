@@ -8,3 +8,4 @@ data/layers/
 data/poles.csv
 data/*.parquet
 data/tickets_winter_sidewalk.csv
+.env

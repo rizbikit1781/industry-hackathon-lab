@@ -213,7 +213,10 @@ def create_ticket(body: TicketIn):
     f = F.features_at(lat, lon)
     fdf = pd.DataFrame([f])
     expo = float(R.exposure(fdf).iat[0])
+    hazards = R.caller_hazards(body.hazard_notes)
     reason = R.reasons(fdf)[0]
+    if hazards:
+        reason = "caller reports " + ", ".join(hazards) + "; " + reason
     pole_id, pole_d = s.nearest_pole(lat, lon)
     near_ix, _ = s.nearest_intersection(lat, lon)
     community = s.comm["name"].get(f["comm_code"], f["comm_code"])
@@ -223,6 +226,7 @@ def create_ticket(body: TicketIn):
             k = s.jobs.index[s.jobs["job_id"] == dup][0]
             s.jobs.at[k, "report_count"] += 1
             pr = float(R.priority([s.jobs.at[k, "exposure"]], [s.jobs.at[k, "report_count"]], [0])[0])
+            pr = R.with_caller_hazards(pr, hazards)
             s.jobs.at[k, "priority"] = max(pr, s.jobs.at[k, "priority"])
             for v in s.voice_jobs:
                 if v["job_id"] == dup:
@@ -236,7 +240,7 @@ def create_ticket(body: TicketIn):
                    "community": community, "reason": reason}
         else:
             jid = f"V{next(s.ids):03d}"
-            pr = float(R.priority([expo], [1], [0])[0])
+            pr = R.with_caller_hazards(float(R.priority([expo], [1], [0])[0]), hazards)
             job = {"job_id": jid, "skill": skill, "service_name": svc, "comm_code": f["comm_code"],
                    "lat": lat, "lon": lon, "n_tickets": 1, "service_min": SERVICE_MIN[skill],
                    "value": pr, "priority": pr, "exposure": expo, "n_high_risk": 0,
