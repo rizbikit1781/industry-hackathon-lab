@@ -268,14 +268,14 @@ export default function ReplayView({ summary }: { summary: ReplaySummary }) {
 
           {worse.length > 0 && (
             <div className="mt-4 rounded-lg border border-amber-500/25 bg-amber-500/5 px-4 py-3 text-sm text-ink-2">
-              <span className="font-medium text-amber-200">Where CivicSignal is worse than FIFO: </span>
+              <span className="font-medium text-amber-200">Where SnowTech is worse than FIFO: </span>
               {worse.map((b, i) => (
                 <span key={b.key}>
                   {i > 0 && "; "}
                   {b.title.toLowerCase()} ({b.fmt(b.values.optimized)} vs {b.fmt(b.values.fifo)})
                 </span>
               ))}
-              . That is the cost of triage when crew capacity is about half of demand: FIFO bounds the oldest wait, CivicSignal does not.
+              . That is the cost of triage when crew capacity is about half of demand: FIFO bounds the oldest wait, SnowTech does not.
             </div>
           )}
 

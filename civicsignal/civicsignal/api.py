@@ -176,7 +176,7 @@ def check_key(x_civicsignal_key: str | None = Header(None)):
 
 
 STATE: State | None = None
-app = FastAPI(title="CivicSignal decision engine", version="0.1")
+app = FastAPI(title="SnowTech decision engine", version="0.1")
 
 
 def S() -> State:

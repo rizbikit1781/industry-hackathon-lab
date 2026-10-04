@@ -1,4 +1,4 @@
-"""CivicSignal dashboard: replay of the Nov 25 - Dec 1, 2025 storm week + live plan.
+"""SnowTech dashboard: replay of the Nov 25 - Dec 1, 2025 storm week + live plan.
 
 Run:  .venv/bin/streamlit run civicsignal/ui.py
 Reads data/results.json (scripts/run_sim.py) and, if the API is up, GET /plan.
@@ -19,14 +19,14 @@ ROOT = Path(__file__).resolve().parents[1]
 API = os.environ.get("CIVICSIGNAL_API", "http://localhost:8000")
 
 # Reference palette (dataviz skill), validated: categorical slots 1-3, light + dark steps.
-POLICY_LABEL = {"fifo": "FIFO (oldest first)", "optimized": "CivicSignal",
-                "optimized_disruption": "CivicSignal + disruption"}
-POLICY_COLOR = {"FIFO (oldest first)": "#eb6834", "CivicSignal": "#2a78d6",
-                "CivicSignal + disruption": "#1baf7a"}
+POLICY_LABEL = {"fifo": "FIFO (oldest first)", "optimized": "SnowTech",
+                "optimized_disruption": "SnowTech + disruption"}
+POLICY_COLOR = {"FIFO (oldest first)": "#eb6834", "SnowTech": "#2a78d6",
+                "SnowTech + disruption": "#1baf7a"}
 SEQ = ["#cde2fb", "#9ec5f4", "#6da7ec", "#3987e5", "#256abf", "#184f95", "#0d366b"]  # blue ramp
 ROUTE_RGB = {"bylaw": [74, 58, 167], "roads": [82, 81, 78]}        # violet / neutral ink
 
-st.set_page_config(page_title="CivicSignal", layout="wide")
+st.set_page_config(page_title="SnowTech", layout="wide")
 
 
 @st.cache_data
@@ -50,7 +50,7 @@ if R is None:
     st.stop()
 
 days = R["days"]
-st.sidebar.title("CivicSignal")
+st.sidebar.title("SnowTech")
 st.sidebar.caption("Snow & ice field operations. Replay of Calgary's real storm week, "
                    "Nov 25 - Dec 1, 2025 (Open Calgary 311).")
 view = st.sidebar.radio("Source", ["Storm-week replay", "Live plan (API)"])
@@ -67,7 +67,7 @@ st.sidebar.caption(
 
 # ------------------------------------------------------------------ headline tiles
 M = {k: v["metrics"] for k, v in R["policies"].items()}
-st.title("CivicSignal: the right crew to the riskiest ice first")
+st.title("SnowTech: the right crew to the riskiest ice first")
 c1, c2, c3, c4 = st.columns(4)
 f = M["fifo"]
 c1.metric("High-risk tickets served within 48 h", f"{M[policy]['high_risk_within_48h']:.0%}",

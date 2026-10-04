@@ -1,12 +1,12 @@
-# CivicSignal web console
+# SnowTech web console
 
-Next.js (App Router, TypeScript, Tailwind v4) front end for the CivicSignal dispatch engine.
+Next.js (App Router, TypeScript, Tailwind v4) front end for the SnowTech dispatch engine.
 It replaces the Streamlit dashboard for demos.
 
 | Page | What it shows |
 |---|---|
 | `/` Live ops | Full-height MapLibre map of today's plan from the FastAPI engine (crew routes, one colour per crew; open tickets coloured by exposure tier; depots; voice tickets pulsing). Side panel: KPI tiles, disruption buttons (3 crews out / restore / surge) with jobs moved and replan seconds, live feed of voice reports with their `reason`, crew list with stops, tickets, km and finish time. Polls `GET /plan` and `GET /metrics` every 2.5 s and toasts new voice tickets. Embeds the ElevenLabs intake agent widget (agent id read from `../voice/agents.json`). |
-| `/replay` | Storm-week replay (Nov 25 - Dec 1, 2025): policy toggle (FIFO / CivicSignal / + disruption), day slider, the map for that day, day stats, per-day charts, and the full three-policy comparison (small-multiple bars + table), including where CivicSignal does worse. |
+| `/replay` | Storm-week replay (Nov 25 - Dec 1, 2025): policy toggle (FIFO / SnowTech / + disruption), day slider, the map for that day, day stats, per-day charts, and the full three-policy comparison (small-multiple bars + table), including where SnowTech does worse. |
 | `/about` | How it works, in plain words: data, risk, solver, replan, voice, plus honest limits. |
 
 ## Run

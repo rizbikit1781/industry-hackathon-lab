@@ -431,7 +431,7 @@ export default function LiveConsole({ agentId, allCrews }: { agentId: string | n
 
       {agentId ? (
         <>
-          <elevenlabs-convai agent-id={agentId} action-text="Report snow or ice by voice" start-call-text="Talk to CivicSignal 311"></elevenlabs-convai>
+          <elevenlabs-convai agent-id={agentId} action-text="Report snow or ice by voice" start-call-text="Talk to SnowTech 311"></elevenlabs-convai>
           <Script src="https://unpkg.com/@elevenlabs/convai-widget-embed" strategy="afterInteractive" />
         </>
       ) : null}

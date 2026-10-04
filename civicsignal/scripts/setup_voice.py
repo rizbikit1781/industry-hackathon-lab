@@ -1,4 +1,4 @@
-"""Create or update the CivicSignal ElevenLabs agents and their webhook tools.
+"""Create or update the SnowTech ElevenLabs agents and their webhook tools.
 
 Usage:
     .venv/bin/python scripts/setup_voice.py https://<tunnel-host>
@@ -19,7 +19,7 @@ SPEC = ROOT / "voice" / "agent.md"
 STATE = ROOT / "voice" / "agents.json"
 API = "https://api.elevenlabs.io/v1/convai"
 
-DISPATCH_FIRST = "CivicSignal dispatch. What changed on the ground?"
+DISPATCH_FIRST = "SnowTech dispatch. What changed on the ground?"
 
 
 def load_env():
@@ -66,6 +66,17 @@ def wire_tool(cfg, base_url, secret_id, path):
     return cfg
 
 
+# System tool so the agent can actually hang up; without it the prompt's "end the call"
+# step makes the agent offer to end the call but it cannot.
+END_CALL = {
+    "type": "system",
+    "name": "end_call",
+    "description": "End the call after the caller confirms they have nothing else to report, "
+                   "or after telling them to call 9-1-1.",
+    "params": {"system_tool_type": "end_call"},
+}
+
+
 def agent_body(name, prompt, first, tool_ids):
     return {
         "name": name,
@@ -73,7 +84,8 @@ def agent_body(name, prompt, first, tool_ids):
             "agent": {
                 "first_message": first,
                 "language": "en",
-                "prompt": {"prompt": prompt, "tool_ids": tool_ids},
+                "prompt": {"prompt": prompt, "tool_ids": tool_ids,
+                           "built_in_tools": {"end_call": END_CALL}},
             }
         },
     }
@@ -101,9 +113,9 @@ def main():
             state.setdefault("tools", {})[name] = c.call("POST", "/tools", {"tool_config": cfg})["id"]
 
     agents = {
-        "intake": ("CivicSignal 311 intake", spec["intake_prompt"], spec["intake_first"],
+        "intake": ("SnowTech 311 intake", spec["intake_prompt"], spec["intake_first"],
                    [state["tools"]["create_ticket"]]),
-        "dispatcher": ("CivicSignal dispatcher", spec["dispatch_prompt"], DISPATCH_FIRST,
+        "dispatcher": ("SnowTech dispatcher", spec["dispatch_prompt"], DISPATCH_FIRST,
                        [state["tools"]["report_disruption"]]),
     }
     for key, args in agents.items():

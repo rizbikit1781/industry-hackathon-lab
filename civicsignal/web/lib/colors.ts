@@ -4,8 +4,8 @@ import type { PolicyKey } from "./types";
  * against the app surface #111214 (all 3 pass band/chroma/CVD/contrast checks). */
 export const POLICY: Record<PolicyKey, { label: string; short: string; color: string }> = {
   fifo: { label: "FIFO (oldest first)", short: "FIFO", color: "#d95926" },
-  optimized: { label: "CivicSignal", short: "CivicSignal", color: "#3987e5" },
-  optimized_disruption: { label: "CivicSignal + disruption", short: "+ disruption", color: "#199e70" },
+  optimized: { label: "SnowTech", short: "SnowTech", color: "#3987e5" },
+  optimized_disruption: { label: "SnowTech + disruption", short: "+ disruption", color: "#199e70" },
 };
 export const POLICY_ORDER: PolicyKey[] = ["fifo", "optimized", "optimized_disruption"];
 
