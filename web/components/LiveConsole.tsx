@@ -431,8 +431,19 @@ export default function LiveConsole({ agentId, allCrews }: { agentId: string | n
 
       {agentId ? (
         <>
-          <elevenlabs-convai agent-id={agentId} action-text="Report snow or ice by voice" start-call-text="Talk to SnowTech 311"></elevenlabs-convai>
-          <Script src="https://unpkg.com/@elevenlabs/convai-widget-embed" strategy="afterInteractive" />
+          {/* Widget 0.18.x ignores action-text/start-call-text; labels come from text-contents.
+              Pinned so the widget can't change under us during the demo. */}
+          <elevenlabs-convai
+            agent-id={agentId}
+            mic-muting="true"
+            text-contents={JSON.stringify({
+              main_label: "Report snow or ice by voice",
+              start_call: "Talk to SnowTech 311",
+              end_call: "End call",
+              mute_microphone: "Mute microphone",
+            })}
+          ></elevenlabs-convai>
+          <Script src="https://unpkg.com/@elevenlabs/convai-widget-embed@0.18.3" strategy="afterInteractive" />
         </>
       ) : null}
     </div>
