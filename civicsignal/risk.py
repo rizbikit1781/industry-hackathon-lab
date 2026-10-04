@@ -86,6 +86,21 @@ CALLER_HAZARDS = {
 }
 CALLER_BOOST = 0.25
 
+# A named landmark implies a hazard without asking the caller (a ticket "at the University of
+# Calgary" is near a school). Keys are landmark index types plus Nominatim's common types.
+PLACE_HAZARDS = {
+    "school": "near school", "post-secondary": "near school", "university": "near school",
+    "college": "near school", "kindergarten": "near school",
+    "hospital": "near hospital/clinic", "phs clinic": "near hospital/clinic", "clinic": "near hospital/clinic",
+    "seniors' residence": "near seniors' residence", "nursing_home": "near seniors' residence",
+    "transit station": "bus stop/transit", "station": "bus stop/transit",
+}
+
+
+def place_hazards(place: dict | None) -> list[str]:
+    label = PLACE_HAZARDS.get(str((place or {}).get("type", "")).lower())
+    return [label] if label else []
+
 
 def caller_hazards(notes: str | None) -> list[str]:
     """Whole-word match (optional plural s), so 'snowfall' is not a fall and 'business' not a bus."""

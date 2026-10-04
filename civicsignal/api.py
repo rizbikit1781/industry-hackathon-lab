@@ -251,10 +251,14 @@ def create_ticket(body: TicketIn):
     f = F.features_at(lat, lon)
     fdf = pd.DataFrame([f])
     expo = float(R.exposure(fdf).iat[0])
-    hazards = R.caller_hazards(body.hazard_notes)
+    caller = R.caller_hazards(body.hazard_notes)
+    implied = [h for h in R.place_hazards(place) if h not in caller]
+    hazards = caller + implied
     reason = R.reasons(fdf)[0]
-    if hazards:
-        reason = "caller reports " + ", ".join(hazards) + "; " + reason
+    if implied:
+        reason = "location " + ", ".join(implied) + "; " + reason
+    if caller:
+        reason = "caller reports " + ", ".join(caller) + "; " + reason
     pole_id, pole_d = s.nearest_pole(lat, lon)
     near_ix, _ = s.nearest_intersection(lat, lon)
     community = s.comm["name"].get(f["comm_code"], f["comm_code"])

@@ -44,6 +44,9 @@ USER_AGENT = ("SnowTech-CivicSignal/0.1 (Calgary 311 snow/ice hackathon demo; "
 # Spoken short forms -> the words the index uses. Applied to the lowercased text.
 ALIASES = [
     (r"\bu\s*of\s*c\b", "university of calgary"), (r"\bu ?of ?c\b|\bu ?calgary\b", "university of calgary"),
+    # Speech-to-text spellings of U of C's MacEwan Hall / Student Centre (live call: "McEwen Hall").
+    (r"\bma?c\s*ew[ae]n\b", "macewan"),
+    (r"\bmacewan hall\b", "university of calgary macewan"),   # index names never say "MacEwan Hall"
     (r"\bmru\b", "mount royal university"), (r"\bmt\.?\s+royal\b", "mount royal"),
     (r"\bsouthern alberta institute of technology\b", "sait"), (r"\bs\s*a\s*i\s*t\b", "sait"),
     (r"\bbvc\b", "bow valley college"), (r"\bauarts\b", "alberta university of the arts"),
