@@ -1,4 +1,4 @@
-"""Replay the storm week under FIFO, CivicSignal (optimized) and CivicSignal + disruption.
+"""Replay the storm week under FIFO, SnowTech (optimized) and SnowTech + disruption.
 
 Run:  .venv/bin/python scripts/run_sim.py [--time-limit 2] [--no-sweep]
 Writes data/results.json (read by the dashboard) and prints the metrics table.

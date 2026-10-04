@@ -4,7 +4,7 @@ import ReplayView from "@/components/ReplayView";
 import { Kbd, Notice } from "@/components/ui";
 import { readSummary } from "@/lib/server";
 
-export const metadata: Metadata = { title: "Storm-week replay · CivicSignal" };
+export const metadata: Metadata = { title: "Storm-week replay · SnowTech" };
 
 export default async function Page() {
   await connection();

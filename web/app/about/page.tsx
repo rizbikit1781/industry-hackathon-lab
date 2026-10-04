@@ -4,7 +4,7 @@ import { connection } from "next/server";
 import { readSummary } from "@/lib/server";
 import { num, pct } from "@/lib/format";
 
-export const metadata: Metadata = { title: "How it works · CivicSignal" };
+export const metadata: Metadata = { title: "How it works · SnowTech" };
 
 const STEPS = [
   {
@@ -47,7 +47,7 @@ export default async function About() {
         <p className="text-sm font-medium text-accent">How it works</p>
         <h1 className="mt-2 text-3xl font-semibold tracking-tight">The right crew to the riskiest ice first</h1>
         <p className="mt-3 max-w-2xl text-base leading-relaxed text-ink-2">
-          CivicSignal is a dispatch engine for Calgary&apos;s 311 snow and ice crews. A language model handles the conversation; the schedule comes
+          SnowTech is a dispatch engine for Calgary&apos;s 311 snow and ice crews. A language model handles the conversation; the schedule comes
           from an optimisation solver, so every plan is feasible, repeatable and explainable.
         </p>
 
@@ -58,7 +58,7 @@ export default async function About() {
               <div className="mt-1 text-2xl font-semibold">
                 {pct(f.high_risk_within_48h, 1)} <span className="text-ink-3">→</span> {pct(o.high_risk_within_48h, 1)}
               </div>
-              <div className="mt-1 text-xs text-ink-3">oldest-first vs CivicSignal</div>
+              <div className="mt-1 text-xs text-ink-3">oldest-first vs SnowTech</div>
             </div>
             <div className="rounded-lg border border-line bg-surface px-4 py-3">
               <div className="text-xs text-ink-3">Km driven in the storm week</div>
@@ -111,14 +111,14 @@ export default async function About() {
         <h2 className="mt-12 text-xl font-semibold tracking-tight">How we tested it</h2>
         <p className="mt-2 leading-relaxed text-ink-2">
           We replayed Calgary&apos;s real storm week (Nov 25 – Dec 1, 2025) three ways with the same crews and the same daily capacity, calibrated to
-          the City&apos;s median real closures: oldest-first (FIFO), CivicSignal, and CivicSignal with 30% of crews out on day 3 plus a mid-day surge on
+          the City&apos;s median real closures: oldest-first (FIFO), SnowTech, and SnowTech with 30% of crews out on day 3 plus a mid-day surge on
           day 7. See the <Link href="/replay" className="text-accent hover:underline">storm-week replay</Link> for every metric, including where
-          CivicSignal does worse.
+          SnowTech does worse.
         </p>
 
         <h2 className="mt-12 text-xl font-semibold tracking-tight">Honest limits</h2>
         <ul className="mt-2 list-disc space-y-1.5 pl-5 leading-relaxed text-ink-2">
-          <li>Triage has a cost: with capacity at about half of demand, CivicSignal serves fewer low-risk tickets and has a longer worst-case (p90) wait than FIFO.</li>
+          <li>Triage has a cost: with capacity at about half of demand, SnowTech serves fewer low-risk tickets and has a longer worst-case (p90) wait than FIFO.</li>
           <li>Public 311 tickets are placed at community centrepoints, so historical tickets get their community&apos;s average exposure. Voice reports carry exact coordinates.</li>
           <li>The pedestrian proxy and duplicate detection did not validate on public data; both are reported, not hidden.</li>
           <li>Risk weights, service times and depot locations are assumptions a supervisor would tune. FIFO is our model of a no-triage queue, not the City&apos;s real dispatch.</li>

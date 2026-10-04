@@ -19,7 +19,7 @@ export default function Nav() {
           <circle cx="12" cy="12" r="7" fill="none" stroke="#3987e5" strokeOpacity="0.55" strokeWidth="1.6" />
           <circle cx="12" cy="12" r="10.6" fill="none" stroke="#3987e5" strokeOpacity="0.25" strokeWidth="1.4" />
         </svg>
-        CivicSignal
+        SnowTech
         <span className="hidden text-xs font-normal text-ink-3 lg:inline">Calgary 311 snow &amp; ice dispatch</span>
       </Link>
       <nav aria-label="Primary">

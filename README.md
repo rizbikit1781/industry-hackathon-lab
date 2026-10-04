@@ -1,4 +1,4 @@
-# CivicSignal
+# SnowTech
 
 Voice-native winter field operations for Calgary 311 snow and ice. Residents report icy
 sidewalks, roads and pathways by voice. A solver decides which bylaw officer or Roads crew
@@ -253,7 +253,7 @@ feature.
 
 **Method change (Oct 3, 2026).** All km and drive times below are now **real road km** on the OSM
 network (see Road routing). Earlier versions of this README used straight-line distance x 1.3 at
-30 km/h, which reported FIFO 7,253 km and CivicSignal 2,417 km. Road km are about 18-19% higher
+30 km/h, which reported FIFO 7,253 km and SnowTech 2,417 km. Road km are about 18-19% higher
 for both policies. The FIFO baseline uses the same road matrix for crew choice, sequencing and
 km, so the comparison stays like for like. The relative saving is unchanged at -67%. Coverage
 numbers moved by 1-2 points because drive times changed which stops fit in a shift.
@@ -266,7 +266,7 @@ under every policy, as it did in reality.
 **Three policies.** Same crews, same capacity, 2,825 storm-week tickets with a location. 708 of
 them are high-risk (top exposure quartile within each crew type).
 
-| Metric | FIFO (oldest first) | CivicSignal | CivicSignal + disruption |
+| Metric | FIFO (oldest first) | SnowTech | SnowTech + disruption |
 |---|---|---|---|
 | High-risk tickets served within 48 h | **13.4%** | **42.9%** | **42.1%** |
 | All tickets served within 48 h | 10.8% | 26.7% | 25.0% |
@@ -291,11 +291,11 @@ crews: it serves 68 fewer tickets in total.
 - Dec 1, the day's 478 real arrivals land mid-day as a surge. 41 of 79 stops moved in 4.0 s.
   High-risk tickets planned went from 22 to 76.
 
-**What did not improve, stated plainly.** CivicSignal beats FIFO on high-risk coverage within
+**What did not improve, stated plainly.** SnowTech beats FIFO on high-risk coverage within
 48 h (+30 points), all-ticket coverage within 48 h, median wait, and road km (-67%). It is **worse
 on p90 days to service (6 vs 5)** and serves **fewer low-risk tickets (35% vs 57%)**. That is the
 cost of triage when capacity is about half of demand. FIFO bounds the oldest wait and
-CivicSignal does not. The age term in the priority limits starvation but does not remove it. We
+SnowTech does not. The age term in the priority limits starvation but does not remove it. We
 did not change the metric. We chose the policy weights (below) and report this trade-off.
 
 **Policy-weight sweep** (the software tuning its own rule). These are full-week replays with

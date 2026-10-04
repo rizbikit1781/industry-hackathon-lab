@@ -7,7 +7,7 @@ const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "CivicSignal",
+  title: "SnowTech",
   description: "Snow and ice dispatch for Calgary 311: riskiest ice first, replanned live.",
 };
 
