@@ -74,6 +74,7 @@ END_CALL = {
     "description": "End the call after the caller confirms they have nothing else to report, "
                    "or after telling them to call 9-1-1.",
     "params": {"system_tool_type": "end_call"},
+    "disable_interruptions": True,   # a cough after goodbye cancelled the hang-up (live, 12:45)
 }
 
 # Lets the agent stay silent when the caller asks for a moment. Without it the 7 s turn
