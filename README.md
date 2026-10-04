@@ -95,6 +95,21 @@ API environment variables: `CIVICSIGNAL_DAY` (replay morning, default `2025-11-2
 `CIVICSIGNAL_INSERT_S` (default 1.5), `CIVICSIGNAL_RESERVE` (tickets per crew held back for
 same-day reports, default 2). Voice agent prompts and tool JSON are in `voice/agent.md`.
 
+## Frontend
+
+A Next.js console in `web/` replaces the Streamlit dashboard for the demo: a live ops map
+(`/`) that polls the API and shows voice tickets arriving within seconds, disruption buttons, and the
+ElevenLabs intake widget; a storm-week replay (`/replay`) comparing the three policies; and a plain-words
+"How it works" page (`/about`).
+
+```bash
+.venv/bin/uvicorn civicsignal.api:app --port 8000      # engine
+cd web && npm install && npm run dev                    # http://127.0.0.1:3000
+```
+
+The browser only reads the API through a Next.js proxy (`/api/*`). Disruptions go through a server
+route that adds `X-CivicSignal-Key` from `.env`, so the key never reaches the client. See `web/README.md`.
+
 ## Data (all from data.calgary.ca, pulled Oct 3, 2026)
 
 | Use | Dataset | Rows pulled |

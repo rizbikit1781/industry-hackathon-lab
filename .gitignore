@@ -10,3 +10,5 @@ data/*.parquet
 data/tickets_winter_sidewalk.csv
 .env
 data/roads/
+web/node_modules/
+web/.next/
