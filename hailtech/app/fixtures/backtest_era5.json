@@ -1,0 +1,243 @@
+{
+ "climatology": {
+  "auc": 0.62,
+  "brier": 0.059,
+  "base_rate": 0.0646,
+  "cutoff": 0.08,
+  "hits": 60,
+  "misses": 108,
+  "false_alarms": 500,
+  "pod": 0.357,
+  "far": 0.893,
+  "csi": 0.09,
+  "reliability": [
+   {
+    "bin_mid": 0.05,
+    "n": 330,
+    "forecast": 0.048,
+    "observed": 0.275
+   },
+   {
+    "bin_mid": 0.15,
+    "n": 222,
+    "forecast": 0.142,
+    "observed": 0.287
+   },
+   {
+    "bin_mid": 0.25,
+    "n": 150,
+    "forecast": 0.237,
+    "observed": 0.393
+   },
+   {
+    "bin_mid": 0.35,
+    "n": 101,
+    "forecast": 0.332,
+    "observed": 0.45
+   },
+   {
+    "bin_mid": 0.45,
+    "n": 69,
+    "forecast": 0.427,
+    "observed": 0.415
+   },
+   {
+    "bin_mid": 0.55,
+    "n": 47,
+    "forecast": 0.522,
+    "observed": 0.487
+   },
+   {
+    "bin_mid": 0.65,
+    "n": 32,
+    "forecast": 0.617,
+    "observed": 0.582
+   },
+   {
+    "bin_mid": 0.75,
+    "n": 22,
+    "forecast": 0.712,
+    "observed": 0.621
+   },
+   {
+    "bin_mid": 0.85,
+    "n": 16,
+    "forecast": 0.807,
+    "observed": 0.681
+   },
+   {
+    "bin_mid": 0.95,
+    "n": 11,
+    "forecast": 0.902,
+    "observed": 0.708
+   }
+  ]
+ },
+ "single_index": {
+  "auc": 0.74,
+  "brier": 0.055,
+  "base_rate": 0.0646,
+  "cutoff": 0.12,
+  "hits": 95,
+  "misses": 73,
+  "false_alarms": 420,
+  "pod": 0.565,
+  "far": 0.816,
+  "csi": 0.162,
+  "reliability": [
+   {
+    "bin_mid": 0.05,
+    "n": 330,
+    "forecast": 0.048,
+    "observed": 0.184
+   },
+   {
+    "bin_mid": 0.15,
+    "n": 222,
+    "forecast": 0.142,
+    "observed": 0.257
+   },
+   {
+    "bin_mid": 0.25,
+    "n": 150,
+    "forecast": 0.237,
+    "observed": 0.312
+   },
+   {
+    "bin_mid": 0.35,
+    "n": 101,
+    "forecast": 0.332,
+    "observed": 0.42
+   },
+   {
+    "bin_mid": 0.45,
+    "n": 69,
+    "forecast": 0.427,
+    "observed": 0.476
+   },
+   {
+    "bin_mid": 0.55,
+    "n": 47,
+    "forecast": 0.522,
+    "observed": 0.512
+   },
+   {
+    "bin_mid": 0.65,
+    "n": 32,
+    "forecast": 0.617,
+    "observed": 0.625
+   },
+   {
+    "bin_mid": 0.75,
+    "n": 22,
+    "forecast": 0.712,
+    "observed": 0.661
+   },
+   {
+    "bin_mid": 0.85,
+    "n": 16,
+    "forecast": 0.807,
+    "observed": 0.792
+   },
+   {
+    "bin_mid": 0.95,
+    "n": 11,
+    "forecast": 0.902,
+    "observed": 0.841
+   }
+  ]
+ },
+ "hailday": {
+  "auc": 0.83,
+  "brier": 0.049,
+  "base_rate": 0.0646,
+  "cutoff": 0.15,
+  "hits": 118,
+  "misses": 50,
+  "false_alarms": 310,
+  "pod": 0.702,
+  "far": 0.724,
+  "csi": 0.247,
+  "reliability": [
+   {
+    "bin_mid": 0.05,
+    "n": 330,
+    "forecast": 0.048,
+    "observed": 0.071
+   },
+   {
+    "bin_mid": 0.15,
+    "n": 222,
+    "forecast": 0.142,
+    "observed": 0.151
+   },
+   {
+    "bin_mid": 0.25,
+    "n": 150,
+    "forecast": 0.237,
+    "observed": 0.302
+   },
+   {
+    "bin_mid": 0.35,
+    "n": 101,
+    "forecast": 0.332,
+    "observed": 0.354
+   },
+   {
+    "bin_mid": 0.45,
+    "n": 69,
+    "forecast": 0.427,
+    "observed": 0.44
+   },
+   {
+    "bin_mid": 0.55,
+    "n": 47,
+    "forecast": 0.522,
+    "observed": 0.536
+   },
+   {
+    "bin_mid": 0.65,
+    "n": 32,
+    "forecast": 0.617,
+    "observed": 0.657
+   },
+   {
+    "bin_mid": 0.75,
+    "n": 22,
+    "forecast": 0.712,
+    "observed": 0.746
+   },
+   {
+    "bin_mid": 0.85,
+    "n": 16,
+    "forecast": 0.807,
+    "observed": 0.841
+   },
+   {
+    "bin_mid": 0.95,
+    "n": 11,
+    "forecast": 0.902,
+    "observed": 0.936
+   }
+  ]
+ },
+ "_meta": {
+  "source": "era5",
+  "years": [
+   2006,
+   2022
+  ],
+  "n_days": 2601,
+  "n_severe": 168,
+  "features": [
+   "cape_max",
+   "cin_min",
+   "shear_0_6km",
+   "wmaxshear",
+   "ship",
+   "wbz_height",
+   "lapse_700_500",
+   "pwat"
+  ]
+ }
+}

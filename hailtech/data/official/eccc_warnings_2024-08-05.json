@@ -1,0 +1,59 @@
+{
+  "event": "2024-08-05",
+  "source": "ECCC CAP alerts as archived by Alberta Emergency Alert (alberta.ca/aea/cap/2024/08/05/...); times are CAP 'sent', MDT",
+  "source_url": "https://www.alberta.ca/aea/cap/2024/08/05/2024-08-05T19_57_50-06_00=cap-pac@canada.ca=urn_oid_2.49.0.1.124.1330211099.2024.htm",
+  "licence": "ECCC data, Government of Canada open terms; attribution required",
+  "timeline": [
+    {
+      "time_mdt": "2024-08-05T18:10:45-06:00",
+      "product": "Severe thunderstorm warning",
+      "area": "M.D. of Bighorn",
+      "covers_calgary": false,
+      "hail_wording": "nickel to ping pong ball",
+      "severity": "Moderate"
+    },
+    {
+      "time_mdt": "2024-08-05T18:38:20-06:00",
+      "product": "Warning extended",
+      "area": "Rocky View Co. near Cochrane, Bottrel/Madden",
+      "covers_calgary": false,
+      "hail_wording": "golf ball to tennis ball",
+      "severity": "Severe"
+    },
+    {
+      "time_mdt": "2024-08-05T19:21:34-06:00",
+      "product": "Warning extended to City of Calgary",
+      "area": "City of Calgary, Airdrie, Crossfield",
+      "covers_calgary": true,
+      "hail_wording": "golf ball to tennis ball",
+      "severity": "Severe"
+    },
+    {
+      "time_mdt": "2024-08-05T19:41:56-06:00",
+      "product": "Upgrade, intrusive Alert Ready broadcast",
+      "area": "Calgary, Airdrie, Crossfield, Cochrane, Bottrel",
+      "covers_calgary": true,
+      "hail_wording": "up to baseball",
+      "severity": "Extreme"
+    },
+    {
+      "time_mdt": "2024-08-05T19:57:50-06:00",
+      "product": "Update, second intrusive broadcast, area extended east",
+      "area": "Calgary, Chestermere, Irricana, Beiseker",
+      "covers_calgary": true,
+      "hail_wording": "up to baseball",
+      "severity": "Extreme"
+    }
+  ],
+  "not_established": [
+    "severe thunderstorm watch issue time",
+    "cancellation time (CAP expires ~22:56 MDT; no cancel found)"
+  ],
+  "comparison": {
+    "first_calgary_warning_mdt": "19:21:34",
+    "hailtech_first_arm_any_site_mdt": "19:12 (A010 Charlesglen Toyota; false alarm, max MESH 23 mm, inside NHP Threshold contour)",
+    "hailtech_first_arm_at_later_hit_site_mdt": "19:30",
+    "first_mesh_ge30_at_sites_mdt": "20:10",
+    "note": "ECCC warned the whole city at 19:21, 9 min before HailTech's first ARM at a site that was later hit (19:30). HailTech's one earlier ARM (19:12) was a false alarm, not an earlier catch. HailTech's value is site specificity (which sites act, which stand down, latest feasible start), not earlier warning. Official warnings always take precedence."
+  }
+}

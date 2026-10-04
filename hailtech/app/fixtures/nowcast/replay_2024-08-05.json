@@ -1,0 +1,3486 @@
+{
+ "event": "2024-08-05 north Calgary hailstorm (SYNTHETIC FIXTURE)",
+ "window_utc": [
+  "2024-08-06T00:00:00Z",
+  "2024-08-06T01:30:00Z"
+ ],
+ "issue_times": [
+  "2024-08-06T00:00:00Z",
+  "2024-08-06T00:10:00Z",
+  "2024-08-06T00:20:00Z",
+  "2024-08-06T00:30:00Z",
+  "2024-08-06T00:40:00Z",
+  "2024-08-06T00:50:00Z",
+  "2024-08-06T01:00:00Z",
+  "2024-08-06T01:10:00Z",
+  "2024-08-06T01:20:00Z",
+  "2024-08-06T01:30:00Z"
+ ],
+ "leads_min": [
+  0,
+  10,
+  20,
+  30,
+  45
+ ],
+ "grid": {
+  "npz": "replay_2024-08-05_fields.npz",
+  "lats": [
+   51.3,
+   51.29,
+   51.28,
+   51.27,
+   51.26,
+   51.25,
+   51.24,
+   51.23,
+   51.22,
+   51.21,
+   51.2,
+   51.19,
+   51.18,
+   51.17,
+   51.16,
+   51.15,
+   51.14,
+   51.13,
+   51.12,
+   51.11,
+   51.1,
+   51.09,
+   51.08,
+   51.07,
+   51.06,
+   51.05,
+   51.04,
+   51.03,
+   51.02,
+   51.01,
+   51.0,
+   50.99,
+   50.98,
+   50.97,
+   50.96,
+   50.95,
+   50.94,
+   50.93,
+   50.92,
+   50.91,
+   50.9,
+   50.89,
+   50.88,
+   50.87,
+   50.86,
+   50.85,
+   50.84,
+   50.83,
+   50.82,
+   50.81
+  ],
+  "lons": [
+   -114.4,
+   -114.39,
+   -114.38,
+   -114.37,
+   -114.36,
+   -114.35,
+   -114.34,
+   -114.33,
+   -114.32,
+   -114.31,
+   -114.3,
+   -114.29,
+   -114.28,
+   -114.27,
+   -114.26,
+   -114.25,
+   -114.24,
+   -114.23,
+   -114.22,
+   -114.21,
+   -114.2,
+   -114.19,
+   -114.18,
+   -114.17,
+   -114.16,
+   -114.15,
+   -114.14,
+   -114.13,
+   -114.12,
+   -114.11,
+   -114.1,
+   -114.09,
+   -114.08,
+   -114.07,
+   -114.06,
+   -114.05,
+   -114.04,
+   -114.03,
+   -114.02,
+   -114.01,
+   -114.0,
+   -113.99,
+   -113.98,
+   -113.97,
+   -113.96,
+   -113.95,
+   -113.94,
+   -113.93,
+   -113.92,
+   -113.91,
+   -113.9,
+   -113.89,
+   -113.88,
+   -113.87,
+   -113.86,
+   -113.85,
+   -113.84,
+   -113.83,
+   -113.82,
+   -113.81,
+   -113.8,
+   -113.79,
+   -113.78,
+   -113.77,
+   -113.76,
+   -113.75,
+   -113.74,
+   -113.73,
+   -113.72,
+   -113.71,
+   -113.7
+  ]
+ },
+ "storms": [
+  {
+   "issue_time": "2024-08-06T00:00:00Z",
+   "storm_id": "S1",
+   "lat": 51.17,
+   "lon": -114.3,
+   "u_kmh": 40.0,
+   "v_kmh": 12.0,
+   "area_km2": 180.0,
+   "max_mesh_mm": 65,
+   "max_posh": 0.9,
+   "echo_top50_km": 11.5
+  },
+  {
+   "issue_time": "2024-08-06T00:10:00Z",
+   "storm_id": "S1",
+   "lat": 51.188,
+   "lon": -114.2045,
+   "u_kmh": 40.0,
+   "v_kmh": 12.0,
+   "area_km2": 180.0,
+   "max_mesh_mm": 64,
+   "max_posh": 0.9,
+   "echo_top50_km": 11.5
+  },
+  {
+   "issue_time": "2024-08-06T00:20:00Z",
+   "storm_id": "S1",
+   "lat": 51.206,
+   "lon": -114.1089,
+   "u_kmh": 40.0,
+   "v_kmh": 12.0,
+   "area_km2": 180.0,
+   "max_mesh_mm": 64,
+   "max_posh": 0.9,
+   "echo_top50_km": 11.5
+  },
+  {
+   "issue_time": "2024-08-06T00:30:00Z",
+   "storm_id": "S1",
+   "lat": 51.2241,
+   "lon": -114.0134,
+   "u_kmh": 40.0,
+   "v_kmh": 12.0,
+   "area_km2": 180.0,
+   "max_mesh_mm": 64,
+   "max_posh": 0.9,
+   "echo_top50_km": 11.5
+  },
+  {
+   "issue_time": "2024-08-06T00:40:00Z",
+   "storm_id": "S1",
+   "lat": 51.2421,
+   "lon": -113.9178,
+   "u_kmh": 40.0,
+   "v_kmh": 12.0,
+   "area_km2": 180.0,
+   "max_mesh_mm": 64,
+   "max_posh": 0.9,
+   "echo_top50_km": 11.5
+  },
+  {
+   "issue_time": "2024-08-06T00:50:00Z",
+   "storm_id": "S1",
+   "lat": 51.2601,
+   "lon": -113.8223,
+   "u_kmh": 40.0,
+   "v_kmh": 12.0,
+   "area_km2": 180.0,
+   "max_mesh_mm": 64,
+   "max_posh": 0.9,
+   "echo_top50_km": 11.5
+  },
+  {
+   "issue_time": "2024-08-06T01:00:00Z",
+   "storm_id": "S1",
+   "lat": 51.2781,
+   "lon": -113.7268,
+   "u_kmh": 40.0,
+   "v_kmh": 12.0,
+   "area_km2": 180.0,
+   "max_mesh_mm": 64,
+   "max_posh": 0.9,
+   "echo_top50_km": 11.5
+  },
+  {
+   "issue_time": "2024-08-06T01:10:00Z",
+   "storm_id": "S1",
+   "lat": 51.2961,
+   "lon": -113.6312,
+   "u_kmh": 40.0,
+   "v_kmh": 12.0,
+   "area_km2": 180.0,
+   "max_mesh_mm": 31,
+   "max_posh": 0.9,
+   "echo_top50_km": 11.5
+  },
+  {
+   "issue_time": "2024-08-06T01:20:00Z",
+   "storm_id": "S1",
+   "lat": 51.3141,
+   "lon": -113.5357,
+   "u_kmh": 40.0,
+   "v_kmh": 12.0,
+   "area_km2": 180.0,
+   "max_mesh_mm": 0,
+   "max_posh": 0.9,
+   "echo_top50_km": 11.5
+  },
+  {
+   "issue_time": "2024-08-06T01:30:00Z",
+   "storm_id": "S1",
+   "lat": 51.3322,
+   "lon": -113.4401,
+   "u_kmh": 40.0,
+   "v_kmh": 12.0,
+   "area_km2": 180.0,
+   "max_mesh_mm": 0,
+   "max_posh": 0.9,
+   "echo_top50_km": 11.5
+  }
+ ],
+ "assets": [
+  {
+   "asset_id": "A001",
+   "name": "Country Hills Toyota",
+   "category": "dealer",
+   "lat": 51.153069,
+   "lon": -114.010355,
+   "timeline": [
+    {
+     "issue_time": "2024-08-06T00:00:00Z",
+     "state": "ARM",
+     "p20": 0.492,
+     "p30": 0.41,
+     "p50": 0.164,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 3280000.0
+    },
+    {
+     "issue_time": "2024-08-06T00:10:00Z",
+     "state": "ARM",
+     "p20": 0.42,
+     "p30": 0.35,
+     "p50": 0.14,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 2800000.0
+    },
+    {
+     "issue_time": "2024-08-06T00:20:00Z",
+     "state": "ARM",
+     "p20": 0.288,
+     "p30": 0.24,
+     "p50": 0.096,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 1920000.0
+    },
+    {
+     "issue_time": "2024-08-06T00:30:00Z",
+     "state": "CLEAR",
+     "p20": 0.12,
+     "p30": 0.1,
+     "p50": 0.04,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 800000.0
+    },
+    {
+     "issue_time": "2024-08-06T00:40:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:50:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:00:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:10:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:20:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:30:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    }
+   ],
+   "observed": {
+    "first_ge30_time": null,
+    "max_mesh_mm": 7
+   }
+  },
+  {
+   "asset_id": "A002",
+   "name": "Mercedes-Benz Country Hills",
+   "category": "dealer",
+   "lat": 51.155589,
+   "lon": -114.003006,
+   "timeline": [
+    {
+     "issue_time": "2024-08-06T00:00:00Z",
+     "state": "ARM",
+     "p20": 0.576,
+     "p30": 0.48,
+     "p50": 0.192,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 3840000.0
+    },
+    {
+     "issue_time": "2024-08-06T00:10:00Z",
+     "state": "ARM",
+     "p20": 0.504,
+     "p30": 0.42,
+     "p50": 0.168,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 3360000.0
+    },
+    {
+     "issue_time": "2024-08-06T00:20:00Z",
+     "state": "ARM",
+     "p20": 0.384,
+     "p30": 0.32,
+     "p50": 0.128,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 2560000.0
+    },
+    {
+     "issue_time": "2024-08-06T00:30:00Z",
+     "state": "CLEAR",
+     "p20": 0.216,
+     "p30": 0.18,
+     "p50": 0.072,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 1440000.0
+    },
+    {
+     "issue_time": "2024-08-06T00:40:00Z",
+     "state": "CLEAR",
+     "p20": 0.024,
+     "p30": 0.02,
+     "p50": 0.008,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 160000.0
+    },
+    {
+     "issue_time": "2024-08-06T00:50:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:00:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:10:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:20:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:30:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    }
+   ],
+   "observed": {
+    "first_ge30_time": null,
+    "max_mesh_mm": 13
+   }
+  },
+  {
+   "asset_id": "A003",
+   "name": "Universal Ford Lincoln",
+   "category": "dealer",
+   "lat": 51.077702,
+   "lon": -113.999812,
+   "timeline": [
+    {
+     "issue_time": "2024-08-06T00:00:00Z",
+     "state": "CLEAR",
+     "p20": 0.096,
+     "p30": 0.08,
+     "p50": 0.032,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 640000.0
+    },
+    {
+     "issue_time": "2024-08-06T00:10:00Z",
+     "state": "CLEAR",
+     "p20": 0.036,
+     "p30": 0.03,
+     "p50": 0.012,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 240000.0
+    },
+    {
+     "issue_time": "2024-08-06T00:20:00Z",
+     "state": "CLEAR",
+     "p20": 0.012,
+     "p30": 0.01,
+     "p50": 0.004,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 80000.0
+    },
+    {
+     "issue_time": "2024-08-06T00:30:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:40:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:50:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:00:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:10:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:20:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:30:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    }
+   ],
+   "observed": {
+    "first_ge30_time": null,
+    "max_mesh_mm": 0
+   }
+  },
+  {
+   "asset_id": "A004",
+   "name": "Calgary Hyundai",
+   "category": "dealer",
+   "lat": 51.069288,
+   "lon": -114.003809,
+   "timeline": [
+    {
+     "issue_time": "2024-08-06T00:00:00Z",
+     "state": "CLEAR",
+     "p20": 0.06,
+     "p30": 0.05,
+     "p50": 0.02,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 400000.0
+    },
+    {
+     "issue_time": "2024-08-06T00:10:00Z",
+     "state": "CLEAR",
+     "p20": 0.024,
+     "p30": 0.02,
+     "p50": 0.008,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 160000.0
+    },
+    {
+     "issue_time": "2024-08-06T00:20:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:30:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:40:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:50:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:00:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:10:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:20:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:30:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    }
+   ],
+   "observed": {
+    "first_ge30_time": null,
+    "max_mesh_mm": 0
+   }
+  },
+  {
+   "asset_id": "A005",
+   "name": "T & T Honda",
+   "category": "dealer",
+   "lat": 51.059846,
+   "lon": -113.999647,
+   "timeline": [
+    {
+     "issue_time": "2024-08-06T00:00:00Z",
+     "state": "CLEAR",
+     "p20": 0.048,
+     "p30": 0.04,
+     "p50": 0.016,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 320000.0
+    },
+    {
+     "issue_time": "2024-08-06T00:10:00Z",
+     "state": "CLEAR",
+     "p20": 0.012,
+     "p30": 0.01,
+     "p50": 0.004,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 80000.0
+    },
+    {
+     "issue_time": "2024-08-06T00:20:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:30:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:40:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:50:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:00:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:10:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:20:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:30:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    }
+   ],
+   "observed": {
+    "first_ge30_time": null,
+    "max_mesh_mm": 0
+   }
+  },
+  {
+   "asset_id": "A006",
+   "name": "Advantage Ford",
+   "category": "dealer",
+   "lat": 50.937825,
+   "lon": -114.06796,
+   "timeline": [
+    {
+     "issue_time": "2024-08-06T00:00:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:10:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:20:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:30:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:40:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:50:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:00:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:10:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:20:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:30:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    }
+   ],
+   "observed": {
+    "first_ge30_time": null,
+    "max_mesh_mm": 0
+   }
+  },
+  {
+   "asset_id": "A007",
+   "name": "Calgary Honda",
+   "category": "dealer",
+   "lat": 50.949086,
+   "lon": -114.068547,
+   "timeline": [
+    {
+     "issue_time": "2024-08-06T00:00:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:10:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:20:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:30:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:40:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:50:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:00:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:10:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:20:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:30:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    }
+   ],
+   "observed": {
+    "first_ge30_time": null,
+    "max_mesh_mm": 0
+   }
+  },
+  {
+   "asset_id": "A008",
+   "name": "Maclin Ford",
+   "category": "dealer",
+   "lat": 50.990505,
+   "lon": -114.03232,
+   "timeline": [
+    {
+     "issue_time": "2024-08-06T00:00:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:10:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:20:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:30:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:40:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:50:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:00:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:10:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:20:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:30:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    }
+   ],
+   "observed": {
+    "first_ge30_time": null,
+    "max_mesh_mm": 0
+   }
+  },
+  {
+   "asset_id": "A009",
+   "name": "Porsche Centre Calgary",
+   "category": "dealer",
+   "lat": 50.980068,
+   "lon": -114.04725,
+   "timeline": [
+    {
+     "issue_time": "2024-08-06T00:00:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:10:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:20:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:30:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:40:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:50:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:00:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:10:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:20:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:30:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    }
+   ],
+   "observed": {
+    "first_ge30_time": null,
+    "max_mesh_mm": 0
+   }
+  },
+  {
+   "asset_id": "A010",
+   "name": "Charlesglen Toyota",
+   "category": "dealer",
+   "lat": 51.152456,
+   "lon": -114.193802,
+   "timeline": [
+    {
+     "issue_time": "2024-08-06T00:00:00Z",
+     "state": "TRIGGER",
+     "p20": 0.72,
+     "p30": 0.6,
+     "p50": 0.24,
+     "arrival_earliest": "2024-08-06T00:05:00Z",
+     "arrival_likely": "2024-08-06T00:10:00Z",
+     "arrival_latest": "2024-08-06T00:20:00Z",
+     "ev_trigger": 4800000.0
+    },
+    {
+     "issue_time": "2024-08-06T00:10:00Z",
+     "state": "ARM",
+     "p20": 0.588,
+     "p30": 0.49,
+     "p50": 0.196,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 3920000.0
+    },
+    {
+     "issue_time": "2024-08-06T00:20:00Z",
+     "state": "CLEAR",
+     "p20": 0.108,
+     "p30": 0.09,
+     "p50": 0.036,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 720000.0
+    },
+    {
+     "issue_time": "2024-08-06T00:30:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:40:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:50:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:00:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:10:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:20:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:30:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    }
+   ],
+   "observed": {
+    "first_ge30_time": "2024-08-06T00:10:00Z",
+    "max_mesh_mm": 36
+   }
+  },
+  {
+   "asset_id": "A011",
+   "name": "North Star Ford",
+   "category": "dealer",
+   "lat": 51.122511,
+   "lon": -114.202872,
+   "timeline": [
+    {
+     "issue_time": "2024-08-06T00:00:00Z",
+     "state": "ARM",
+     "p20": 0.348,
+     "p30": 0.29,
+     "p50": 0.116,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 2320000.0
+    },
+    {
+     "issue_time": "2024-08-06T00:10:00Z",
+     "state": "CLEAR",
+     "p20": 0.18,
+     "p30": 0.15,
+     "p50": 0.06,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 1200000.0
+    },
+    {
+     "issue_time": "2024-08-06T00:20:00Z",
+     "state": "CLEAR",
+     "p20": 0.012,
+     "p30": 0.01,
+     "p50": 0.004,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 80000.0
+    },
+    {
+     "issue_time": "2024-08-06T00:30:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:40:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:50:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:00:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:10:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:20:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:30:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    }
+   ],
+   "observed": {
+    "first_ge30_time": null,
+    "max_mesh_mm": 10
+   }
+  },
+  {
+   "asset_id": "A012",
+   "name": "Wolfe Chevrolet GMC Buick",
+   "category": "dealer",
+   "lat": 51.064347,
+   "lon": -114.23401,
+   "timeline": [
+    {
+     "issue_time": "2024-08-06T00:00:00Z",
+     "state": "CLEAR",
+     "p20": 0.012,
+     "p30": 0.01,
+     "p50": 0.004,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 80000.0
+    },
+    {
+     "issue_time": "2024-08-06T00:10:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:20:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:30:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:40:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:50:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:00:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:10:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:20:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:30:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    }
+   ],
+   "observed": {
+    "first_ge30_time": null,
+    "max_mesh_mm": 0
+   }
+  },
+  {
+   "asset_id": "A013",
+   "name": "Hertz Canada (off-airport base) (outdoor fleet size unconfirmed)",
+   "category": "rental_lot",
+   "lat": 51.148407,
+   "lon": -113.996491,
+   "timeline": [
+    {
+     "issue_time": "2024-08-06T00:00:00Z",
+     "state": "ARM",
+     "p20": 0.492,
+     "p30": 0.41,
+     "p50": 0.164,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 1230000.0
+    },
+    {
+     "issue_time": "2024-08-06T00:10:00Z",
+     "state": "ARM",
+     "p20": 0.408,
+     "p30": 0.34,
+     "p50": 0.136,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 1020000.0
+    },
+    {
+     "issue_time": "2024-08-06T00:20:00Z",
+     "state": "ARM",
+     "p20": 0.276,
+     "p30": 0.23,
+     "p50": 0.092,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 690000.0
+    },
+    {
+     "issue_time": "2024-08-06T00:30:00Z",
+     "state": "CLEAR",
+     "p20": 0.12,
+     "p30": 0.1,
+     "p50": 0.04,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 300000.0
+    },
+    {
+     "issue_time": "2024-08-06T00:40:00Z",
+     "state": "CLEAR",
+     "p20": 0.012,
+     "p30": 0.01,
+     "p50": 0.004,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 30000.0
+    },
+    {
+     "issue_time": "2024-08-06T00:50:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:00:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:10:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:20:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:30:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    }
+   ],
+   "observed": {
+    "first_ge30_time": null,
+    "max_mesh_mm": 7
+   }
+  },
+  {
+   "asset_id": "A014",
+   "name": "YYC Economy Lot (Calgary Airport Authority, surface)",
+   "category": "airport_parking",
+   "lat": 51.135203,
+   "lon": -114.009587,
+   "timeline": [
+    {
+     "issue_time": "2024-08-06T00:00:00Z",
+     "state": "ARM",
+     "p20": 0.42,
+     "p30": 0.35,
+     "p50": 0.14,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 1050000.0
+    },
+    {
+     "issue_time": "2024-08-06T00:10:00Z",
+     "state": "ARM",
+     "p20": 0.324,
+     "p30": 0.27,
+     "p50": 0.108,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 810000.0
+    },
+    {
+     "issue_time": "2024-08-06T00:20:00Z",
+     "state": "CLEAR",
+     "p20": 0.192,
+     "p30": 0.16,
+     "p50": 0.064,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 480000.0
+    },
+    {
+     "issue_time": "2024-08-06T00:30:00Z",
+     "state": "CLEAR",
+     "p20": 0.06,
+     "p30": 0.05,
+     "p50": 0.02,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 150000.0
+    },
+    {
+     "issue_time": "2024-08-06T00:40:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:50:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:00:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:10:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:20:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:30:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    }
+   ],
+   "observed": {
+    "first_ge30_time": null,
+    "max_mesh_mm": 4
+   }
+  },
+  {
+   "asset_id": "A015",
+   "name": "Park & Jet Calgary (fenced surface lot)",
+   "category": "airport_parking",
+   "lat": 51.137721,
+   "lon": -114.007552,
+   "timeline": [
+    {
+     "issue_time": "2024-08-06T00:00:00Z",
+     "state": "ARM",
+     "p20": 0.42,
+     "p30": 0.35,
+     "p50": 0.14,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 1050000.0
+    },
+    {
+     "issue_time": "2024-08-06T00:10:00Z",
+     "state": "ARM",
+     "p20": 0.324,
+     "p30": 0.27,
+     "p50": 0.108,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 810000.0
+    },
+    {
+     "issue_time": "2024-08-06T00:20:00Z",
+     "state": "CLEAR",
+     "p20": 0.192,
+     "p30": 0.16,
+     "p50": 0.064,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 480000.0
+    },
+    {
+     "issue_time": "2024-08-06T00:30:00Z",
+     "state": "CLEAR",
+     "p20": 0.06,
+     "p30": 0.05,
+     "p50": 0.02,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 150000.0
+    },
+    {
+     "issue_time": "2024-08-06T00:40:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:50:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:00:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:10:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:20:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:30:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    }
+   ],
+   "observed": {
+    "first_ge30_time": null,
+    "max_mesh_mm": 4
+   }
+  },
+  {
+   "asset_id": "A016",
+   "name": "U-Haul Moving & Storage at Deerfoot",
+   "category": "fleet_lot",
+   "lat": 51.075868,
+   "lon": -114.025472,
+   "timeline": [
+    {
+     "issue_time": "2024-08-06T00:00:00Z",
+     "state": "CLEAR",
+     "p20": 0.096,
+     "p30": 0.08,
+     "p50": 0.032,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 160000.0
+    },
+    {
+     "issue_time": "2024-08-06T00:10:00Z",
+     "state": "CLEAR",
+     "p20": 0.036,
+     "p30": 0.03,
+     "p50": 0.012,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 60000.0
+    },
+    {
+     "issue_time": "2024-08-06T00:20:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:30:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:40:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:50:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:00:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:10:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:20:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:30:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    }
+   ],
+   "observed": {
+    "first_ge30_time": null,
+    "max_mesh_mm": 0
+   }
+  },
+  {
+   "asset_id": "A017",
+   "name": "Great West Truck Lease & Rentals / PacLease",
+   "category": "fleet_lot",
+   "lat": 50.999982,
+   "lon": -114.051516,
+   "timeline": [
+    {
+     "issue_time": "2024-08-06T00:00:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:10:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:20:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:30:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:40:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:50:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:00:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:10:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:20:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:30:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    }
+   ],
+   "observed": {
+    "first_ge30_time": null,
+    "max_mesh_mm": 0
+   }
+  },
+  {
+   "asset_id": "A018",
+   "name": "Country Hills RV Storage",
+   "category": "rv_storage",
+   "lat": 51.155519,
+   "lon": -114.022677,
+   "timeline": [
+    {
+     "issue_time": "2024-08-06T00:00:00Z",
+     "state": "ARM",
+     "p20": 0.576,
+     "p30": 0.48,
+     "p50": 0.192,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 1920000.0
+    },
+    {
+     "issue_time": "2024-08-06T00:10:00Z",
+     "state": "ARM",
+     "p20": 0.516,
+     "p30": 0.43,
+     "p50": 0.172,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 1720000.0
+    },
+    {
+     "issue_time": "2024-08-06T00:20:00Z",
+     "state": "ARM",
+     "p20": 0.396,
+     "p30": 0.33,
+     "p50": 0.132,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 1320000.0
+    },
+    {
+     "issue_time": "2024-08-06T00:30:00Z",
+     "state": "CLEAR",
+     "p20": 0.216,
+     "p30": 0.18,
+     "p50": 0.072,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 720000.0
+    },
+    {
+     "issue_time": "2024-08-06T00:40:00Z",
+     "state": "CLEAR",
+     "p20": 0.012,
+     "p30": 0.01,
+     "p50": 0.004,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 40000.0
+    },
+    {
+     "issue_time": "2024-08-06T00:50:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:00:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:10:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:20:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:30:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    }
+   ],
+   "observed": {
+    "first_ge30_time": null,
+    "max_mesh_mm": 13
+   }
+  },
+  {
+   "asset_id": "A019",
+   "name": "Cornerstone Storage and RV Parking",
+   "category": "rv_storage",
+   "lat": 50.950907,
+   "lon": -113.91547,
+   "timeline": [
+    {
+     "issue_time": "2024-08-06T00:00:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:10:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:20:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:30:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:40:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:50:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:00:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:10:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:20:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:30:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    }
+   ],
+   "observed": {
+    "first_ge30_time": null,
+    "max_mesh_mm": 0
+   }
+  },
+  {
+   "asset_id": "A020",
+   "name": "Oliver Bowen LRT Maintenance Facility (outdoor LRV storage tracks)",
+   "category": "transit",
+   "lat": 51.10497,
+   "lon": -113.9785,
+   "timeline": [
+    {
+     "issue_time": "2024-08-06T00:00:00Z",
+     "state": "CLEAR",
+     "p20": 0.156,
+     "p30": 0.13,
+     "p50": 0.052,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 1300000.0
+    },
+    {
+     "issue_time": "2024-08-06T00:10:00Z",
+     "state": "CLEAR",
+     "p20": 0.084,
+     "p30": 0.07,
+     "p50": 0.028,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 700000.0
+    },
+    {
+     "issue_time": "2024-08-06T00:20:00Z",
+     "state": "CLEAR",
+     "p20": 0.036,
+     "p30": 0.03,
+     "p50": 0.012,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 300000.0
+    },
+    {
+     "issue_time": "2024-08-06T00:30:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:40:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:50:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:00:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:10:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:20:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:30:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    }
+   ],
+   "observed": {
+    "first_ge30_time": null,
+    "max_mesh_mm": 0
+   }
+  },
+  {
+   "asset_id": "A021",
+   "name": "Haysboro LRV Storage (outdoor LRT storage yard)",
+   "category": "transit",
+   "lat": 50.9757,
+   "lon": -114.07537,
+   "timeline": [
+    {
+     "issue_time": "2024-08-06T00:00:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:10:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:20:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:30:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:40:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:50:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:00:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:10:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:20:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:30:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    }
+   ],
+   "observed": {
+    "first_ge30_time": null,
+    "max_mesh_mm": 0
+   }
+  },
+  {
+   "asset_id": "A022",
+   "name": "Blue Grass Nursery Sod & Garden Centre (Balzac)",
+   "category": "nursery_greenhouse",
+   "lat": 51.19138,
+   "lon": -114.00034,
+   "timeline": [
+    {
+     "issue_time": "2024-08-06T00:00:00Z",
+     "state": "TRIGGER",
+     "p20": 0.78,
+     "p30": 0.65,
+     "p50": 0.26,
+     "arrival_earliest": "2024-08-06T00:25:00Z",
+     "arrival_likely": "2024-08-06T00:30:00Z",
+     "arrival_latest": "2024-08-06T00:40:00Z",
+     "ev_trigger": 325000.0
+    },
+    {
+     "issue_time": "2024-08-06T00:10:00Z",
+     "state": "TRIGGER",
+     "p20": 0.792,
+     "p30": 0.66,
+     "p50": 0.264,
+     "arrival_earliest": "2024-08-06T00:25:00Z",
+     "arrival_likely": "2024-08-06T00:30:00Z",
+     "arrival_latest": "2024-08-06T00:40:00Z",
+     "ev_trigger": 330000.0
+    },
+    {
+     "issue_time": "2024-08-06T00:20:00Z",
+     "state": "TRIGGER",
+     "p20": 0.768,
+     "p30": 0.64,
+     "p50": 0.256,
+     "arrival_earliest": "2024-08-06T00:25:00Z",
+     "arrival_likely": "2024-08-06T00:30:00Z",
+     "arrival_latest": "2024-08-06T00:40:00Z",
+     "ev_trigger": 320000.0
+    },
+    {
+     "issue_time": "2024-08-06T00:30:00Z",
+     "state": "TRIGGER",
+     "p20": 0.672,
+     "p30": 0.56,
+     "p50": 0.224,
+     "arrival_earliest": "2024-08-06T00:25:00Z",
+     "arrival_likely": "2024-08-06T00:30:00Z",
+     "arrival_latest": "2024-08-06T00:40:00Z",
+     "ev_trigger": 280000.0
+    },
+    {
+     "issue_time": "2024-08-06T00:40:00Z",
+     "state": "CLEAR",
+     "p20": 0.132,
+     "p30": 0.11,
+     "p50": 0.044,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 55000.0
+    },
+    {
+     "issue_time": "2024-08-06T00:50:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:00:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:10:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:20:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:30:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    }
+   ],
+   "observed": {
+    "first_ge30_time": "2024-08-06T00:30:00Z",
+    "max_mesh_mm": 40
+   }
+  },
+  {
+   "asset_id": "A023",
+   "name": "Deerfoot Solar Park (37 MW)",
+   "category": "solar",
+   "lat": 50.944797,
+   "lon": -113.964232,
+   "timeline": [
+    {
+     "issue_time": "2024-08-06T00:00:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:10:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:20:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:30:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:40:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T00:50:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:00:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:10:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:20:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    },
+    {
+     "issue_time": "2024-08-06T01:30:00Z",
+     "state": "CLEAR",
+     "p20": 0.0,
+     "p30": 0.0,
+     "p50": 0.0,
+     "arrival_earliest": null,
+     "arrival_likely": null,
+     "arrival_latest": null,
+     "ev_trigger": 0.0
+    }
+   ],
+   "observed": {
+    "first_ge30_time": null,
+    "max_mesh_mm": 0
+   }
+  }
+ ],
+ "evaluation": {
+  "nowcast": {
+   "hits_caught": 2,
+   "hits_total": 2,
+   "median_lead_min": 20.0,
+   "false_alarms": 2,
+   "per_asset": {
+    "A001": {
+     "first_arm": "2024-08-06T00:00:00Z",
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A002": {
+     "first_arm": "2024-08-06T00:00:00Z",
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A003": {
+     "first_arm": null,
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A004": {
+     "first_arm": null,
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A005": {
+     "first_arm": null,
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A006": {
+     "first_arm": null,
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A007": {
+     "first_arm": null,
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A008": {
+     "first_arm": null,
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A009": {
+     "first_arm": null,
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A010": {
+     "first_arm": "2024-08-06T00:00:00Z",
+     "first_trigger": "2024-08-06T00:00:00Z",
+     "lead_min": 10.0
+    },
+    "A011": {
+     "first_arm": "2024-08-06T00:00:00Z",
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A012": {
+     "first_arm": null,
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A013": {
+     "first_arm": "2024-08-06T00:00:00Z",
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A014": {
+     "first_arm": "2024-08-06T00:00:00Z",
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A015": {
+     "first_arm": "2024-08-06T00:00:00Z",
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A016": {
+     "first_arm": null,
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A017": {
+     "first_arm": null,
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A018": {
+     "first_arm": "2024-08-06T00:00:00Z",
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A019": {
+     "first_arm": null,
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A020": {
+     "first_arm": null,
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A021": {
+     "first_arm": null,
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A022": {
+     "first_arm": "2024-08-06T00:00:00Z",
+     "first_trigger": "2024-08-06T00:00:00Z",
+     "lead_min": 30.0
+    },
+    "A023": {
+     "first_arm": null,
+     "first_trigger": null,
+     "lead_min": null
+    }
+   }
+  },
+  "persistence": {
+   "hits_caught": 2,
+   "hits_total": 2,
+   "median_lead_min": 10.0,
+   "false_alarms": 1,
+   "per_asset": {
+    "A001": {
+     "first_arm": null,
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A002": {
+     "first_arm": null,
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A003": {
+     "first_arm": null,
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A004": {
+     "first_arm": null,
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A005": {
+     "first_arm": null,
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A006": {
+     "first_arm": null,
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A007": {
+     "first_arm": null,
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A008": {
+     "first_arm": null,
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A009": {
+     "first_arm": null,
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A010": {
+     "first_arm": "2024-08-06T00:10:00Z",
+     "first_trigger": "2024-08-06T00:10:00Z",
+     "lead_min": 10.0
+    },
+    "A011": {
+     "first_arm": null,
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A012": {
+     "first_arm": null,
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A013": {
+     "first_arm": null,
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A014": {
+     "first_arm": null,
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A015": {
+     "first_arm": null,
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A016": {
+     "first_arm": null,
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A017": {
+     "first_arm": null,
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A018": {
+     "first_arm": null,
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A019": {
+     "first_arm": null,
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A020": {
+     "first_arm": null,
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A021": {
+     "first_arm": null,
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A022": {
+     "first_arm": "2024-08-06T00:30:00Z",
+     "first_trigger": "2024-08-06T00:30:00Z",
+     "lead_min": 10.0
+    },
+    "A023": {
+     "first_arm": null,
+     "first_trigger": null,
+     "lead_min": null
+    }
+   }
+  },
+  "mesh_only": {
+   "hits_caught": 2,
+   "hits_total": 2,
+   "median_lead_min": 0.0,
+   "false_alarms": 0,
+   "per_asset": {
+    "A001": {
+     "first_arm": null,
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A002": {
+     "first_arm": null,
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A003": {
+     "first_arm": null,
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A004": {
+     "first_arm": null,
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A005": {
+     "first_arm": null,
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A006": {
+     "first_arm": null,
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A007": {
+     "first_arm": null,
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A008": {
+     "first_arm": null,
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A009": {
+     "first_arm": null,
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A010": {
+     "first_arm": "2024-08-06T00:10:00Z",
+     "first_trigger": "2024-08-06T00:10:00Z",
+     "lead_min": 0.0
+    },
+    "A011": {
+     "first_arm": null,
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A012": {
+     "first_arm": null,
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A013": {
+     "first_arm": null,
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A014": {
+     "first_arm": null,
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A015": {
+     "first_arm": null,
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A016": {
+     "first_arm": null,
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A017": {
+     "first_arm": null,
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A018": {
+     "first_arm": null,
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A019": {
+     "first_arm": null,
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A020": {
+     "first_arm": null,
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A021": {
+     "first_arm": null,
+     "first_trigger": null,
+     "lead_min": null
+    },
+    "A022": {
+     "first_arm": "2024-08-06T00:30:00Z",
+     "first_trigger": "2024-08-06T00:30:00Z",
+     "lead_min": 0.0
+    },
+    "A023": {
+     "first_arm": null,
+     "first_trigger": null,
+     "lead_min": null
+    }
+   }
+  }
+ },
+ "thresholds": {
+  "arm_p30": 0.2,
+  "trigger_p30": 0.5,
+  "hit_mm": 30
+ },
+ "notes": [
+  "Synthetic fixture for UI development; not real MRMS data."
+ ]
+}

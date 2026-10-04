@@ -1,0 +1,503 @@
+<title>HailTech</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+/* Layout: a product page whose centre is a storm-replay console (radar map + the alerts each business
+   received), framed by how it works before and what happened, how it was tested and its limits after. */
+:root {
+  --sky: #edf1f4;        /* page ground: overcast prairie sky */
+  --paper: #ffffff;      /* raised surfaces */
+  --ink: #14202b;
+  --muted: #566573;
+  --line: #d3dae1;
+  --accent: #a8226f;     /* large-hail magenta from the radar scale */
+  --watch: #8a7a2e;      /* Storm approaching */
+  --ready: #c27c00;      /* Get ready */
+  --act: #c42f27;        /* Act now */
+  --shelter: #2f55c2;    /* Stay inside */
+  --hitc: #5c1145;       /* Hail hit */
+  --calm: #8f9ba6;       /* Watching / all clear */
+  --official: #7a5a00;   /* Environment Canada notices */
+  --official-bg: #fbf3d9;
+  --map-ground: #e4e9ee;
+  --map-city: #f6f8fa;
+  --map-road: #b6c0ca;
+  --display: "Barlow Condensed", "Arial Narrow", "Helvetica Neue", sans-serif;
+  --body: "Public Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --step-0: 1rem; --step-1: 1.25rem; --step-2: 1.6rem; --step-3: 2.2rem; --step-4: clamp(2.6rem, 6vw, 4.4rem);
+  --radius: 10px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --sky: #0f161d; --paper: #172029; --ink: #e6ecf1; --muted: #98a6b3; --line: #2a3743;
+    --accent: #e0599f; --watch: #c9b867; --ready: #e7a52a; --act: #ef5a4f; --shelter: #6f8ff0; --hitc: #e07cc0; --calm: #6b7885;
+    --official: #f0cf6a; --official-bg: #2b2412; --map-ground: #141c24; --map-city: #1c2630; --map-road: #3a4856;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --sky: #0f161d; --paper: #172029; --ink: #e6ecf1; --muted: #98a6b3; --line: #2a3743;
+  --accent: #e0599f; --watch: #c9b867; --ready: #e7a52a; --act: #ef5a4f; --shelter: #6f8ff0; --hitc: #e07cc0; --calm: #6b7885;
+  --official: #f0cf6a; --official-bg: #2b2412; --map-ground: #141c24; --map-city: #1c2630; --map-road: #3a4856;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--sky); color: var(--ink); font-family: var(--body); font-size: var(--step-0); line-height: 1.55; }
+.wrap { max-width: 1180px; margin-inline: auto; padding-inline: clamp(16px, 4vw, 40px); }
+h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1.02; text-wrap: balance; margin: 0; letter-spacing: 0.005em; }
+h2 { font-size: var(--step-3); text-transform: uppercase; }
+h3 { font-size: var(--step-2); }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+.eyebrow { font-family: var(--mono); font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.lede { color: var(--muted); max-width: 62ch; font-size: var(--step-1); }
+section { padding-block: clamp(48px, 7vw, 88px); }
+section + section { border-top: 1px solid var(--line); }
+
+/* header */
+header.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: color-mix(in srgb, var(--sky) 88%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 12px; flex-wrap: wrap; }
+.mark { display: flex; align-items: center; gap: 10px; font-family: var(--display); font-weight: 700; font-size: 1.6rem; letter-spacing: 0.04em; text-decoration: none; }
+.mark i { width: 14px; height: 14px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, var(--paper), var(--accent) 70%); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 25%, transparent); }
+nav { display: flex; gap: 18px; flex-wrap: wrap; font-size: 0.95rem; }
+nav a { text-decoration: none; color: var(--muted); }
+nav a:hover { color: var(--ink); }
+
+/* hero */
+.hero { display: grid; grid-template-columns: 1.25fr 1fr; gap: clamp(24px, 5vw, 64px); align-items: center; padding-block: clamp(40px, 6vw, 80px) clamp(48px, 7vw, 88px); }
+.hero h1 { font-size: var(--step-4); text-transform: uppercase; margin-block: 14px 18px; }
+.hero h1 em { font-style: normal; color: var(--accent); }
+.cta { display: inline-flex; align-items: center; gap: 10px; margin-top: 26px; padding: 13px 20px; border-radius: 999px; background: var(--ink); color: var(--sky); font-weight: 600; text-decoration: none; }
+.cta:hover { background: var(--accent); color: #fff; }
+.phone { justify-self: center; width: min(100%, 340px); background: var(--paper); border: 1px solid var(--line); border-radius: 28px; padding: 18px 14px 22px; box-shadow: 0 30px 60px -30px color-mix(in srgb, var(--ink) 35%, transparent); display: grid; gap: 10px; }
+.phone .clock { text-align: center; font-family: var(--mono); color: var(--muted); font-size: 0.85rem; }
+.note { display: grid; gap: 4px; background: var(--sky); border-radius: 14px; padding: 12px 14px; border-left: 4px solid var(--calm); }
+.note b { font-size: 0.82rem; letter-spacing: 0.04em; text-transform: uppercase; }
+.note small { color: var(--muted); font-family: var(--mono); font-size: 0.75rem; }
+.note.watch { border-left-color: var(--watch); } .note.watch b { color: var(--watch); }
+.note.ready { border-left-color: var(--ready); } .note.ready b { color: var(--ready); }
+.note.act { border-left-color: var(--act); } .note.act b { color: var(--act); }
+.note.shelter { border-left-color: var(--shelter); } .note.shelter b { color: var(--shelter); }
+.note.hit { border-left-color: var(--hitc); } .note.hit b { color: var(--hitc); }
+.note.clear b { color: var(--muted); }
+.note.official { background: var(--official-bg); border-left-color: var(--official); } .note.official b { color: var(--official); }
+
+/* how it works */
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 32px; }
+.step { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; display: grid; gap: 10px; align-content: start; }
+.step .when { font-family: var(--mono); font-size: 0.85rem; color: var(--accent); }
+.step p { color: var(--muted); }
+
+/* replay console */
+.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; margin-block: 28px 22px; }
+.stat { display: grid; gap: 2px; }
+.stat b { font-family: var(--display); font-size: clamp(2.4rem, 5vw, 3.4rem); line-height: 1; font-variant-numeric: tabular-nums; }
+.stat span { color: var(--muted); font-size: 0.95rem; }
+.console { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 18px; align-items: stretch; }
+.mapcard { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px; display: grid; gap: 12px; min-width: 0; }
+canvas#map { width: 100%; height: auto; display: block; border-radius: 6px; touch-action: manipulation; }
+.controls { display: flex; align-items: center; gap: 12px; }
+.controls button { flex: none; width: 46px; height: 46px; border-radius: 50%; border: 0; background: var(--ink); color: var(--sky); font-size: 1rem; cursor: pointer; }
+.controls button:hover { background: var(--accent); color: #fff; }
+.controls input[type=range] { flex: 1; min-width: 0; accent-color: var(--accent); }
+.controls .now { font-family: var(--mono); font-size: 1.35rem; font-variant-numeric: tabular-nums; min-width: 6.2ch; text-align: right; }
+.legend { display: flex; flex-wrap: wrap; gap: 8px 16px; font-size: 0.85rem; color: var(--muted); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend i { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+.legend .sw { border-radius: 2px; width: 18px; }
+.pick { font-size: 0.92rem; min-height: 1.5em; }
+.feedcard { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px; display: grid; grid-template-rows: auto 1fr; gap: 10px; min-width: 0; max-height: 720px; }
+.feedcard header { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.feed { display: grid; gap: 10px; align-content: start; overflow-y: auto; padding-right: 4px; }
+.feed .note p { font-size: 0.95rem; }
+.feed .note.fresh { animation: pop 0.5s ease-out; }
+@keyframes pop { from { transform: translateY(-6px); opacity: 0.4; } to { transform: none; opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .feed .note.fresh { animation: none; } }
+
+/* outcomes */
+.groups { display: grid; gap: 28px; margin-top: 30px; }
+.group h3 { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.group h3 small { font-family: var(--body); font-weight: 400; font-size: 1rem; color: var(--muted); }
+.group > p { color: var(--muted); max-width: 70ch; margin-block: 6px 14px; }
+.bars { display: grid; gap: 10px; }
+.bar { display: grid; grid-template-columns: minmax(0, 15rem) minmax(0, 1fr) minmax(0, 13rem); gap: 14px; align-items: center; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 14px; }
+.bar .who b { display: block; } .bar .who span { color: var(--muted); font-size: 0.88rem; }
+.track { position: relative; height: 26px; border-radius: 6px; background: var(--sky); overflow: hidden; }
+.track .job { position: absolute; inset: 0 auto 0 0; border: 2px dashed var(--muted); border-radius: 6px; }
+.track .safe { position: absolute; inset: 4px auto 4px 4px; border-radius: 4px; background: var(--accent); }
+.bar .verdict { font-size: 0.92rem; }
+.bar .verdict b { display: block; font-family: var(--display); font-size: 1.25rem; text-transform: uppercase; }
+.v-yes b { color: var(--ready); } .v-partly b { color: var(--ready); } .v-no b { color: var(--act); }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { background: var(--paper); border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; font-size: 0.9rem; }
+.chip span { color: var(--muted); }
+.tablewrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; font-size: 0.95rem; }
+th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line); }
+th { font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); }
+tr:last-child td { border-bottom: 0; }
+td.num { font-variant-numeric: tabular-nums; }
+
+/* proof */
+.proof { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: clamp(24px, 4vw, 56px); margin-top: 30px; align-items: start; }
+.proof .copy { display: grid; gap: 14px; color: var(--muted); max-width: 60ch; }
+.proof .copy strong { color: var(--ink); }
+.hbars { display: grid; gap: 16px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; }
+.hb { display: grid; gap: 6px; }
+.hb .lab { display: flex; justify-content: space-between; gap: 10px; font-size: 0.95rem; }
+.hb .lab b { font-variant-numeric: tabular-nums; }
+.hb .fill { height: 14px; border-radius: 4px; background: var(--calm); }
+.hb.us .fill { background: var(--accent); }
+.hb.us .lab { font-weight: 600; }
+.axisnote { font-size: 0.85rem; color: var(--muted); }
+
+/* limits */
+.limits { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-top: 30px; }
+.limit { border-top: 3px solid var(--ink); padding-top: 14px; display: grid; gap: 8px; }
+.limit p { color: var(--muted); }
+
+footer { padding-block: 40px 56px; color: var(--muted); font-size: 0.9rem; border-top: 1px solid var(--line); }
+footer .wrap { display: grid; gap: 10px; }
+
+@media (max-width: 900px) {
+  .hero, .console, .proof { grid-template-columns: minmax(0, 1fr); }
+  .steps { grid-template-columns: minmax(0, 1fr); }
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .limits { grid-template-columns: minmax(0, 1fr); }
+  .bar { grid-template-columns: minmax(0, 1fr); }
+  .feedcard { max-height: 520px; }
+}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="#top"><i></i>HAILTECH</a>
+    <nav aria-label="Sections">
+      <a href="#how">How it works</a>
+      <a href="#storm">The 5 August storm</a>
+      <a href="#sites">Each business</a>
+      <a href="#tested">How we tested it</a>
+      <a href="#limits">Limits</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <div>
+      <p class="eyebrow">Hail protection for outdoor lots · Calgary</p>
+      <h1>Know when hail is coming <em>for your lot</em></h1>
+      <p class="lede">HailTech watches the sky over every site you own. It gives you a heads-up in the morning when the day looks dangerous, then tells each site, by name, when a storm is about to reach it.</p>
+      <a class="cta" href="#storm">Replay the 5 August 2024 storm ↓</a>
+    </div>
+    <div class="phone" aria-label="Example alerts from 5 August 2024">
+      <p class="clock">Monday 5 August 2024</p>
+      <div id="heroNotes" style="display:grid;gap:10px"></div>
+    </div>
+  </div>
+
+  <section id="how">
+    <div class="wrap">
+      <p class="eyebrow">How it works</p>
+      <h2>Two warnings, one decision per site</h2>
+      <div class="steps">
+        <div class="step">
+          <p class="when">6:00 AM</p>
+          <h3>Morning heads-up</h3>
+          <p>HailTech reads the morning weather: how much energy is in the air and how strong the winds are high up. If today looks like a hail day, your sites get a heads-up to have a crew on call and clear covered space.</p>
+        </div>
+        <div class="step">
+          <p class="when">10 to 45 minutes before</p>
+          <h3>Storm alert</h3>
+          <p>Once a storm forms, HailTech tracks the hail on weather radar every few minutes and works out which of your sites are in its path. Those sites get "Get ready", then "Act now", then "Stay inside" when the storm is close.</p>
+        </div>
+        <div class="step">
+          <p class="when">All evening</p>
+          <h3>Stand down</h3>
+          <p>A city-wide warning tells everyone to worry. HailTech tells the sites outside the storm's path that they can carry on, so crews are not pulled off work for nothing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="storm">
+    <div class="wrap">
+      <p class="eyebrow">Replay · 5 August 2024</p>
+      <h2>About $3 billion of hail in under an hour</h2>
+      <p class="lede" style="margin-top:12px">This is what HailTech would have told 23 real Calgary businesses that evening, using only the radar data available at each moment. Press play.</p>
+      <div class="stats" id="stats"></div>
+      <div class="console">
+        <div class="mapcard">
+          <canvas id="map" width="800" height="780" aria-label="Map of Calgary showing the hail storm and the 23 businesses"></canvas>
+          <div class="controls">
+            <button id="play" type="button" aria-label="Play the storm">▶</button>
+            <input id="scrub" type="range" min="0" max="1" value="0" aria-label="Time of evening">
+            <span class="now" id="now">—</span>
+          </div>
+          <div class="legend" id="legend"></div>
+          <p class="pick" id="pick">Tap a dot to see the business.</p>
+        </div>
+        <div class="feedcard">
+          <header><b>What HailTech said</b><span class="eyebrow" id="feedCount"></span></header>
+          <div class="feed" id="feed" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sites">
+    <div class="wrap">
+      <p class="eyebrow">Each business</p>
+      <h2>Who was warned, and could they act in time?</h2>
+      <div class="groups" id="groups"></div>
+    </div>
+  </section>
+
+  <section id="tested">
+    <div class="wrap">
+      <p class="eyebrow">How we tested the morning heads-up</p>
+      <h2 id="proofTitle">Tested on past summers</h2>
+      <div class="proof" id="proof"></div>
+    </div>
+  </section>
+
+  <section id="limits">
+    <div class="wrap">
+      <p class="eyebrow">Limits</p>
+      <h2>What HailTech does not do yet</h2>
+      <div class="limits" id="limitsList"></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><b>HailTech</b> · IEEE YP Industry Hackathon, Calgary, October 2026.</p>
+    <p>Data: radar hail size from NOAA MRMS (public domain); hail reports from Environment and Climate Change Canada's Integrated Canadian Hail Database; Environment Canada warnings as archived by Alberta Emergency Alert; damage surveys from Western University's Northern Hail Project (non-commercial licence, used for checking only); weather from ERA5 (Copernicus) and Open-Meteo; business locations from Open Calgary and OpenStreetMap.</p>
+    <p>HailTech never tells anyone to go outside during a storm. Official Environment Canada warnings always come first.</p>
+  </div>
+</footer>
+
+<script>
+const D = /*__DATA__*/null;
+const $ = (s) => document.querySelector(s);
+const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const STATUS = ["Watching", "Get ready", "Act now", "Stay inside", "Hail hit", "Storm approaching"];
+const STATUS_VAR = ["--calm", "--ready", "--act", "--shelter", "--hitc", "--watch"];
+const LEGEND_ORDER = [0, 5, 1, 2, 3, 4];
+
+function noteClass(item) {
+  if (item.kind === "official") return "official";
+  if (item.kind === "morning") return "clear";
+  const t = item.text;
+  if (/^Hail hit/.test(t)) return "hit";
+  if (/get inside|stay indoors/.test(t)) return "shelter";
+  if (/Act now/.test(t)) return "act";
+  if (/storm approaching/.test(t)) return "watch";
+  if (/Get ready/.test(t)) return "ready";
+  return "clear";
+}
+function noteLabel(item, cls) {
+  return item.kind === "official" ? "Environment Canada" : item.kind === "morning" ? "Morning heads-up"
+    : { hit: "Hail", shelter: "Stay inside", act: "Act now", ready: "Get ready", watch: "Storm approaching", clear: "All clear" }[cls];
+}
+function noteHTML(item, fresh) {
+  const cls = noteClass(item);
+  const text = item.text.replace(/^Government warning[^:]*:\s*/, "").replace(/^Morning outlook:\s*/, "");
+  return `<div class="note ${cls}${fresh ? " fresh" : ""}"><b>${esc(noteLabel(item, cls))}</b><p>${esc(text)}</p>` +
+    `<small>${esc(item.t)}${item.who ? " · " + esc(item.who.replace(/^[^:]+:\s*/, "")) : ""}</small></div>`;
+}
+
+/* hero: three real alerts from the evening */
+(function hero() {
+  const pick = [];
+  const first = D.feed.find((f) => f.kind === "site" && /Get ready/.test(f.text) && /\d+ businesses/.test(f.text));
+  const off = D.feed.find((f) => f.kind === "official");
+  const hit = D.feed.find((f) => /^Hail hit/.test(f.text));
+  [off, first, hit].forEach((f) => f && pick.push(noteHTML(f)));
+  $("#heroNotes").innerHTML = pick.join("");
+})();
+
+/* headline numbers */
+(function stats() {
+  const n = D.numbers, left = D.sites.filter((s) => s.group === "clear").length;
+  const items = [
+    [`${n.caught} of ${n.hit_total}`, "businesses that got hit were warned first"],
+    [`~${Math.round(n.lead)} min`, "of notice before the hail arrived"],
+    [`${left}`, "businesses correctly left alone"],
+    [`${n.false}`, "false alarms, all at the storm's edge"],
+  ];
+  $("#stats").innerHTML = items.map(([b, s]) => `<div class="stat"><b>${esc(b)}</b><span>${esc(s)}</span></div>`).join("");
+})();
+
+/* map */
+const canvas = $("#map"), ctx = canvas.getContext("2d");
+const [V0, V1, V2, V3] = D.view; // lon0, lat0, lon1, lat1
+const ASPECT = (V3 - V1) / ((V2 - V0) * Math.cos((51.05 * Math.PI) / 180));
+const imgs = D.frames.map((u) => { if (!u) return null; const i = new Image(); i.src = u; i.onload = () => draw(); return i; });
+const trails = D.trail.map((u) => { if (!u) return null; const i = new Image(); i.src = u; return i; });
+let idx = 0, selected = null, W = 800, H = 780, dpr = 1;
+const X = (lon) => ((lon - V0) / (V2 - V0)) * W;
+const Y = (lat) => ((V3 - lat) / (V3 - V1)) * H;
+
+function size() {
+  dpr = window.devicePixelRatio || 1;
+  W = canvas.clientWidth || 800; H = Math.round(W * ASPECT);
+  canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr); canvas.style.height = H + "px";
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+}
+function path(coords) { coords.forEach(([x, y], k) => (k ? ctx.lineTo(X(x), Y(y)) : ctx.moveTo(X(x), Y(y)))); }
+function label(text, lon, lat, align = "left") {
+  ctx.font = `600 ${Math.max(11, W / 60)}px ${css("--body")}`; ctx.fillStyle = css("--muted"); ctx.textAlign = align; ctx.fillText(text, X(lon), Y(lat));
+}
+function draw() {
+  ctx.fillStyle = css("--map-ground"); ctx.fillRect(0, 0, W, H);
+  ctx.beginPath(); D.basemap.city.forEach(path); ctx.closePath(); ctx.fillStyle = css("--map-city"); ctx.fill();
+  ctx.strokeStyle = css("--line"); ctx.lineWidth = 1.2; ctx.stroke();
+  ctx.strokeStyle = css("--map-road"); ctx.lineWidth = Math.max(1, W / 600);
+  Object.values(D.basemap.roads).forEach((segs) => segs.forEach((s) => { ctx.beginPath(); path(s); ctx.stroke(); }));
+  const [b0, b1, b2, b3] = D.box;
+  const tl = { x: X(b0), y: Y(b3) }, w = X(b2) - X(b0), h = Y(b1) - Y(b3);
+  ctx.imageSmoothingEnabled = true;
+  const tr = trails[idx]; if (tr && tr.complete) ctx.drawImage(tr, tl.x, tl.y, w, h);
+  const im = imgs[idx]; if (im && im.complete) ctx.drawImage(im, tl.x, tl.y, w, h);
+  label("Cochrane", -114.468, 51.19); label("Airdrie", -114.03, 51.29); label("Airport", -114.0, 51.133);
+  label("Downtown", -114.065, 51.046); label("Chestermere", -113.82, 51.04, "right");
+  const r = Math.max(6, W / 85);
+  D.sites.forEach((s) => {
+    const st = s.status[idx] || 0, x = X(s.lon), y = Y(s.lat);
+    ctx.beginPath(); ctx.arc(x, y, s === selected ? r * 1.5 : r, 0, Math.PI * 2);
+    ctx.fillStyle = css(STATUS_VAR[st]); ctx.fill();
+    ctx.lineWidth = 2; ctx.strokeStyle = css("--paper"); ctx.stroke();
+  });
+  $("#now").textContent = D.times[idx];
+  $("#scrub").value = idx;
+}
+
+/* feed */
+let shown = -2;
+function renderFeed() {
+  const items = D.feed.filter((f) => f.i <= idx).reverse();
+  const fresh = new Set(D.feed.filter((f) => f.i === idx && idx !== shown).map((f) => f.text));
+  $("#feed").innerHTML = items.map((f) => noteHTML(f, fresh.has(f.text))).join("");
+  $("#feedCount").textContent = `${items.length} messages`;
+  shown = idx;
+}
+function go(i) { idx = Math.max(0, Math.min(D.times.length - 1, i)); draw(); renderFeed(); describe(); }
+
+/* tap a dot */
+function describe() {
+  if (!selected) return;
+  const s = selected, st = STATUS[s.status[idx] || 0];
+  const extra = s.group === "hit" ? `Hail later: ${s.hail_mm} mm (${s.hail_words}).`
+    : s.group === "false" ? `Warned at ${s.warned_at}; the hail missed (closest damaging hail ${s.near_km} km away).`
+    : s.group === "clear" ? "Never warned; the hail missed it." : "";
+  $("#pick").innerHTML = `<b>${esc(s.name)}</b> · ${esc(s.type)} · now: <b>${esc(st)}</b>. ${esc(extra)}`;
+}
+canvas.addEventListener("click", (e) => {
+  const rect = canvas.getBoundingClientRect(), x = e.clientX - rect.left, y = e.clientY - rect.top;
+  let best = null, bd = 1e9;
+  D.sites.forEach((s) => { const d = Math.hypot(X(s.lon) - x, Y(s.lat) - y); if (d < bd) { bd = d; best = s; } });
+  selected = bd < 24 ? best : null; draw(); if (selected) describe(); else $("#pick").textContent = "Tap a dot to see the business.";
+});
+
+/* play */
+let timer = null;
+function stop() { clearTimeout(timer); timer = null; $("#play").textContent = "▶"; $("#play").setAttribute("aria-label", "Play the storm"); }
+function step() {
+  if (idx >= D.times.length - 1) return stop();
+  go(idx + 1);
+  const busy = D.feed.some((f) => f.i === idx);
+  timer = setTimeout(step, busy ? 1400 : 420);
+}
+$("#play").addEventListener("click", () => {
+  if (timer) return stop();
+  if (idx >= D.times.length - 1) go(0);
+  $("#play").textContent = "❚❚"; $("#play").setAttribute("aria-label", "Pause"); step();
+});
+$("#scrub").max = D.times.length - 1;
+$("#scrub").addEventListener("input", (e) => { stop(); go(+e.target.value); });
+
+$("#legend").innerHTML = LEGEND_ORDER.filter((k) => k !== 5 || D.sites.some((s) => s.status.includes(5)))
+  .map((k) => `<span><i style="background:var(${STATUS_VAR[k]})"></i>${STATUS[k]}</span>`).join("") +
+  `<span><i class="sw" style="background:rgb(${D.ramp[1][1].slice(0, 3)})"></i>Nickel-sized hail</span>` +
+  `<span><i class="sw" style="background:rgb(${D.ramp[4][1].slice(0, 3)})"></i>Hen's-egg-sized</span>`;
+
+/* outcomes */
+(function groups() {
+  const hit = D.sites.filter((s) => s.group === "hit"), fa = D.sites.filter((s) => s.group === "false");
+  const left = D.sites.filter((s) => s.group === "clear"), miss = D.sites.filter((s) => s.group === "missed");
+  const maxJob = Math.max(...hit.map((s) => s.job || 0), 45);
+  const verdict = { yes: "Could finish", partly: "Partly done", no: "Could not finish" };
+  const bars = hit.sort((a, b) => (b.safe - b.job) - (a.safe - a.job)).map((s) => `
+    <div class="bar">
+      <div class="who"><b>${esc(s.name)}</b><span>${esc(s.type)} · hail ${s.hail_mm} mm, ${esc(s.hail_words)}</span></div>
+      <div class="track" role="img" aria-label="${Math.round(s.safe)} minutes of safe working time for a ${s.job}-minute job">
+        <div class="job" style="width:${(s.job / maxJob) * 100}%"></div>
+        <div class="safe" style="width:calc(${(Math.min(s.safe, maxJob) / maxJob) * 100}% - 8px)"></div>
+      </div>
+      <div class="verdict v-${s.finish}"><b>${verdict[s.finish] || "-"}</b>${Math.round(s.safe)} min to work, job takes ${s.job} min${s.safe_arm_only != null ? ` (${Math.round(s.safe_arm_only)} min without the early alert)` : ""}</div>
+    </div>`).join("");
+  let html = `<div class="group"><h3>Hit by hail, and warned first <small>${hit.length} businesses</small></h3>
+    <p>First alerted at ${esc(hit.map((s) => s.warned_at).filter((v, i, a) => a.indexOf(v) === i).join(" and "))}, about ${Math.round(D.numbers.lead)} minutes before the hail.
+    The filled bar is the safe time to work: from the first alert until the storm was close enough that staff had to go inside.
+    The dashed outline is how long the job takes (our estimate). Big jobs like moving a dealer's cars need the morning heads-up to start early.</p>
+    <div class="bars">${bars}</div></div>`;
+  if (miss.length) html += `<div class="group"><h3>Hit by hail, not warned <small>${miss.length}</small></h3><div class="chips">${miss.map((s) => `<span class="chip">${esc(s.name)}</span>`).join("")}</div></div>`;
+  html += `<div class="group"><h3>Warned, but the hail missed them <small>${fa.length} false alarms</small></h3>
+    <p>The storm passed close by, so these businesses got a warning and were later told to stay inside for safety. The damaging hail fell a few kilometres away.</p>
+    <div class="tablewrap"><table><thead><tr><th>Business</th><th>Type</th><th>Warned at</th><th>What fell here</th><th>Damaging hail came within</th></tr></thead><tbody>
+    ${fa.map((s) => `<tr><td>${esc(s.name)}</td><td>${esc(s.type)}</td><td class="num">${esc(s.warned_at)}</td><td>${s.hail_mm >= 5 ? `${s.hail_mm} mm, ${esc(s.hail_words)}` : "little or no hail"}</td><td class="num">${s.near_km ?? "-"} km</td></tr>`).join("")}
+    </tbody></table></div></div>`;
+  html += `<div class="group"><h3>Correctly left alone <small>${left.length} businesses</small></h3>
+    <p>Never warned, and the hail missed every one of them. Under a city-wide warning, all of these would have stopped work too.</p>
+    <div class="chips">${left.map((s) => `<span class="chip">${esc(s.name)} <span>· ${esc(s.type)}</span></span>`).join("")}</div></div>`;
+  $("#groups").innerHTML = html;
+})();
+
+/* proof */
+(function proof() {
+  const P = D.proof;
+  if (!P) { $("#proof").innerHTML = `<p class="lede">Test results are not available in this build.</p>`; return; }
+  $("#proofTitle").textContent = `Tested on ${P.summers} past summers`;
+  const pct = (x) => `${Math.round(x * 100)}%`, oneIn = (x) => (x > 0 ? `1 in ${Math.round(1 / x)}` : "none");
+  const rows = [["Calendar only (July is stormy)", P.calendar], ["A simple humidity rule", P.rule], ["HailTech", P.hailtech, true]];
+  const max = Math.max(...rows.map((r) => r[1].precision));
+  $("#proof").innerHTML = `
+    <div class="copy">
+      <p>We hid each summer from ${P.years} in turn, trained on the rest, and asked HailTech to call each morning in the hidden summer. Then we checked against ${P.hail_days} days when Environment Canada recorded hail of nickel size or bigger in the Calgary area.</p>
+      <p>On an average summer day the chance of damaging hail somewhere around Calgary is about <strong>${oneIn(P.base_rate)}</strong>.
+      When HailTech gave a heads-up, hail came <strong>${oneIn(P.hailtech.precision)}</strong> times, and it gave a heads-up on <strong>${pct(P.hailtech.caught)}</strong> of the hail days.</p>
+      <p>${P.source === "era5" ? "This version reads the full morning atmosphere, including winds high up." : "This version reads only ground-level weather. A version that reads winds high up (ERA5) is being trained; storms like 5 August depend on those winds."}</p>
+    </div>
+    <div class="hbars" role="img" aria-label="Share of heads-up days that had hail">
+      <p class="axisnote">When a heads-up was given, how often did hail come?</p>
+      ${rows.map(([n, r, us]) => `<div class="hb${us ? " us" : ""}"><div class="lab"><span>${esc(n)}</span><b>${pct(r.precision)}</b></div><div class="fill" style="width:${(r.precision / max) * 100}%"></div></div>`).join("")}
+      <p class="axisnote">Each method's warning level was chosen on the training summers only.</p>
+    </div>`;
+})();
+
+/* limits */
+(function limits() {
+  const m = D.morning;
+  const L = [
+    ["The morning heads-up missed this storm", `At 6 AM on 5 August HailTech put the chance of hail at ${m.odds}. This storm was driven by strong winds high up, which the current version cannot see. The version that reads them is being trained now.`],
+    ["The earliest alert was a close call", "HailTech's 'storm approaching' alert reached the 7 businesses that were later hit at 7:12 PM, nine minutes before Environment Canada's city-wide warning. The storm had just turned and sped up, and the alert's probability hovered near its threshold for a few minutes. A slightly different storm could have been flagged later. Official warnings always come first."],
+    ["Radar alone is short for the biggest jobs", "On 5 August there were about 36 safe minutes between the first alert and the storm getting close. That is enough for most lots, but not to move a whole dealership. Dealers need the morning heads-up to start early."],
+    ["Hail size is a radar estimate", "Radar estimates the largest hail in each square kilometre. Ground surveys did not cover the airport industrial area, so we could not check those sites independently. Job times and costs are our estimates, set per type of business."],
+  ];
+  $("#limitsList").innerHTML = L.map(([h, p]) => `<div class="limit"><h3>${esc(h)}</h3><p>${esc(p)}</p></div>`).join("");
+})();
+
+/* start on the moment the hail lands, so the page reads complete before anyone presses play */
+const firstHit = Math.min(...D.sites.map((s) => s.status.indexOf(4)).filter((i) => i >= 0));
+function start() { size(); go(isFinite(firstHit) ? firstHit : D.times.length - 1); }
+window.addEventListener("resize", () => { size(); draw(); });
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change", draw);
+new MutationObserver(draw).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+start();
+</script>

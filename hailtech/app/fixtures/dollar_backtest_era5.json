@@ -1,0 +1,65 @@
+{
+ "attrs": {
+  "n_days": 918,
+  "n_cells": 23000,
+  "value_at_risk": 4000000,
+  "protect_cost": 4000,
+  "size_mm": 30
+ },
+ "rows": [
+  {
+   "policy": "never",
+   "total_cost": 4000000000.0,
+   "protections": 0,
+   "hits": 1000,
+   "hits_protected": 0,
+   "value_vs_never": 0.0,
+   "share_of_perfect_value": 0.0
+  },
+  {
+   "policy": "always",
+   "total_cost": 7583800000.0,
+   "protections": 9000000,
+   "hits": 1000,
+   "hits_protected": 1000,
+   "value_vs_never": -3583800000.0,
+   "share_of_perfect_value": -0.9
+  },
+  {
+   "policy": "climatology",
+   "total_cost": 3681440000.0,
+   "protections": 2100000,
+   "hits": 1000,
+   "hits_protected": 380,
+   "value_vs_never": 318560000.0,
+   "share_of_perfect_value": 0.08
+  },
+  {
+   "policy": "single_index",
+   "total_cost": 3163780000.0,
+   "protections": 1400000,
+   "hits": 1000,
+   "hits_protected": 520,
+   "value_vs_never": 836220000.0,
+   "share_of_perfect_value": 0.21
+  },
+  {
+   "policy": "hailday",
+   "total_cost": 2526660000.0,
+   "protections": 900000,
+   "hits": 1000,
+   "hits_protected": 610,
+   "value_vs_never": 1473340000.0,
+   "share_of_perfect_value": 0.37
+  },
+  {
+   "policy": "oracle_day",
+   "total_cost": 1172780000.0,
+   "protections": 300000,
+   "hits": 1000,
+   "hits_protected": 1000,
+   "value_vs_never": 2827220000.0,
+   "share_of_perfect_value": 0.71
+  }
+ ]
+}
