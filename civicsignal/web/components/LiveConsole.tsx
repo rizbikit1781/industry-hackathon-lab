@@ -1,9 +1,9 @@
 "use client";
 
-import Script from "next/script";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import OpsMap, { type MapDepot, type MapRoute, type MapStop, type MapVoice } from "./OpsMap";
 import MapLegend from "./MapLegend";
+import VoicePanel from "./VoicePanel";
 import { Kbd, Notice, Section, Stat } from "./ui";
 import { crewColor, percentileWithin, tierFromPercentile } from "@/lib/colors";
 import { dayLabel, hm, num, pct } from "@/lib/format";
@@ -288,6 +288,12 @@ export default function LiveConsole({ agentId, allCrews }: { agentId: string | n
           {lastReplan && <ReplanCard ev={lastReplan} />}
         </Section>
 
+        {agentId && (
+          <Section title="Report by voice" id="voice">
+            <VoicePanel agentId={agentId} />
+          </Section>
+        )}
+
         <Section
           title="Incoming voice reports"
           id="feed"
@@ -295,7 +301,7 @@ export default function LiveConsole({ agentId, allCrews }: { agentId: string | n
         >
           {voiceJobs.length === 0 ? (
             <p className="text-sm text-ink-3">
-              No voice reports yet. Call the intake agent (button at the bottom right). New reports appear here within a few seconds.
+              No voice reports yet.{agentId ? <> Call the intake agent with “Talk to SnowTech 311” above.</> : null} New reports appear here within a few seconds.
             </p>
           ) : (
             <ul className="space-y-2">
@@ -429,12 +435,6 @@ export default function LiveConsole({ agentId, allCrews }: { agentId: string | n
         </div>
       </div>
 
-      {agentId ? (
-        <>
-          <elevenlabs-convai agent-id={agentId} action-text="Report snow or ice by voice" start-call-text="Talk to SnowTech 311"></elevenlabs-convai>
-          <Script src="https://unpkg.com/@elevenlabs/convai-widget-embed" strategy="afterInteractive" />
-        </>
-      ) : null}
     </div>
   );
 }
