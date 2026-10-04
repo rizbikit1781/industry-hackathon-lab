@@ -13,7 +13,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 import pandas as pd  # noqa: E402
 
-from civicsignal import dedupe, features, sim  # noqa: E402
+from civicsignal import dedupe, features, roads, sim  # noqa: E402
 
 ap = argparse.ArgumentParser()
 ap.add_argument("--time-limit", type=float, default=2.0, help="OR-Tools seconds per skill per solve")
@@ -22,6 +22,7 @@ ap.add_argument("--quiet", action="store_true")
 args = ap.parse_args()
 
 T0 = time.time()
+print(f"Routing: {roads.method()} (winter speed factor {roads.WINTER_SPEED_FACTOR})")
 tickets = sim.load_tickets()
 cap = sim.calibrate_capacity()
 crews = sim.make_crews(cap, tickets)
@@ -68,4 +69,5 @@ if not args.no_sweep:
     print(pd.DataFrame(extra["priority_sweep"]).to_string(index=False))
 
 sim.export(results, crews, cap, extra)
+roads.save_cache()          # keep matrix rows for job points first seen in this run
 print(f"\nwrote data/results.json  total {time.time() - T0:.1f}s")

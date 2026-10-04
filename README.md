@@ -25,6 +25,9 @@ flowchart LR
   FEAT --> RISK["risk.py<br/>explainable exposure + priority"]
   DED --> SIM
   RISK --> SIM["sim.py<br/>rolling-horizon replay<br/>FIFO vs optimized vs disruption"]
+  OSM["OpenStreetMap drive network<br/>(osmnx, scripts/build_roads.py)"] --> ROADS["roads.py<br/>directed Dijkstra matrices<br/>+ road polylines"]
+  ROADS --> SOLV
+  ROADS --> SIM
   SOLV["solver.py<br/>OR-Tools VRP: skills, shift, capacity,<br/>drop penalties, stability"] --> SIM
   SIM --> RES[(data/results.json)]
   RES --> UI["ui.py<br/>Streamlit + pydeck"]
@@ -38,14 +41,42 @@ flowchart LR
 
 There is no database. State lives in the API process and in files under `data/`.
 
+## Road routing
+
+Distances, drive times and the route lines on the map come from the real Calgary road network
+(`civicsignal/roads.py`), not straight lines.
+
+- **Network.** OpenStreetMap drivable roads for Calgary via `osmnx.graph_from_place("Calgary,
+  Alberta, Canada", network_type="drive")`, largest strongly connected component: 36,449 nodes,
+  83,379 directed edges. Edges are directed, so one-way streets are respected and the matrix is
+  asymmetric. `scripts/build_roads.py` builds `data/roads/` (gitignored) in about 15 s from a
+  cached download (about 35 s to download from OSM): a 5.1 MB npz (CSR graph plus edge geometry)
+  and a 0.5 MB matrix cache for the historical stops and depots.
+- **Speeds.** osmnx `add_edge_speeds` (posted `maxspeed`, else the mean for that road type) and
+  `add_edge_travel_times`, times **one winter factor: 0.8 of free-flow speed**
+  (`WINTER_SPEED_FACTOR`). There is no congestion or plowing-state model.
+- **Paths.** `scipy.sparse.csgraph.dijkstra` on edge travel times: each leg is the fastest path,
+  and the metres reported are the length of that same path. A new point (a voice ticket) costs
+  one Dijkstra for its row and one on the reversed graph for its column.
+- **Snapping.** Each point snaps to the nearest graph node (BallTree, haversine). The snap distance
+  is added to metres and, at walking speed (5 km/h), to minutes. Historical tickets sit at
+  community centrepoints, often in parks, so this is a walk from the curb.
+- **Fallback.** Without `data/roads/` (a fresh clone), `roads.py` logs a warning and uses the old
+  model, haversine x 1.3 at 30 km/h, so `pytest` still passes. `CIVICSIGNAL_ROADS=0` forces it.
+- **Geometry.** Each crew route in `GET /plan` and in `data/results.json` has `geometry`: a
+  road-following `[lon, lat]` polyline (GeoJSON order), depot -> stops -> depot, simplified to
+  about 2 m. `path` is still the straight depot -> stops -> depot list. The dashboard draws
+  `geometry`.
+
 ## How to run
 
 ```bash
 cd civicsignal
 python3.11 -m venv .venv && .venv/bin/pip install -r requirements.txt   # (.venv already exists)
 .venv/bin/python scripts/pull_data.py            # ~2 min: all Open Calgary pulls + feature grid
+.venv/bin/python scripts/build_roads.py          # ~1 min: OSM road network -> data/roads/
 .venv/bin/python scripts/run_sim.py              # ~3 min: 3-policy replay + sweeps -> data/results.json
-.venv/bin/python -m pytest -q tests              # 15 tests
+.venv/bin/python -m pytest -q tests              # 21 tests
 .venv/bin/uvicorn civicsignal.api:app --port 8000
 .venv/bin/streamlit run civicsignal/ui.py        # dashboard; "Live plan (API)" reads :8000
 ```
@@ -91,6 +122,13 @@ feature.
 
 ## Results (actual output of `scripts/run_sim.py`)
 
+**Method change (Oct 3, 2026).** All km and drive times below are now **real road km** on the OSM
+network (see Road routing). Earlier versions of this README used straight-line distance x 1.3 at
+30 km/h, which reported FIFO 7,253 km and CivicSignal 2,417 km. Road km are about 18-19% higher
+for both policies. The FIFO baseline uses the same road matrix for crew choice, sequencing and
+km, so the comparison stays like for like. The relative saving is unchanged at -67%. Coverage
+numbers moved by 1-2 points because drive times changed which stops fit in a shift.
+
 **Capacity calibration.** Real median daily closures in the storm week were bylaw 53/day and
 roads+pathway 164/day. The replay uses 3 bylaw crews x 20 tickets and 14 Roads crews x 12 tickets,
 so every policy gets 228 tickets/day. Real arrivals averaged about 400/day, so the backlog grows
@@ -101,28 +139,32 @@ them are high-risk (top exposure quartile within each crew type).
 
 | Metric | FIFO (oldest first) | CivicSignal | CivicSignal + disruption |
 |---|---|---|---|
-| High-risk tickets served within 48 h | **13.4%** | **44.5%** | **41.8%** |
-| All tickets served within 48 h | 10.7% | 27.1% | 24.4% |
-| High-risk tickets served in the week | 47.6% | 66.7% | 64.3% |
-| Low-risk (bottom quartile) served in the week | 56.8% | 36.1% | 33.5% |
+| High-risk tickets served within 48 h | **13.4%** | **42.9%** | **42.1%** |
+| All tickets served within 48 h | 10.8% | 26.7% | 25.0% |
+| High-risk tickets served in the week | 47.6% | 65.0% | 65.5% |
+| Low-risk (bottom quartile) served in the week | 57.1% | 35.4% | 33.5% |
 | p90 days to service (unserved censored at Dec 2) | 5 | 6 | 6 |
 | p90 days, high-risk tickets | 5 | 5 | 5 |
 | Median days to service | 3 | 2 | 2 |
-| Tickets served (incl. warm start) | 1,589 | 1,595 | 1,528 |
-| Total km driven | **7,253** | **2,417 (-67%)** | 2,355 |
-| km per ticket | 4.56 | 1.52 | 1.54 |
-| Crew stops (one stop = up to 4 bylaw / 3 roads tickets at one location) | 1,589 | 525 | 509 |
-| Jobs moved per replan | n/a | n/a | 31 |
+| Tickets served (incl. warm start) | 1,596 | 1,596 | 1,528 |
+| Total road km driven | **8,652** | **2,848 (-67%)** | 2,762 |
+| Road km per ticket | 5.42 | 1.78 | 1.81 |
+| Crew stops (one stop = up to 4 bylaw / 3 roads tickets at one location) | 1,596 | 527 | 505 |
+| Jobs moved per replan | n/a | n/a | 37.5 |
+
+The disruption run serves slightly more high-risk tickets over the week than the undisrupted run
+(65.5% vs 65.0%). That is solver variance across 2 s time-limited solves, not a benefit of losing
+crews: it serves 68 fewer tickets in total.
 
 **Disruption replans** (stability penalty on):
-- Nov 27, 30% of crews out (B01, R01-R04) after the morning plan. 32 of 71 planned stops moved,
-  re-solved in 4.0 s. High-risk tickets planned went from 52 to 41.
-- Dec 1, the day's 478 real arrivals land mid-day as a surge. 30 of 85 stops moved in 4.0 s.
-  High-risk tickets planned went from 19 to 67.
+- Nov 27, 30% of crews out (B01, R01-R04) after the morning plan. 34 of 71 planned stops moved,
+  re-solved in 4.0 s. High-risk tickets planned went from 54 to 50.
+- Dec 1, the day's 478 real arrivals land mid-day as a surge. 41 of 79 stops moved in 4.0 s.
+  High-risk tickets planned went from 22 to 76.
 
 **What did not improve, stated plainly.** CivicSignal beats FIFO on high-risk coverage within
-48 h (+31 points), all-ticket coverage within 48 h, median wait, and km (-67%). It is **worse on
-p90 days to service (6 vs 5)** and serves **fewer low-risk tickets (36% vs 57%)**. That is the
+48 h (+30 points), all-ticket coverage within 48 h, median wait, and road km (-67%). It is **worse
+on p90 days to service (6 vs 5)** and serves **fewer low-risk tickets (35% vs 57%)**. That is the
 cost of triage when capacity is about half of demand. FIFO bounds the oldest wait and
 CivicSignal does not. The age term in the priority limits starvation but does not remove it. We
 did not change the metric. We chose the policy weights (below) and report this trade-off.
@@ -132,10 +174,10 @@ did not change the metric. We chose the policy weights (below) and report this t
 
 | exposure w | report-pressure w | age w | high-risk <=48 h | all <=48 h | high-risk served | low-risk served | p90 days | km |
 |---|---|---|---|---|---|---|---|---|
-| 1 | 1.0 | 1.0 | 21.3% | 27.1% | 49.2% | 49.6% | 6 | 2,464 |
-| 2 | 1.0 | 1.0 | 30.5% | 27.2% | 54.9% | 43.3% | 6 | 2,486 |
-| **3** | **0.5** | **1.0** | **44.6%** | **27.0%** | **66.7%** | **36.1%** | **6** | **2,429** |
-| 4 | 0.5 | 0.5 | 52.8% | 31.2% | 72.6% | 34.2% | 6 | 2,474 |
+| 1 | 1.0 | 1.0 | 20.9% | 27.9% | 48.3% | 50.6% | 6 | 2,928 |
+| 2 | 1.0 | 1.0 | 29.7% | 27.5% | 55.5% | 42.9% | 6 | 2,865 |
+| **3** | **0.5** | **1.0** | **43.2%** | **26.6%** | **65.3%** | **36.8%** | **6** | **2,887** |
+| 4 | 0.5 | 0.5 | 53.7% | 30.9% | 73.0% | 34.0% | 6 | 2,837 |
 
 Row 4 scores higher on coverage. We kept row 3 so that age keeps full weight as an
 anti-starvation term. This is a policy choice for a supervisor. Note that the weights were
@@ -143,15 +185,15 @@ chosen on the same storm week they are evaluated on. There is no held-out week.
 
 **Lambda sweep, day 1 (Nov 25).** Lambda is the metres of driving one unit of priority is worth.
 
-| lambda | km | tickets planned | high-risk planned |
+| lambda | road km | tickets planned | high-risk planned |
 |---|---|---|---|
-| 2,000 | 27.5 | 68 | 21 |
-| 5,000 | 86.6 | 145 | 40 |
-| 10,000 | 222.2 | 222 | 63 |
-| 25,000 | 276.1 | 226 | 77 |
-| 50,000 | 311.7 | 228 | 75 |
-| 100,000 (default) | 361.5 | 228 | 85 |
-| 250,000 | 391.8 | 228 | 91 |
+| 2,000 | 18.2 | 36 | 10 |
+| 5,000 | 84.5 | 125 | 29 |
+| 10,000 | 259.7 | 220 | 67 |
+| 25,000 | 318.9 | 228 | 69 |
+| 50,000 | 383.3 | 228 | 85 |
+| 100,000 (default) | 439.6 | 228 | 97 |
+| 250,000 | 468.8 | 228 | 88 |
 
 **Feature-weight presets.** Jaccard overlap of each preset's top quartile with the default top
 quartile: seniors_first 0.685, children_first 0.545, mobility_first 0.828, equity_first 0.636,
@@ -175,7 +217,7 @@ windows, precision stays at 0.55-0.61%. The module does work on real coordinates
 cover this, and live voice tickets carry exact lat/lon, where `POST /tickets` merges a repeat
 report within 50 m. A real precision number needs the City's address-level data. Because of
 this, the sim does **not** claim "duplicate visits avoided". It reports stops consolidated: tickets
-at the same location served in one stop (1,595 tickets in 525 stops vs FIFO's 1,589 stops).
+at the same location served in one stop (1,596 tickets in 527 stops vs FIFO's 1,596 stops).
 
 **Pedestrian proxy vs real counts.** Transit stops within 300 m plus crosswalks within 150 m,
 compared with average daily pedestrian counts at the City count sites: **Spearman 0.16 (n = 12,
@@ -199,14 +241,22 @@ are dropped from the replay. Census join coverage is **98.3%** of storm-week tic
 their communities. The misses are communities built after 2019 (Moraine, Glacier Ridge, Alpine
 Park); they get the neutral city median (0.5).
 
-**API timing.** `POST /tickets` with an intersection returned HTTP 200 in **3.5 s**. That covers
-geocode, features, dedupe check, OR-Tools re-insert (1.5 s limit), and nearest pole. Example
-result: a sidewalk report at 51.0607, -114.1035 (beside Bethany Calgary) ranked #7 of 529 open
-locations ("high 65+ share, high 75+ share, near seniors' residence"). It was inserted as stop 4
-on bylaw crew B02, **+10.4 min**, nearest pole 1002421642 at 33 m. A second report 5 m away came
+**API timing (road routing).** Seven `POST /tickets` calls in a row (intersection, address and
+lat/lon; sidewalk, road and pathway) each returned HTTP 200 in **1.5-1.7 s**. That covers geocode,
+features, dedupe check, road-matrix row and column for the new point, OR-Tools re-insert (1.5 s
+limit), and nearest pole. In the first ~9 s after startup, while the address index loads in a
+background thread, one roads ticket took 6.2 s; after that the worst case was 1.7 s. `GET /plan`
+with road polylines takes 0.2 s, then 0.02 s from the per-route cache. Example result: a sidewalk
+report at 51.0607, -114.1035 (beside Bethany Calgary) ranked #7 of the open locations ("high 65+
+share, high 75+ share, near seniors' residence"). It was inserted as stop 5 (position 4) on bylaw
+crew B01, **+11.6 min** of road time. A second report 5 m away came
 back as `duplicate_of` the first. `POST /disruption {"crews_out":5}` re-solved in about 2.5-6 s.
 
-**Tests.** `pytest tests/` gives 15 passed. Dedupe merges a pair 30 m / 1 day apart, and does not
+**Tests.** `pytest tests/` gives 21 passed. Road tests: a one-way triangle gives an asymmetric
+matrix (B to A goes round via C) with the winter factor applied, the polyline follows the directed
+edges and ends at the stops, the haversine fallback works with no road cache, and on the real
+Calgary network road metres are at least the straight line and polylines start and end at the
+stops. Dedupe merges a pair 30 m / 1 day apart, and does not
 merge pairs 500 m apart, 5 days apart, or of different services. The solver respects ticket
 capacity, shift minutes and skills. `insert_job` returns a crew, a position and a positive delta.
 There are also feature smoke tests and an API test (insertion under 5 s, duplicate, 422 with no
@@ -254,3 +304,7 @@ location, disruption, briefing).
 - Risk weights, service times, crew counts per ticket and depots are assumptions a supervisor would
   tune. The model ranks exposure (who is likely to be on that ice). It does not predict falls.
 - The duplicate detector and the pedestrian proxy failed validation on public data (see above).
+- Road km and minutes use OSM free-flow speeds times one assumed winter factor (0.8). There is no
+  traffic, no turn penalties, no plow-state or road-closure model, and OSM speed tags are partly
+  imputed by road type. Historical stops are community centrepoints, so per-stop distances are
+  approximate even on real roads.

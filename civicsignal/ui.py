@@ -113,6 +113,11 @@ with left:
     rt = pd.DataFrame(routes)
     if not rt.empty:
         rt["color"] = rt["skill"].map(ROUTE_RGB)
+        # road-following polyline when present (older results.json only has straight 'path')
+        if "geometry" in rt:
+            rt["path"] = [g if isinstance(g, list) and len(g) > 1 else p
+                          for g, p in zip(rt["geometry"], rt["path"])]
+        rt = rt[rt["path"].map(len) > 2]          # skip idle crews (depot -> depot)
     layers = [
         pdk.Layer("ScatterplotLayer", markers, get_position=["lon", "lat"], get_fill_color="color",
                   get_radius="radius", pickable=True, opacity=0.8, stroked=True,
@@ -130,7 +135,7 @@ with left:
         map_style="light",
         tooltip={"html": "<b>{label}</b><br/>open: {open} &middot; exposure: {exposure}<br/>{reason}"}))
     st.caption("Dots: open tickets per community (size = count, blue darkness = exposure "
-               "percentile). Lines: crew routes (violet = bylaw, grey = roads). "
+               "percentile). Lines: crew routes along the road network (violet = bylaw, grey = roads). "
                "Red = live voice reports. Historical 311 locations are community centrepoints.")
 
 # ------------------------------------------------------------------ charts

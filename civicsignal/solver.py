@@ -2,7 +2,9 @@
 (prize-collecting) and a plan-stability penalty.
 
 Jobs are solved per skill (sidewalk -> bylaw, roads/pathway -> roads), so skill matching is exact.
-Travel = haversine x 1.3 road factor at 30 km/h. Units: metres for cost, minutes for time.
+Travel comes from the Calgary OSM road network (roads.matrix: directed fastest paths, winter speed
+factor); without the road cache it falls back to haversine x 1.3 at 30 km/h.
+Units: metres for cost, minutes for time.
 """
 from __future__ import annotations
 
@@ -13,10 +15,9 @@ import numpy as np
 import pandas as pd
 from ortools.constraint_solver import pywrapcp, routing_enums_pb2
 
-from .dedupe import haversine_m
+from . import roads
+from .roads import ROAD_FACTOR, SPEED_M_PER_MIN  # noqa: F401  (fallback constants, re-exported)
 
-ROAD_FACTOR = 1.3
-SPEED_M_PER_MIN = 30_000 / 60
 SKILL_OF = {
     "Bylaw - Snow and Ice on Sidewalk": "bylaw",
     "Roads - Snow and Ice Control": "roads",
@@ -57,20 +58,22 @@ class Plan:
                 "crew_km": self.crew_km, "eta_min": self.eta_min, "solve_s": round(self.solve_s, 2)}
 
 
-def _dist_matrix(lat, lon):
-    lat, lon = np.asarray(lat), np.asarray(lon)
-    d = haversine_m(lat[:, None], lon[:, None], lat[None, :], lon[None, :]) * ROAD_FACTOR
-    return np.rint(d).astype(np.int64)
+def _matrices(lat, lon):
+    """Road metres (int, arc cost) and road minutes (float) between points; row = from."""
+    m, t = roads.matrix(lat, lon)
+    return np.rint(m).astype(np.int64), t
 
 
 def route_stats(order_latlon, depot, service_min_list):
-    """Minutes and metres for a fixed order (used by FIFO and for deltas)."""
+    """Minutes and metres for a fixed order (used for insertion deltas)."""
     pts = [depot] + list(order_latlon) + [depot]
     lat = np.array([p[0] for p in pts])
     lon = np.array([p[1] for p in pts])
-    seg = haversine_m(lat[:-1], lon[:-1], lat[1:], lon[1:]) * ROAD_FACTOR
-    minutes = seg.sum() / SPEED_M_PER_MIN + sum(service_min_list)
-    return float(minutes), float(seg.sum())
+    m, t = roads.matrix(lat, lon)
+    k = np.arange(len(pts) - 1)
+    metres = float(m[k, k + 1].sum())
+    minutes = float(t[k, k + 1].sum()) + sum(service_min_list)
+    return minutes, metres
 
 
 def _solve_skill(jobs: pd.DataFrame, crews: list[Crew], prev: dict | None, time_limit_s: float,
@@ -85,9 +88,9 @@ def _solve_skill(jobs: pd.DataFrame, crews: list[Crew], prev: dict | None, time_
     V, N = len(crews), len(jobs)
     lat = np.r_[[c.depot_lat for c in crews], jobs["lat"].to_numpy()]
     lon = np.r_[[c.depot_lon for c in crews], jobs["lon"].to_numpy()]
-    D = _dist_matrix(lat, lon)
+    D, Tmin = _matrices(lat, lon)
     svc = np.r_[np.zeros(V), jobs["service_min"].to_numpy()].astype(np.int64)
-    T = np.rint(D / SPEED_M_PER_MIN).astype(np.int64) + svc[:, None]     # service at from-node
+    T = np.rint(Tmin).astype(np.int64) + svc[:, None]                    # service at from-node
     demand = np.r_[np.zeros(V), jobs["n_tickets"].to_numpy()].astype(np.int64)
     job_ids = jobs["job_id"].tolist()
 
@@ -218,6 +221,23 @@ def jobs_moved(old: Plan, new: Plan) -> int:
         sum(1 for j in a if j not in b)
 
 
+def _route_minutes_fn(plan: Plan, job: dict, jdx: pd.DataFrame, crews: list[Crew]):
+    """One road matrix over the crews' depots, their planned stops and the new job; returns
+    route_minutes(crew, order) -> shift minutes (travel + service) for a fixed order."""
+    ids = list(dict.fromkeys([j for c in crews for j in plan.routes.get(c.id, [])] + [job["job_id"]]))
+    lat = np.r_[[c.depot_lat for c in crews], jdx.loc[ids, "lat"].to_numpy(float)]
+    lon = np.r_[[c.depot_lon for c in crews], jdx.loc[ids, "lon"].to_numpy(float)]
+    _, t = roads.matrix(lat, lon)
+    at = {("@", c.id): k for k, c in enumerate(crews)} | {j: len(crews) + k for k, j in enumerate(ids)}
+    svc = jdx["service_min"]
+
+    def route_minutes(c: Crew, order: list) -> float:
+        k = [at[("@", c.id)]] + [at[j] for j in order] + [at[("@", c.id)]]
+        k = np.asarray(k)
+        return float(t[k[:-1], k[1:]].sum()) + float(sum(svc[j] for j in order))
+    return route_minutes
+
+
 def insert_job(plan: Plan, job: dict, jobs: pd.DataFrame, crews: list[Crew],
                time_limit_s: float = 2.0, stability_m: float = 20_000) -> dict:
     """Insert a new job into an existing plan with a strong stability penalty.
@@ -228,15 +248,14 @@ def insert_job(plan: Plan, job: dict, jobs: pd.DataFrame, crews: list[Crew],
     jobs2 = pd.concat([jobs, pd.DataFrame([job])], ignore_index=True)
     jdx = jobs2.set_index("job_id")
     skill_crews = [c for c in crews if c.skill == job["skill"]]
+    route_mins = _route_minutes_fn(plan, job, jdx, skill_crews)
     # cheapest feasible insertion as warm start
     best = None
     for c in skill_crews:
         r = plan.routes.get(c.id, [])
         for pos in range(len(r) + 1):
             order = r[:pos] + [job["job_id"]] + r[pos:]
-            ll = [(jdx.at[j, "lat"], jdx.at[j, "lon"]) for j in order]
-            sv = [jdx.at[j, "service_min"] for j in order]
-            mins, _ = route_stats(ll, (c.depot_lat, c.depot_lon), sv)
+            mins = route_mins(c, order)
             load = sum(jdx.at[j, "n_tickets"] for j in order)
             if mins <= c.shift_min and load <= c.capacity and (best is None or mins < best[0]):
                 best = (mins, c.id, pos)
@@ -268,12 +287,8 @@ def insert_job(plan: Plan, job: dict, jobs: pd.DataFrame, crews: list[Crew],
     route = new.routes[crew_id]
     pos = route.index(job["job_id"])
     c = next(c for c in crews if c.id == crew_id)
-
-    def mins(r):
-        ll = [(jdx.at[j, "lat"], jdx.at[j, "lon"]) for j in r]
-        return route_stats(ll, (c.depot_lat, c.depot_lon), [jdx.at[j, "service_min"] for j in r])[0]
-
-    delta = mins(route) - mins(plan.routes.get(crew_id, []))
+    # the re-solve only reorders same-skill planned jobs + the new one, all already in the matrix
+    delta = route_mins(c, route) - route_mins(c, plan.routes.get(crew_id, []))
     return {"inserted": True, "crew_id": crew_id, "position": pos,
             "inserted_after": route[pos - 1] if pos > 0 else "depot",
             "delta_min": round(delta, 1), "eta_min": new.eta_min.get(job["job_id"]),

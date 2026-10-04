@@ -25,6 +25,7 @@ from sklearn.neighbors import BallTree
 from . import features as F
 from . import ingest as I
 from . import risk as R
+from . import roads
 from . import sim
 from .dedupe import find_duplicate
 from .solver import SERVICE_MIN, SKILL_OF, Plan, insert_job, jobs_moved, plan_day
@@ -85,6 +86,7 @@ class State:
         self.ix_tree = BallTree(np.radians(ix[["lat", "lon"]].to_numpy()), metric="haversine")
         self._parcel = None
         self.log: list[dict] = []
+        self.geom: dict = {}            # (crew, depot, stop coords) -> road polyline
         self.rebuild(replan=True)
 
     # ---------------------------------------------------------- planning
@@ -149,6 +151,16 @@ class State:
     def nearest_intersection(self, lat, lon):
         d, i = self.ix_tree.query(np.radians([[lat, lon]]), k=1)
         return self.ix.iloc[i[0, 0]]["intersection"], float(d[0, 0] * EARTH_R)
+
+    def route_geometry(self, c, pts):
+        """Road-following [lon, lat] polyline for depot -> stops -> depot (cached per route)."""
+        key = (c.id, tuple(map(tuple, pts)))
+        if key not in self.geom:
+            if len(self.geom) > 2000:
+                self.geom.clear()
+            self.geom[key] = roads.path([p[1] for p in pts], [p[0] for p in pts],
+                                        simplify_deg=roads.GEOMETRY_SIMPLIFY_DEG) if len(pts) > 2 else []
+        return self.geom[key]
 
     def rank_of(self, job_id):
         pr = self.jobs.set_index("job_id")["priority"]
@@ -328,16 +340,17 @@ def get_plan():
     routes = []
     for cid, js in s.plan.routes.items():
         c = crew_by[cid]
-        routes.append({"crew": cid, "skill": c.skill, "stops": js,
-                       "path": [[c.depot_lon, c.depot_lat]] +
-                               [[float(jdx.at[j, "lon"]), float(jdx.at[j, "lat"])] for j in js] +
-                               [[c.depot_lon, c.depot_lat]],
+        pts = ([[c.depot_lon, c.depot_lat]] +
+               [[float(jdx.at[j, "lon"]), float(jdx.at[j, "lat"])] for j in js] +
+               [[c.depot_lon, c.depot_lat]])
+        routes.append({"crew": cid, "skill": c.skill, "stops": js, "path": pts,
+                       "geometry": s.route_geometry(c, pts),
                        "minutes": s.plan.crew_minutes.get(cid), "km": s.plan.crew_km.get(cid)})
     jobs = s.jobs.assign(crew=s.jobs["job_id"].map(a), eta_min=s.jobs["job_id"].map(s.plan.eta_min))
     cols = ["job_id", "skill", "service_name", "comm_code", "lat", "lon", "n_tickets", "priority",
             "exposure", "report_count", "reason", "crew", "eta_min"]
     return {"day": s.day.strftime("%Y-%m-%d"), "crews": [c.__dict__ for c in s.crews],
-            "routes": routes, "km": round(s.plan.km, 1),
+            "routes": routes, "km": round(s.plan.km, 1), "routing": roads.method(),
             "jobs": json.loads(jobs[cols].to_json(orient="records")),
             "voice_jobs": [v["job_id"] for v in s.voice_jobs]}
 

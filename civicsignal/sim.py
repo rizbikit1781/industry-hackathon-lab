@@ -3,7 +3,9 @@
 Every morning the open set = tickets requested on or before that day (real arrivals) that no
 policy has served yet. Policies share the same crews, ticket capacity and shift length.
 
-- fifo:      oldest ticket first, nearest crew (by depot), each crew drives nearest-neighbour order.
+- fifo:      oldest ticket first, nearest crew (road metres from depot), each crew drives
+             nearest-neighbour order on road metres.
+All policies use the same road-network distances and times (roads.matrix).
 - optimized: risk priority + OR-Tools VRP (solver.plan_day).
 - optimized + disruption: day 3 (Nov 27) 30% of crews go out after the morning plan -> replan;
   day 7 (Dec 1) the day's real arrivals land mid-day as a surge -> replan. Both replans use the
@@ -21,9 +23,9 @@ import pandas as pd
 
 from . import risk as R
 from . import features as F
-from .dedupe import assign_clusters, haversine_m
-from .solver import (SERVICE_MIN, SKILL_OF, SPEED_M_PER_MIN, ROAD_FACTOR, Crew, Plan,
-                     jobs_moved, plan_day, route_stats, PEN_SCALE)
+from . import roads
+from .dedupe import assign_clusters
+from .solver import SERVICE_MIN, SKILL_OF, Crew, Plan, jobs_moved, plan_day, PEN_SCALE
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
@@ -132,40 +134,40 @@ def fifo_day(open_t: pd.DataFrame, crews: list[Crew]) -> tuple[Plan, dict, list]
         cs = [c for c in crews if c.skill == skill]
         if not cs:
             continue
-        tt = t[t["skill"] == skill]
+        tt = t[t["skill"] == skill].head(sum(c.capacity for c in cs))
+        V = len(cs)
+        lat = np.r_[[c.depot_lat for c in cs], tt["latitude"].to_numpy(float)]
+        lon = np.r_[[c.depot_lon for c in cs], tt["longitude"].to_numpy(float)]
+        Mm, Mt = roads.matrix(lat, lon)            # road metres / minutes, row = from
+        sids = tt["service_request_id"].tolist()
         load = {c.id: [] for c in cs}
-        dep = np.array([[c.depot_lat, c.depot_lon] for c in cs])
-        total_cap = sum(c.capacity for c in cs)
-        for _, r in tt.head(total_cap).iterrows():
-            d = haversine_m(r["latitude"], r["longitude"], dep[:, 0], dep[:, 1])
-            for k in np.argsort(d):
+        for i in range(len(tt)):
+            for k in np.argsort(Mm[:V, V + i], kind="stable"):
                 c = cs[k]
                 if len(load[c.id]) < c.capacity:
-                    load[c.id].append(r)
+                    load[c.id].append(V + i)
                     break
-        for c in cs:
-            todo, pos, mins, metres, route = list(load[c.id]), (c.depot_lat, c.depot_lon), 0.0, 0.0, []
+        for k_c, c in enumerate(cs):
+            todo, pos, mins, metres, route = list(load[c.id]), k_c, 0.0, 0.0, []
             while todo:
-                dd = [haversine_m(pos[0], pos[1], x["latitude"], x["longitude"]) * ROAD_FACTOR for x in todo]
+                dd = Mm[pos, todo]
                 k = int(np.argmin(dd))
                 x = todo[k]
-                back = haversine_m(x["latitude"], x["longitude"], c.depot_lat, c.depot_lon) * ROAD_FACTOR
-                need = (dd[k] + back) / SPEED_M_PER_MIN + SERVICE_MIN[skill]
+                need = Mt[pos, x] + Mt[x, k_c] + SERVICE_MIN[skill]
                 if mins + need > c.shift_min:
                     todo.pop(k)                      # doesn't fit today; stays open
                     continue
-                mins += dd[k] / SPEED_M_PER_MIN + SERVICE_MIN[skill]
-                metres += dd[k]
-                pos = (x["latitude"], x["longitude"])
-                sid = x["service_request_id"]
+                mins += Mt[pos, x] + SERVICE_MIN[skill]
+                metres += Mm[pos, x]
+                pos = x
+                sid = sids[x - V]
                 route.append(sid)
                 members[sid] = [sid]
                 plan.eta_min[sid] = int(mins - SERVICE_MIN[skill])
                 served.append(sid)
                 todo.pop(k)
-            back = haversine_m(pos[0], pos[1], c.depot_lat, c.depot_lon) * ROAD_FACTOR
-            metres += back
-            mins += back / SPEED_M_PER_MIN
+            metres += Mm[pos, k_c]
+            mins += Mt[pos, k_c]
             plan.routes[c.id] = route
             plan.crew_minutes[c.id] = int(mins)
             plan.crew_km[c.id] = round(metres / 1000, 2)
@@ -296,6 +298,9 @@ def metrics(t: pd.DataFrame, days: list, replans: list) -> dict:
 def export(results: dict, crews: list[Crew], cap: dict, extra: dict, path=DATA / "results.json"):
     comm = pd.read_csv(DATA / "community_features.csv", index_col=0)
     out = {"days": [d.strftime("%Y-%m-%d") for d in DAYS], "capacity": cap,
+           "routing": {"method": roads.method(), "winter_speed_factor": roads.WINTER_SPEED_FACTOR,
+                       "geometry": "road-following [lon, lat] polyline per route (key 'geometry'); "
+                                   "'path' is depot -> stops -> depot"},
            "crews": [c.__dict__ for c in crews], "policies": {}, **extra}
     for name, res in results.items():
         t = res["tickets"].set_index("service_request_id")
@@ -311,7 +316,10 @@ def export(results: dict, crews: list[Crew], cap: dict, extra: dict, path=DATA /
                     s = members[j][0]
                     pts.append([float(t.at[s, "longitude"]), float(t.at[s, "latitude"])])
                 pts.append([c.depot_lon, c.depot_lat])
-                routes.append({"crew": cid, "skill": c.skill, "path": pts, "stops": len(js),
+                geom = roads.path([p[1] for p in pts], [p[0] for p in pts],
+                                  simplify_deg=roads.GEOMETRY_SIMPLIFY_DEG) if js else []
+                routes.append({"crew": cid, "skill": c.skill, "path": pts, "geometry": geom,
+                               "stops": len(js),
                                "km": plan.crew_km.get(cid), "minutes": plan.crew_minutes.get(cid)})
             # open-ticket markers aggregated per (community, skill) for the map
             day = pd.Timestamp(d["info"]["day"])
