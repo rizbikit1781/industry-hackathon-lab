@@ -1,0 +1,212 @@
+type,name,address,comm_code,lon,lat
+Attraction,Arts Commons,205 8 AV SE,DNC,-114.0600698,51.0453489
+Court,Federal Court of Appeal,635 8 AV SW,DNC,-114.0758523,51.0456462
+Court,Alberta Provincial Court (Youth),# 201-N 601 5 ST SW,DNC,-114.0741375,51.0469323
+Court,Alberta Court of Appeal,2600 450 1 ST SW,DNC,-114.0646823,51.0487285
+Hospital,Foothills Hospital,1403 - 29 ST NW,STA,-114.1321909,51.0641897
+Court,Alberta Provincial Court (Family),# 704-N 601 5 ST SW,DNC,-114.0741375,51.0469323
+Court,Alberta Provincial Court (Criminal),# 402-S 601 5 ST SW,DNC,-114.0741375,51.0469323
+Hospital,South Health Campus,4448 FRONT ST SE,SET,-113.951718,50.8821086
+Court,Alberta Court of Queens Bench,# 604-N 601 5 ST SW,DNC,-114.0741375,51.0469323
+Hospital,Rockyview General Hospital,7007 - 14 ST SW,EAG,-114.0963349,50.9918356
+Court,Alberta Provincial Court (Rural),# 401-S 601 5 ST SW,DNC,-114.0741375,51.0469323
+Hospital,Peter Lougheed Medical Centre,3500 - 26 AV NE,SUN,-113.9839578,51.0790231
+Court,Alberta Provincial Court (Traffic),# 203-S 601 5 ST SW,DNC,-114.0741375,51.0469323
+Court,Alberta Provincial Court (Civil),# 606-S 601 5 ST SW,DNC,-114.0741375,51.0469323
+Hospital,Alberta Children's Hospital,2888 Shaganappi Trail NW,UOC,-114.1479719,51.0745666
+Visitor Info,Calgary City Hall & Municipal Complex,800 Macleod TR SE,DNC,-114.0570698,51.0453758
+Attraction,Rocky Mountaineer Rail Tours,115 9 AV SW,DNC,-114.0624644,51.0440938
+Attraction,Calgary Chamber of Commerce,237 8 Ave SE,DNC,-114.0632475,51.0476395
+Library,Seton Library,4995 MARKET ST SE,SET,-113.9441933,50.8811957
+Library,Central Library,800 3 ST SE,DNC,-114.0551896,51.0455185
+Attraction,Studio Bell National Music Centre,850 4 ST SE,,-114.0527781,51.0445776
+Attraction,Peace Bridge,,,-114.0782213,51.0534363
+Community Centre,Elbow Park Community Centre,800 34 AV SW,EPK,-114.0821897,51.0234686
+Community Centre,Elboya Heights Community Centre,416 Park AV SW,EYA,-114.0727663,51.015372
+Community Centre,South Calgary Community Centre,3130 16 ST SW,SOC,-114.0983236,51.0260015
+Community Centre,Strathcona/Christie Park Community Centre,277 Strathcona DR SW,STR,-114.1799837,51.0472768
+Community Centre,Deer Run Community Centre,2223 146 AV SE,DRN,-114.0079559,50.9217621
+Community Centre,Monterey Park Community Centre,2707 Catalina BV NE,MOR,-113.9308989,51.076361
+Community Centre,Scarboro Community Centre,1727 14 AV SW,SNA,-114.1011983,51.0404102
+Community Centre,Southwood Community Centre,11 Sackville DR SW,SOW,-114.0866073,50.9567905
+Community Centre,McKenzie Lake Community Centre,16198 McKenzie Lake WY SE,MCK,-113.9835812,50.9062854
+Community Centre,Dover Community Centre,3033 30 AV SE,DOV,-113.9891044,51.0267198
+Community Centre,Spruce Cliff Community Centre,3375 Spruce DR SW,SPR,-114.1363442,51.0475105
+Community Centre,Meadowlark Park Community Centre,623 58 AV SW,MEA,-114.0778289,51.0010832
+Community Centre,Silver Springs Community Centre,5720 Silver Ridge DR NW,SIL,-114.1925444,51.1046589
+Community Centre,Falconridge/Castleridge Community Centre,95 Falshire DR NE,FAL,-113.9463222,51.1045559
+Community Centre,Oakridge Community Centre,9504 Oakfield DR SW,OAK,-114.1320095,50.9687732
+Community Centre,Woodcreek Community Centre,1991 Woodview DR SW,WOO,-114.1048848,50.9411186
+Community Centre,Copperfield & Mahogany Community Center,6 Copperstone Way SE,CPF,-113.9324625,50.9148666
+Community Centre,Rosedale Community Centre,901 11 AV NW,RDL,-114.0814484,51.0621596
+Community Centre,Mount Royal Community Centre,2317 10 ST SW,UMR,-114.086071,51.0317415
+Community Centre,Citadel Community Centre,860 CITADEL DR NW,CIT,-114.1735342,51.1447296
+Community Centre,Kingsland Community Centre,505 78 AV SW,KIN,-114.0740316,50.9829642
+Community Centre,Rundle Community Centre,2409 50 ST NE,RUN,-113.9620129,51.0746781
+Community Centre,Coach Hill/Patterson Heights Community Centre,60 Patterson BV SW,PAT,-114.1778609,51.0613876
+Community Centre,Crossroads Community Centre,1803 14 AV NE,MAL,-114.0191443,51.0651698
+Community Centre,Fairview Community Centre,8038 Fairmount DR SE,FAI,-114.0587042,50.9825244
+Community Centre,Penbrooke Meadows Community Centre,6100 8 AV SE,PEN,-113.946344,51.0459156
+Community Centre,Rutland Park Community Centre,3130 40 AV SW,RUT,-114.1352802,51.0183945
+Community Centre,Albert Park / Radisson Heights Community Centre,2636 12 AV SE,ALB,-113.9985699,51.0421365
+Community Centre,Braeside Community Centre,11024 Braeside DR SW,BRA,-114.1020506,50.9543528
+Community Centre,Brentwood Community Centre,5107 33 ST NW,BRE,-114.1378591,51.09751
+Community Centre,Parkdale Community Centre,3512 5 AV NW,PKD,-114.1368212,51.0605215
+Community Centre,North Glenmore Park Community Centre,2231 Longridge DR SW,NGM,-114.1120746,50.9981241
+Community Centre,Tuscany Community Centre,212 Tuscany Way NW,TUS,-114.2456589,51.1245971
+Community Centre,Saddle Ridge Community Centre,7614 42 ST NE,SRI,-113.9728732,51.1208502
+Community Centre,Crescent Heights Community Centre,1101 2 ST NW,CRE,-114.0679994,51.0619508
+Community Centre,Sunalta Community Centre,1627 10 AV SW,SNA,-114.0983486,51.0441811
+Community Centre,Haysboro Community Centre,1204 89 AV SW,HAY,-114.0878,50.9747523
+Community Centre,Lake Bonavista Community Centre,1401 Acadia DR SW,LKB,-114.0492261,50.9369523
+Community Centre,Westgate Community Centre,4943 8 AV SW,WGT,-114.1579116,51.0446398
+Community Centre,Southview Community Centre,2020 33 ST SE,SOV,-113.9880027,51.0333283
+Community Centre,Bridgeland / Riverside Community Centre,917 Centre Av NE,BRD,-114.0399562,51.0500808
+Community Centre,Forest Lawn Community Centre,4020 26 AV SE,FLN,-113.9768338,51.0308266
+Community Centre,"Palliser, Bayview, Pumphill Community Centre",2323 Palliser DR SW,PAL,-114.11374,50.9686369
+Community Centre,Parkhill/Stanley Park Community Centre,4013 Stanley RD SW,PKH,-114.0647758,51.0184849
+Community Centre,Capitol Hill Community Centre,1531 21 AV NW,CAP,-114.0964729,51.0712824
+Community Centre,Lakeview Community Centre,6110 34 ST SW,LKV,-114.1361917,50.9983665
+Community Centre,Riverbend Community Centre,19 Rivervalley DR SE,RIV,-114.0163996,50.9724603
+Community Centre,Rosemont Community Centre,2807 10 ST NW,CAP,-114.0860518,51.0767597
+Community Centre,Abbeydale Community Centre,821 Abbeydale DR NE,ABB,-113.9320367,51.0596197
+Community Centre,Cliffe Bungalow/Mission Community Association,2201 Cliff ST SW,CLI,-114.0760988,51.0333682
+Community Centre,Montgomery Community Centre,5003 - 16 AV NW,MON,-114.1656201,51.0716152
+Community Centre,Erin Woods Community Centre,83 Erin Park DR SE,ERI,-113.9637517,51.0229024
+Community Centre,Glenbrook Community Centre,3524 45 ST SW,GBK,-114.1520999,51.0229925
+Community Centre,North Haven Community Centre,5003 North Haven DR NW,NHV,-114.0866375,51.0991045
+Community Centre,Parkland Community Centre,505 Parkvalley RD SE,PKL,-114.0262601,50.9180347
+Community Centre,Chaparral Residents Association,225 CHAPARRAL DR SE,CHA,-114.0364338,50.8863693
+Community Centre,Chinook Park/Kelvin Grove/Eagle Ridge Community Centre,1015 73 AV SW,KEL,-114.084962,50.9876025
+Community Centre,Millican/Ogden/Lynnwood Community Centre,6901 20A ST SE,OGD,-114.0108656,50.9914781
+Community Centre,Windsor Park Community Centre,5304 6 ST SW,WND,-114.078561,51.0064105
+Community Centre,Arbour Lake Community Centre,12 Arbour Lake DR NW,ARB,-114.2025913,51.1331004
+Community Centre,Hillhurst/Sunnyside Community Centre,1320 5 AV NW,HIL,-114.0925315,51.0575484
+Community Centre,Rosscarrock Community Centre,4411 10 AV SW,RCK,-114.1507671,51.0428044
+Community Centre,Inglewood Community Centre,1740 24 AV SE,ING,-114.0195317,51.0325249
+Community Centre,West Hillhurst Community Centre,1940 6 AV NW,WHL,-114.1046243,51.0581875
+Community Centre,Glamorgan Community Centre,4207 41 AV SW,GLA,-114.1451832,51.0173682
+Community Centre,Highwood Community Centre,16 Harlow AV NW,HIW,-114.0773655,51.0908186
+Community Centre,Willow Park / Mapleridge Community Centre,680 Acadia DR SE,MPL,-114.0433533,50.9598995
+Community Centre,Winston Heights/Mountview Community Centre,520 27 AV NE,WIN,-114.0521348,51.0773672
+Community Centre,Forest Heights/ Fonda Community Centre,4909 Forego AV SE,FHT,-113.9630312,51.0492231
+Community Centre,Queensland / Diamond Cove Community Centre,649 Queensland DR SE,QLD,-114.0216773,50.9396076
+Community Centre,Cedarbrae Community Centre,11024 Oakfield DR SW,CED,-114.1298953,50.9545543
+Community Centre,Bowness / Greenwood / Greenbriar Community Centre,7904 43 AV NW,BOW,-114.2008701,51.0916693
+Community Centre,Pineridge Community Centre,6024 Rundlehorn DR NE,PIN,-113.9452702,51.0715737
+Community Centre,Scenic Acres Community Centre,8825 Scurfield DR NW,SCE,-114.2147787,51.1217149
+Community Centre,Huntington Hills Community Centre,520 78 AV NW,HUN,-114.0722928,51.1237335
+Community Centre,Whitehorn Community Centre,228 Whitehorn RD NE,WHI,-113.9669642,51.0887954
+Community Centre,Wildwood Community Centre,4411 Spruce DR SW,WLD,-114.1508944,51.0518931
+Community Centre,Calgary Marlborough Community Centre,636 Marlborough WY NE,MRL,-113.9743029,51.0582729
+Community Centre,Canyon Meadows Community Centre,848 Cantabrian DR SW,CAN,-114.0788589,50.9462205
+Community Centre,Mid-Sun Community Centre,50 Midpark RI SE,MID,-114.0566394,50.9154444
+Community Centre,Triwood Community Centre,2244 Chicoutimi DR NW,CHW,-114.1117296,51.0863243
+Community Centre,Tuxedo Park Community Centre,202 29 AV NE,TUX,-114.0596544,51.0789245
+Community Centre,Shawnessy Community Centre,224 Shawmeadows RD SW,SHN,-114.0751716,50.9067157
+Community Centre,Shaganappi Community Centre,2608 14 AV SW,SHG,-114.1189406,51.039922
+Community Centre,Thorncliffe/Greenview Community Centre,5600 Centre ST NE,THO,-114.0616268,51.101213
+Community Centre,Renfrew Community Association,811 Radford RD NE,REN,-114.0447522,51.0601908
+Community Centre,Bankview Community Centre,2418 17 ST SW,BNK,-114.1015114,51.0325299
+Community Centre,Lake Bonavista Downs Community Centre,1418 Lake Ontario RD SE,BDO,-114.0319305,50.9418799
+Community Centre,Richmond/Knob Hill Community Centre,2433 26 AV SW,RIC,-114.1170491,51.0299276
+Community Centre,Cambrian Heights Community Centre,600 Northmount DR NW,CAM,-114.0873963,51.0868355
+Community Centre,Mount Pleasant Community Centre,,MOP,-114.0743499,51.0727653
+Community Centre,Marlborough Park Community Centre,6021 Madigan DR NE,MPK,-113.9425012,51.0600518
+Community Centre,Temple Community Centre,167 Templegreen RD NE,TEM,-113.9448682,51.0874161
+Community Centre,Glendale/Glendale Meadows Community Centre,2405 Glenmount DR SW,GDL,-114.1498321,51.0330048
+Community Centre,St. Andrews Heights Community Centre,2504 13 AV NW,STA,-114.1213752,51.0640477
+Community Centre,Beddington Heights Community Centre,375 Bermuda DR NW,BED,-114.0851868,51.1316502
+Community Centre,Hounsfield Heights/Briar Hill Community Centre,1922 14 AV NW,HOU,-114.1041219,51.0662336
+Community Centre,Edgemont Community Centre,33 Edgevalley CI NW,EDG,-114.1441858,51.1284937
+Community Centre,Ranchlands Community Centre,7713 Ranchview DR NW,RAN,-114.179525,51.1196019
+Community Centre,Acadia Community Centre,240 90 AV SE,ACA,-114.0651568,50.9731772
+Community Centre,Banff Trail Community Centre,2115 20 AV NW,BNF,-114.1089361,51.07031
+Community Centre,Highland Park Community Centre,3716 2 ST NW,HPK,-114.0662553,51.0853284
+Community Centre,Dalhousie Community Centre,5432 Dalhart RD NW,DAL,-114.1597304,51.1128556
+Community Centre,Killarney/Glengarry Community Centre,2828 28 ST SW,KIL,-114.1276972,51.0287259
+Community Centre,Varsity Community Centre,4303 Varsity DR NW,VAR,-114.1492481,51.0919895
+Community Centre,Ramsay Community Centre,2102 Ramsay Street SE,RAM,-114.0465051,51.0345969
+Community Centre,Beltline Neighbourhoods Association,102 17 AV SW,BLN,-114.0638502,51.0380025
+Attraction,Tsuu T'ina Culture Museum,"62 Old Agency Road, Tsuut'ina Nation, AB T2W3C4",CED,-114.1567118,50.9428565
+Attraction,The Police Museum,5111 47 ST NE,,-113.9694038,51.098696
+Social Dev Ctr,East Area,1011 52 ST SE,FLN,-113.9587055,51.0428705
+Social Dev Ctr,Bridgeland Place,736 MCDOUGALL CO NE,BRD,-114.0463362,51.0499574
+Social Dev Ctr,Forest Lawn,3810 17 AV SE,FLN,-113.979663,51.0379472
+Social Dev Ctr,West Area,2539 33 AV SW,CFC,-114.1238214,51.0232461
+Social Dev Ctr,South Area,502 HERITAGE DR SW,KIN,-114.0743651,50.9831438
+Social Dev Ctr,North Area,905 30 AV NW,MOP,-114.0792708,51.0798297
+Social Dev Ctr,Bowmont,5000 BOWNESS RD NW,MON,-114.1649694,51.0755318
+Attraction,WinSport's Canada Olympic Park,88 Canada Olympic RD SW,COP,-114.2154212,51.0824064
+Attraction,Heritage Park Historical Village,1900 Heritage Dr SW,GPK,-114.1082581,50.9848404
+Attraction,Inglewood Bird Sanctuary,2425 9 AV SE,ING,-114.0087566,51.0301025
+Visitor Info,Tourism Calgary Airport,2000 Airport RD NE,CIA,-114.00926,51.1313168
+Visitor Info,Tourism Calgary Central Office,200 238 11 AV SW,BLN,-114.0675354,51.0427559
+Visitor Info,Tourism Calgary Tower,101 9 AV SW,DNC,-114.0630832,51.0443392
+Attraction,Trans Canada Trail Pavillion,Bow River Pathway at 2 ST SW,DNC,-114.0661466,51.0536773
+Attraction,Triangle Art Gallery,#104 800 Macleod TR SE,DNC,-114.0575148,51.0450826
+Attraction,Eau Claire Market,200 Barclay PR SW,EAU,-114.0677068,51.0529392
+Attraction,Fish Creek Provincial Park (Learning Centre),13931 Woodpath RD SW,FPK,-114.1321105,50.927607
+Attraction,Fish Creek Provincial Park (Bow Valley Ranch),15979 Bow Bottom TR SE,FPK,-114.0151218,50.9093453
+Attraction,Glenbow Alberta Museum,130 9 AV SE,DNC,-114.0611379,51.0447128
+Attraction,Southern Alberta Jubilee Auditorium,1415 14 AV NW,HIL,-114.0922591,51.063613
+Attraction,Spruce Meadows Equestrian Centre,18011 Spruce Meadows WY SW,,-114.0943443,50.8895716
+Attraction,Olympic Oval - University of Calgary,188 University CO NW,UOC,-114.1357027,51.0770401
+Attraction,Olympic Plaza,228 8 AV SE,DNC,-114.0584329,51.0462519
+Attraction,Aero Space Museum of Calgary,4629 McCall WY NE,PEG,-114.0118342,51.0940207
+Attraction,Contemporary Calgary Art Gallery,701 11 ST SE,DNW,-114.0891883,51.0474598
+Attraction,Calgary City Hall & Municipal Complex,800 Macleod TR SE,DNC,-114.0579415,51.0454065
+Attraction,Calgary Stampede Park,1410 Olympic WY SE,BLN,-114.0536442,51.0391443
+Attraction,Calgary Firefighters Museum,4124 11 ST SE,HIF,-114.0365922,51.0184737
+Attraction,Scotiabank Saddledome,555 Saddledome RI SE,BLN,-114.0519846,51.0374081
+Attraction,Calgary Tower,101 9 AV SW,DNC,-114.0631268,51.044487
+Attraction,"Calgary Zoo, Botanical Garden & Prehistoric Park",1300 Zoo RD NE,BRD,-114.0316536,51.0440726
+Attraction,Canada's Sports Hall of Fame,169 Canada Olympic Road SW,COP,-114.2220068,51.0834673
+Attraction,Crossroads Market,1235 26 AV SE,AYB,-114.0346773,51.0304761
+Attraction,The Military Museums,4520 Crowchild TR SW,ALT,-114.11457,51.013511
+Attraction,Nickle Arts Museum (University of Calgary),410 University CO NW,UOC,-114.1298274,51.0774592
+Attraction,Telus Convention Centre,120 9 AV SE,DNC,-114.0618335,51.0447327
+Attraction,Butterfield Acres Children's Farm,Rocky Ridge RD & 120 AV NW,02A,-114.2358437,51.1590263
+Attraction,Calaway Park,Springbank RD & Trans Canada HWY,VAL,-114.3550627,51.0857468
+Visitor Info,Calgary Chamber of Commerce,600 237 8 AV SE,DNC,-114.0583818,51.0451917
+Attraction,Calgary Chinese Cultural Centre,197 1 ST SW,CHN,-114.065318,51.0512914
+Attraction,Shaw Millenium Park,1220 9 AV SW,DNW,-114.0909416,51.0463444
+Attraction,Devonian Gardens -  The CORE Shopping Centre,317 7 AV SW,DNC,-114.069073,51.0465414
+Attraction,TELUS Spark  Centre,220 ST GEORGES DR NE,REN,-114.0245989,51.053847
+Attraction,Bow Habitat Station,1440 17A ST SE,ING,-114.0176727,51.0419935
+Attraction,Calgary Stampeders Football - McMahon Stadium,1817 Crowchild TR NW,UOC,-114.1182222,51.0704118
+Library,Rocky Ridge Library,11300 ROCKY RIDGE RD NW,01K,-114.2312356,51.1570548
+Library,Louise Riley Library,1904 14 AV NW,HOU,-114.1043624,51.0654639
+Library,Village Square Library,2623 56 ST NE,PIN,-113.9545686,51.0753943
+Social Dev Ctr,Thornhill,6617 CENTRE ST NW,HUN,-114.0633467,51.112108
+PHS Clinic,Thornhill Community Health Centre,6617 Centre ST NW,HUN,-114.0639289,51.1121929
+Library,Judith Umbach Library,6617 CENTRE ST N,HUN,-114.063982,51.1118866
+PHS Clinic,East Calgary Health Centre,4715 8 AV SE,FLN,-113.9672343,51.0450553
+Library,Forest Lawn Branch,4807 8 AV SE,FLN,-113.9652981,51.0448123
+Library,Shawnessy Library,333 SHAWVILLE BV SE,SHN,-114.0639712,50.8980408
+PHS Clinic,Sheldon M. Chumir Health Centre,1213 - 4 ST SW,BLN,-114.0721438,51.0411702
+Library,Signal Hill Library,5994 SIGNAL HILL CT SW,SIG,-114.1753771,51.0188066
+PHS Clinic,South Calgary Health Centre,31 Sunpark Plaza SE,SDC,-114.0585892,50.902582
+Library,Southwood Library,924 SOUTHLAND DR SW,SOW,-114.0861942,50.9635933
+PHS Clinic,North Hill Community Health Centre,1527 19 ST NW,HOU,-114.1065214,51.0653283
+PHS Clinic,Northwest Community Health Centre,109 1829 Ranchlands BV NW,RAN,-114.1971758,51.1233403
+Library,Nose Hill Library,1530 NORTHMOUNT DR NW,BRE,-114.138849,51.0965497
+PHS Clinic,Acadia Community Health Centre,151 - 86 AV SE,ACA,-114.0709543,50.9750788
+Library,Giuffre Family Library,3223 14 ST SW,SOC,-114.0955177,51.0254526
+Library,Country Hills Library,11950 Country Village Link NE,CHV,-114.0647656,51.1569374
+Library,Crowfoot Library,8665 NOSE HILL DR NW,ARB,-114.1925548,51.1308765
+Library,Memorial Park Library,1221 2 ST SW,BLN,-114.0690739,51.0411157
+Library,Bowness Library,6532 BOWNESS RD NW,BOW,-114.1830419,51.0873262
+PHS Clinic,Shaganappi Complex Health Centre,3415 - 8 AV SW,SPR,-114.1368562,51.0448939
+Library,Nicholls Family Library,1421 33 ST SW,RCK,-114.135837,51.0404181
+Library,Fish Creek Library,11161 BONAVENTURE DR SE,WIL,-114.0609256,50.9517248
+Library,Saddletowne Library,7556 FALCONRIDGE BV NE,MRT,-113.947839,51.1202949
+Library,Quarry Park Library,108 Quarry Park RD SE,DDG,-114.0060736,50.9615945
+Library,Sage Hill Library,19 SAGE HILL PS NW,SGH,-114.1471172,51.1689181
+Attraction,The Confluence Historic Site & Parkland,750 9 AV SE,DNE,-114.0452026,51.0440655
+Attraction,BMO Centre,,,-114.0559253,51.0380265
+Attraction,Scotia Place,,,-114.0523426,51.0401797
+Commercial,Foothills Industrial Park,,,-113.9707229,50.9931808
+Commercial,Manchester Industrial Park,,,-114.056678,51.0159797
+Commercial,Deerfoot Meadows,,,-114.0420643,50.9842318
+PHS Clinic,Village Square Community Health Centre,2623 56 Street NE,,-113.9530778,51.0755128
