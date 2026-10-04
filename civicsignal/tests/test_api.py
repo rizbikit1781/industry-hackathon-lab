@@ -35,6 +35,17 @@ def test_caller_hazards_raise_rank(client):
     assert flagged["reason"].startswith("caller reports mobility aid user, bus stop/transit")
 
 
+def test_blank_fields_from_agent_are_ignored(client):
+    # Exact shape of the live ElevenLabs call that failed with 422 on Oct 3.
+    body = {"address": "", "description": "Snow on sidewalk and road at 4th Ave and 2nd St SW, "
+            "blocking a handicap entrance.", "hazard_notes": "Blocking a handicap entrance.",
+            "intersection": "4 Ave SW & 2 St SW", "lat": "", "lon": "", "service_name": "sidewalk",
+            "source": "voice"}
+    r = client.post("/tickets", json=body)
+    assert r.status_code == 200, r.text
+    assert r.json()["reason"].startswith("caller reports mobility aid user")
+
+
 def test_caller_hazard_words_are_whole_words():
     from civicsignal import risk as R
     assert R.caller_hazards("after the snowfall, outside a business") == []

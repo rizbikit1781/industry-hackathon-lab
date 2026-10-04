@@ -19,7 +19,7 @@ import numpy as np
 import pandas as pd
 from fastapi import Depends, FastAPI, Header, HTTPException
 from fastapi.responses import PlainTextResponse
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 from sklearn.neighbors import BallTree
 
 from . import features as F
@@ -54,6 +54,16 @@ class TicketIn(BaseModel):
     description: str | None = None
     hazard_notes: str | None = None
     source: str = "voice"
+
+    # The ElevenLabs LLM fills every schema field and sends "" for ones it doesn't know
+    # (seen live: lat="" lon="" next to a valid intersection -> 422). Blank means "not given".
+    @field_validator("lat", "lon", "intersection", "address", "description", "hazard_notes",
+                     mode="before")
+    @classmethod
+    def blank_is_none(cls, v):
+        if isinstance(v, str) and not v.strip():
+            return None
+        return v
 
 
 class DisruptionIn(BaseModel):
