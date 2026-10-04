@@ -68,25 +68,142 @@ Distances, drive times and the route lines on the map come from the real Calgary
   about 2 m. `path` is still the straight depot -> stops -> depot list. The dashboard draws
   `geometry`.
 
-## How to run
+## Setup for teammates
+
+### 1. Prerequisites
+
+| Tool | Version | Install (macOS) |
+|---|---|---|
+| Python | 3.11 | python.org installer or `brew install python@3.11` |
+| Node.js | 20 or newer | `brew install node` |
+| cloudflared | any recent | `brew install cloudflared` (only needed for live voice calls) |
+
+About 1 GB of free disk is needed for the venv, `node_modules` and the road network.
+
+If you use the **python.org** installer on a Mac, run its certificate script once. Otherwise
+every Open Calgary download fails with `CERTIFICATE_VERIFY_FAILED`:
 
 ```bash
-cd civicsignal
-python3.11 -m venv .venv && .venv/bin/pip install -r requirements.txt   # (.venv already exists)
-.venv/bin/python scripts/pull_data.py            # ~2 min: all Open Calgary pulls + feature grid
-.venv/bin/python scripts/build_roads.py          # ~1 min: OSM road network -> data/roads/
-.venv/bin/python scripts/run_sim.py              # ~3 min: 3-policy replay + sweeps -> data/results.json
-.venv/bin/python -m pytest -q tests              # 21 tests
-.venv/bin/uvicorn civicsignal.api:app --port 8000
-.venv/bin/streamlit run civicsignal/ui.py        # dashboard; "Live plan (API)" reads :8000
+"/Applications/Python 3.11/Install Certificates.command"
 ```
 
-Example voice-ticket call (what the ElevenLabs webhook sends):
+### 2. Clone and install
 
 ```bash
+git clone -b civicSignal https://github.com/rizbikit1781/industry-hackathon-lab.git
+cd industry-hackathon-lab/civicsignal
+python3.11 -m venv .venv
+.venv/bin/pip install -r requirements.txt
+(cd web && npm install)
+```
+
+### 3. Create `.env` (never commit it)
+
+Create `civicsignal/.env` with two lines:
+
+```
+ELEVENLABS_API_KEY=sk_...
+CIVICSIGNAL_KEY=...
+```
+
+- `ELEVENLABS_API_KEY`: an ElevenLabs API key with these permissions: ElevenAgents (write),
+  Voices (read), Models (read), Text to Speech. Make one at
+  elevenlabs.io/app/settings/api-keys.
+- `CIVICSIGNAL_KEY`: the shared webhook secret. The API rejects `POST /tickets` and
+  `POST /disruption` without it, and the ElevenLabs agents send it.
+  - **To use the team's existing voice agents,** ask Caelan for the value privately. It must match
+    the secret stored on those agents. Don't paste it in chat or git.
+  - **To create your own agents** on your own ElevenLabs account, generate a new one:
+    `python3 -c "import secrets; print(secrets.token_urlsafe(32))"`. Then follow step 6, option B.
+
+`.env` is in `.gitignore`. Check with `git check-ignore .env` before committing anything.
+
+### 4. Rebuild the data that isn't in git
+
+`data/results.json`, the storm-week tickets and the community features are committed, so the
+replay page works right away. The live API also needs the risk layers, poles and road network:
+
+```bash
+.venv/bin/python scripts/pull_data.py     # ~2 min: Open Calgary layers + 200 m feature grid
+.venv/bin/python scripts/build_roads.py   # ~1 min: OpenStreetMap roads -> data/roads/
+.venv/bin/python -m pytest -q tests       # 21 tests should pass
+```
+
+Optional: `.venv/bin/python scripts/run_sim.py` (~3 min) regenerates `data/results.json`.
+If you commit the regenerated file, the README numbers change too.
+
+### 5. Run it (three terminals, all in `civicsignal/`)
+
+```bash
+# Terminal 1: engine API on :8000 (loads .env so the webhook secret is enforced)
+set -a; . ./.env; set +a
+.venv/bin/uvicorn civicsignal.api:app --host 127.0.0.1 --port 8000
+
+# Terminal 2: web console on :3000
+cd web && npm run dev                      # open http://127.0.0.1:3000
+
+# Terminal 3: public tunnel, only needed for real voice calls
+cloudflared tunnel --url http://127.0.0.1:8000
+```
+
+The first voice ticket in the ~10 s after the API starts can take up to 6 s, because the address
+index is still loading. After that, tickets are inserted in about 1.5–2 s.
+
+### 6. Connect the voice agents to your tunnel
+
+The tunnel prints a `https://<random>.trycloudflare.com` URL. **It changes every time the tunnel
+restarts.** Each time, point the agents' webhooks at the new URL:
+
+- **Option A: the team's existing agents** (needs the team's `ELEVENLABS_API_KEY` and
+  `CIVICSIGNAL_KEY`):
+  ```bash
+  .venv/bin/python scripts/setup_voice.py https://<random>.trycloudflare.com
+  ```
+  This updates the tools listed in `voice/agents.json`. Only one machine can own the tunnel at a
+  time, so agree who runs the demo.
+- **Option B: your own agents on your own ElevenLabs account.** Move the team IDs out of the way
+  first, so the script creates new agents instead of trying to edit ones you can't access. Then
+  run the script, and don't commit your `voice/agents.json`:
+  ```bash
+  mv voice/agents.json voice/agents.team.json
+  .venv/bin/python scripts/setup_voice.py https://<random>.trycloudflare.com
+  ```
+
+The script prints a talk-to link for each agent. The web console's voice widget uses the intake
+agent ID from `voice/agents.json`.
+
+### 7. Demo checklist
+
+1. Restart the API right before presenting. Its state is in memory, so a restart clears test
+   tickets and resets crews.
+2. Start the tunnel, run `setup_voice.py` with the new URL, then make one test call.
+3. Open http://127.0.0.1:3000 and check that **Live ops** shows routes and **Storm-week replay** loads.
+4. Keep a backup: the Streamlit dashboard (`.venv/bin/streamlit run civicsignal/ui.py`, port
+   8501) and a recorded video.
+
+### Troubleshooting
+
+| Symptom | Fix |
+|---|---|
+| `CERTIFICATE_VERIFY_FAILED` | Run the Python certificate script (step 1). |
+| Web console says "API not reachable" | Terminal 1 isn't running, or it's not on port 8000. |
+| Voice agent says it couldn't find the location | Use a numbered intersection with its quadrant, e.g. "17 Ave SW & 37 St SW". |
+| Voice calls stopped creating tickets | The tunnel restarted with a new URL. Rerun `setup_voice.py` (step 6). |
+| `401 bad or missing X-CivicSignal-Key` | `.env` wasn't loaded in Terminal 1, or the key doesn't match the agents' secret. |
+| Web pages return 404 chunks after `npm run build` | Building breaks a running dev server. Restart `npm run dev`. |
+| Routes are straight lines | `data/roads/` is missing. Run `scripts/build_roads.py` and restart the API. |
+
+### Direct API calls
+
+Example voice-ticket call (what the ElevenLabs webhook sends). Load `.env` first:
+
+```bash
+set -a; . ./.env; set +a
 curl -X POST localhost:8000/tickets -H 'Content-Type: application/json' \
-  -d '{"service_name":"sidewalk","intersection":"17 Ave SW & 37 St SW","description":"icy sidewalk by bus stop"}'
-curl -X POST localhost:8000/disruption -H 'Content-Type: application/json' -d '{"crews_out":5}'
+  -H "X-CivicSignal-Key: $CIVICSIGNAL_KEY" \
+  -d '{"service_name":"sidewalk","intersection":"17 Ave SW & 37 St SW","description":"icy sidewalk by bus stop","hazard_notes":"walker user, bus stop"}'
+curl -X POST localhost:8000/disruption -H 'Content-Type: application/json' \
+  -H "X-CivicSignal-Key: $CIVICSIGNAL_KEY" -d '{"crews_out":3}'
 curl localhost:8000/briefing/B01
 ```
 
@@ -102,10 +219,7 @@ A Next.js console in `web/` replaces the Streamlit dashboard for the demo: a liv
 ElevenLabs intake widget; a storm-week replay (`/replay`) comparing the three policies; and a plain-words
 "How it works" page (`/about`).
 
-```bash
-.venv/bin/uvicorn civicsignal.api:app --port 8000      # engine
-cd web && npm install && npm run dev                    # http://127.0.0.1:3000
-```
+Run steps are in "Setup for teammates" above (step 5).
 
 The browser only reads the API through a Next.js proxy (`/api/*`). Disruptions go through a server
 route that adds `X-CivicSignal-Key` from `.env`, so the key never reaches the client. See `web/README.md`.
